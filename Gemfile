@@ -3,9 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use sqlite3 as the database for Active Record
 gem 'mysql2'
-
 
 #--- ASSETS
 gem 'sprockets'
@@ -16,6 +14,17 @@ gem 'bootstrap-generators'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'turbolinks'
+
+#--- Rails Assets Group -------
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery-ujs'
+  gem 'rails-assets-select2', '~> 3.5.2'
+end
+
+gem 'jquery-ui-rails'
+gem 'modernizr-rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -37,7 +46,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'binding_of_caller'
-  gem 'spring'
 end
 
 group :development do
