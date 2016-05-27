@@ -1,4 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to projects_path, class: 'btn btn-default' do %>
+    <%= icon('list-alt') %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <%= link_to edit_project_path(@project), class: 'btn btn-primary' do %>
+    <%= icon('info-sign') %>
+    <%= t 'global.actions.edit' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
+</div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
+<dl class="dl-horizontal">
+
+  <dt><%= t 'activerecord.attributes.project.title' %></dt>
+  <dd><%= @project.title %></dd>
+
+  <dt><%= t 'activerecord.attributes.project.description' %></dt>
+  <dd><%= @project.description %></dd>
+
+  <dt><%= t 'activerecord.attributes.project.district' %></dt>
+  <dd><%= @project.district %></dd>
+
+  <dt><%= t 'activerecord.attributes.project.dosier' %></dt>
+  <dd><%= @project.dosier %></dd>
+
+</dl>

@@ -1,17 +1,29 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<div class="row">
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.input :title %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit class: 'btn btn-success' %>
+    <div class="col-md-4">
+      <%= f.input :district %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :dosier %>
+    </div>
   </div>
+  <div class="row">
+    <%= f.input :description %>
+  </div>
+  <div class="row">
+    <%= f.label :file %>
+    <%= f.file_field :file %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit class: "btn btn-success",
+      value: t('.submit', default: t('global.form.actions.submit') )  %>
+</div>
 <% end %>
+</div>

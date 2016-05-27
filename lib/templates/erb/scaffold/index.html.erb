@@ -1,19 +1,28 @@
 <div class="page-header">
-  <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New <%= human_name %>
-  <%% end %>
-  <h1>Listing <%= plural_table_name %></h1>
+  <div class="row">
+    <div class="col-md-7">
+      <h1><%%= t '.title'  %></h1>
+    </div>
+    <div class="col-md-5">
+      <div class="header-actions">
+        <%%= link_to new_<%= singular_table_name %>_path,
+          class: 'btn btn-primary' do %>
+          <%%= icon 'plus'  %>
+          <%%= t "<%= plural_table_name %>.actions.new" %>
+          <%% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-    <% attributes.each do |attribute| -%>
-        <th><%= attribute.human_name %></th>
-    <% end -%>
-        <th></th>
+        <% attributes.each do |attribute| -%>
+          <th><%%= t "activerecord.attributes.<%= singular_table_name %>.<%= attribute.human_name%>" %></th>
+        <% end -%>
+        <th><%%= t 'global.index.actions' %></th>
         <th></th>
         <th></th>
       </tr>
@@ -21,13 +30,25 @@
 
     <tbody>
       <%%= content_tag_for(:tr, @<%= plural_table_name %>) do |<%= singular_table_name %>| %>
-    <% attributes.each do |attribute| -%>
-        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
-    <% end -%>
-        <td><%%= link_to 'Show', <%= singular_table_name %> %></td>
-        <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
-        <td><%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% attributes.each do |attribute| -%>
+          <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+        <% end -%>
+        <td>
+          <%%= link_to icon('eye-open'), <%= singular_table_name %>,
+            class: 'btn btn-xs btn-default',
+            title: t('<%= plural_table_name %>.actions.show', default: t('global.actions.show')),
+            data: { toggle: 'tooltip', container: 'body', placement: 'left' } %>
+          <%%= link_to icon('pencil'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>),
+            class: 'btn btn-xs btn-primary',
+            title: t('<%= plural_table_name %>.actions.edit', default: t('global.actions.edit')),
+            data: { toggle: 'tooltip', container: 'body', placement: 'left' } %>
+          <%%= link_to icon('trash'), <%= singular_table_name %>,  method: :delete,
+            class: 'btn btn-xs btn-danger',
+            title: t('<%= plural_table_name %>.actions.destroy', default: t('global.actions.destroy')),
+            data: { confirm: t('<%= plural_table_name %>.actions.confirm_destroy', default: t('global.actions.confirm_destroy')), toggle: 'tooltip', container: 'body', placement: 'left' } %>
+      </td>
       <%% end %>
     </tbody>
+
   </table>
 </div>

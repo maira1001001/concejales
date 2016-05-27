@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    ## MODELS
+    models:
+      project:            "Projectos Concejo Deliberante"
+    ## ATTRIBUTES
+    attributes:
+      project:
+        title:            "Título"
+        description:      "Descripción"
+        district:         "Distrito"
+        dosier:           "Carátula"
+        file:             "Archivo"
+    errors:
+      messages:
+        blank: "El campo no puede estar en blanco."
+

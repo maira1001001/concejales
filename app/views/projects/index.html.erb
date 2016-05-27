@@ -1,25 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Projects</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="page-header">
+  <div class="actions">
+    <%= link_to new_project_path, class: 'btn btn-primary' do %>
+      <%= icon 'plus' %>
+      <%= t 'projects.actions.new' %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <h1><%= t '.title'  %></h1>
+</div>
 
-<br>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th><%= t 'activerecord.attributes.project.title' %></th>
+        <th><%= t 'activerecord.attributes.project.description' %></th>
+        <th><%= t 'activerecord.attributes.project.district' %></th>
+        <th><%= t 'activerecord.attributes.project.dosier' %></th>
+        <th><%= t 'global.index.actions'  %></th>
+      </tr>
+    </thead>
 
-<%= link_to 'New Project', new_project_path %>
+    <tbody>
+      <%= content_tag_for(:tr, @projects) do |project| %>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <td><%= project.district %></td>
+        <td><%= project.dosier %></td>
+        <td>
+          <%= link_to icon('search'), project,
+            title: t('global.actions.show') ,
+            data: { toggle: 'tooltip', placement: 'right' } %>
+          <%= link_to icon('pencil'), edit_project_path(project),
+            title: t('global.actions.edit'),
+            data: { toggle: 'tooltip', placement: 'right' } %>
+          <%= link_to icon('trash'), project_path(project), method: :delete,
+            title: t('global.actions.destroy'),
+            data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
+      </td>
+    <% end %>
+    </tbody>
+  </table>
+</div>

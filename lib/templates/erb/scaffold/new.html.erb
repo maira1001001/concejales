@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%%= link_to <%= index_helper %>_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+  <%%= link_to <%=plural_table_name%>_path, class: 'btn btn-default' do %>
+    <%%= icon 'list-alt' %>
+    <%%= t 'global.actions.back' %>
   <%% end %>
-  <h1>New <%= singular_table_name %></h1>
+  <h1><%%= t '.title' %></h1>
 </div>
 
 <%%= render 'form' %>

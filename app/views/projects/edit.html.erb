@@ -1,6 +1,13 @@
-<h1>Editing Project</h1>
+<div class="page-header">
+  <%= link_to projects_path, class: 'btn btn-default' do %>
+    <%= icon('list-alt') %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <%= link_to @project, class: 'btn btn-primary' do %>
+    <%= icon('info-sign') %>
+    <%= t 'global.actions.show' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>

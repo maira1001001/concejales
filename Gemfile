@@ -39,6 +39,9 @@ gem 'carrierwave'                   , '~> 0.11.2'
 # paginator
 gem 'kaminari'                      , '~> 0.16.3'
 
+# Forms
+gem 'simple_form'
+gem 'nested_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

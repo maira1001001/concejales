@@ -1,0 +1,30 @@
+es:
+  views:
+    application:
+      title: "Concejales JPBA - Proyectos concejo deliberante"
+  navbar:
+    projects: "Projectos Concejo Deliberante"
+  projects:
+    index:
+      title: "Mis proyectos"
+    edit:
+      title: "Editar proyecto"
+    show:
+      title: "Detalles del proyecto"
+    new:
+      title: "Nuevo proyecto"
+    actions:
+      new: "Nuevo projecto"
+      confirm_destroy: "¿Desea eliminar el projecto seleccionado?"
+  users:
+    index:
+      title: "Usuarios"
+  personal_informations:
+    index:
+      title: "Información Personal"
+    edit:
+      title: "Editar Información Personal"
+    show:
+      title: "Detalles de Información Personal"
+    new:
+      title: "Nuevo"

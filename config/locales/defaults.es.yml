@@ -1,0 +1,14 @@
+es:
+  global:
+    index:
+     actions:    "Acciones"
+    actions:
+      new:       "Nuevo"
+      show:      "Ver detalles"
+      edit:      "Modificar"
+      destroy:   "Borrar"
+      back:      "Volver"
+    form:
+      actions:
+        submit: Guardar cambios
+

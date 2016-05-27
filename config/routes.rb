@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
-  resources :projects
+
+  resources :tests
+  resources :personal_informations
+  resources :personal_infos
+  resources :personal_infos
+  resources :personal_infos
+#  devise_for :users, path: 'usuarios', path_name: { sign_in: 'iniciar' }
+
+  resources :users, path: 'usuarios', path_names: { new: 'nuevo', edit: 'modificar' }
+
+  root 'projects#index'
+
+  resources :projects, path: 'proyectos',
+    path_names: { new: 'nuevo', edit: 'editar', show: 'detalles' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

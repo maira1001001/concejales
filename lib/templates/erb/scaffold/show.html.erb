@@ -1,19 +1,15 @@
 <div class="page-header">
-  <%%= link_to <%= index_helper %>_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <%% end %>
-  <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <%% end %>
-  <h1>Show <%= singular_table_name %></h1>
+  <div class="row">
+    <div class="col-md-5">
+      <h1><%%= t '.title', default: t('global.show.title') %></h1>
+    </div>
+    <div class="col-md-7">
+      <div class="header-actions">
+        <%%= link_to icon('chevron-left'), <%= index_helper %>_path, class: 'btn btn-default', data: { toggle: 'tooltip', container: 'body' }, title: t('.back', default: t('global.actions.back')) %>
+        <%%= link_to icon('pencil'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-primary', data: { toggle: 'tooltip', container: 'body' }, title: t('.back', default: t('global.actions.edit')) %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<dl class="dl-horizontal">
-  <%- attributes.each do |attribute| -%>
-  <dt><%= attribute.human_name %>:</dt>
-  <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
 
-  <%- end -%>
-</dl>
