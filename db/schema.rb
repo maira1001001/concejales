@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527211740) do
+ActiveRecord::Schema.define(version: 20160530155215) do
 
-  create_table "personal_informations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "project_files", force: :cascade do |t|
+    t.string   "version",    limit: 255
+    t.string   "name",       limit: 255
+    t.string   "attachment", limit: 255
+    t.integer  "project_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
+
+  add_index "project_files", ["project_id"], name: "index_project_files_on_project_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -25,13 +31,6 @@ ActiveRecord::Schema.define(version: 20160527211740) do
     t.string   "dosier",      limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "age",        limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +56,5 @@ ActiveRecord::Schema.define(version: 20160527211740) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "project_files", "projects"
 end

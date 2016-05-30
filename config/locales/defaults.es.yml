@@ -10,5 +10,8 @@ es:
       back:      "Volver"
     form:
       actions:
-        submit: Guardar cambios
+        submit: "Guardar cambios"
+    tooltip:
+      add:       "Agregar"
+
 

@@ -1,29 +1,35 @@
 <div class="row">
-<%= simple_form_for(@project) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_nested_form_for(@project) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="row">
-    <div class="col-md-4">
-      <%= f.input :title %>
+    <div class="row">
+      <%= f.input :title, wrapper_html: { class: 'col-md-4' } %>
+      <%= f.input :district, wrapper_html: { class: 'col-md-4' }%>
+      <%= f.input :dosier, wrapper_html: { class: 'col-md-4' }%>
     </div>
-    <div class="col-md-4">
-      <%= f.input :district %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.simple_fields_for :project_files do |b| %>
+          <div class="row">
+            <%= b.input :name, wrapper_html: { class: 'col-md-6' } %>
+            <div class="col-md-6">
+              <%= b.label :attachment %>
+              <%= b.file_field :attachment %>
+            </div>
+            <%= b.link_to_remove icon('trash'), class: 'btn btn-danger btn-sm',
+              data: { toggle: 'tooltip', container: 'body' },
+              title: t('.destroy', default: t('global.actions.destroy')),
+              wrapper_hmtl: { class: 'col-md-1' } %>
+          </div>
+        <% end %>
+        <%= f.link_to_add icon('plus'), :project_files, class: 'btn btn-success btn-sm',
+          title: t('global.tooltip.add'), data: { toggle:'tooltip', placement:'right' } %>
+      </div>
+      <%= f.input :description, wrapper_html: { class: 'col-md-6' } %>
     </div>
-    <div class="col-md-4">
-      <%= f.input :dosier %>
+    <div class="form-actions">
+      <%= f.submit class: "btn btn-success",
+        value: t('.submit', default: t('global.form.actions.submit') )  %>
     </div>
-  </div>
-  <div class="row">
-    <%= f.input :description %>
-  </div>
-  <div class="row">
-    <%= f.label :file %>
-    <%= f.file_field :file %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit class: "btn btn-success",
-      value: t('.submit', default: t('global.form.actions.submit') )  %>
-</div>
-<% end %>
+  <% end %>
 </div>

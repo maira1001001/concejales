@@ -4,6 +4,7 @@ es:
     models:
       project:            "Projectos Concejo Deliberante"
       user:               "Usuarios"
+      project_files:      "Archivos"
     ## ATTRIBUTES
     attributes:
       project:
@@ -19,6 +20,10 @@ es:
         password_confirmation:  "Confirmacion de contraseña"
         last_sign_in_at:        "Último inicio de sesión"
         roles:                  "Roles"
+      project_file:
+        name:               "Nombre del archivo"
+        version:            "Versión"
+        attachment:         "Archivo"
     errors:
       messages:
         blank: "El campo no puede estar en blanco."
