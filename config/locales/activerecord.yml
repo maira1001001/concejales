@@ -27,4 +27,9 @@ es:
     errors:
       messages:
         blank: "El campo no puede estar en blanco."
+      models:
+        project:
+          attributes:
+            project_file:
+              invalid: "Sólo se permiten archivo en formato ...COMPLETAR!! "
 
