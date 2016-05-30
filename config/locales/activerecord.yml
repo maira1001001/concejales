@@ -3,6 +3,7 @@ es:
     ## MODELS
     models:
       project:            "Projectos Concejo Deliberante"
+      user:               "Usuarios"
     ## ATTRIBUTES
     attributes:
       project:
@@ -11,6 +12,13 @@ es:
         district:         "Distrito"
         dosier:           "Carátula"
         file:             "Archivo"
+      user:
+        username:               "Nombre de usuario"
+        email:                  "E-mail"
+        password:               "Contraseña"
+        password_confirmation:  "Confirmacion de contraseña"
+        last_sign_in_at:        "Último inicio de sesión"
+        roles:                  "Roles"
     errors:
       messages:
         blank: "El campo no puede estar en blanco."

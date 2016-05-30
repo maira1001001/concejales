@@ -1,18 +1,32 @@
 <%= simple_form_for(@user) do |f| %>
+  <!-- Google Chrome form autocomplete buster -->
+  <input type="password" style="display:none;">
+
   <%= f.error_notification %>
-
-  <div class="col-md-12">
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :username %>
-      </div>
-      <div class="col-md-6">   
-        <%= f.input :roles %>
-      </div>
-    </div>
+  <div class="row">
+    <%= f.input :username, autofocus: true, wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :email, wrapper_html: { class: 'col-md-4'  }  %>
+    <!-- unless current_user.id==@user.id -->
+    <%= f.input :roles, collection: collection_roles,
+      as: :select2, wrapper_html: { class: 'col-md-4'  }  %>
+    <!-- end -->
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <div class="row">
+    <%= f.input :password, autocomplete: "off",
+      label: t('activerecord.attributes.user.password'),
+      wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :password_confirmation, autocomplete: "off",
+      label: t('activerecord.attributes.user.password_confirmation'),
+      wrapper_html: { class: 'col-md-4'  } %>
+</div>
+<% @user.errors[:role].each do |message| %>
+  <p class="text-danger"><%= message %></p>
 <% end %>
+
+<div class="form-actions">
+  <%= f.button :submit, class: 'btn btn-success',
+    value: t('.submit', default: t('global.form.actions.submit')) %>
+  </div>
+
+<% end %>
+

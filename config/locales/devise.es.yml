@@ -1,0 +1,61 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+es:
+  errors:
+    messages:
+      already_confirmed: ya ha sido confirmada
+      confirmation_period_expired: debía confirmarse en el lapso de %{period}, por favor solicite una nueva
+      expired: ha caducado, por favor pida uno nuevo
+      not_found: no encontrado
+      not_locked: no está bloqueada
+      not_saved:
+        one: "1 error evitó guardar este %{resource}:"
+        other: "%{count} errores evitaron guardar este %{resource}:"
+
+  devise:
+    failure:
+      already_authenticated: Ya está conectado/a.
+      inactive: Su cuenta no ha sido activada.
+      invalid: Datos de acceso incorrectos.
+      last_attempt: Dispone de un intento más antes que su cuenta sea bloqueada.
+      not_found_in_database: Datos de acceso incorrectos.
+      unauthenticated: ''
+      timeout: ''
+    mailer:
+      reset_password_instructions:
+        subject: Instrucciones para cambiar su contraseña
+        body:
+          hello_message: Hola, %{email}!
+          confirm_text: Alguien ha solicitado reestablecer su contraseña. Haga click en el siguiente enlace para confirmar el cambio.
+          link: Reestablecer contraseña
+          ignore_text: Ignore este correo si usted no desea reestablecer su contraseña.
+    passwords:
+      no_token: No puede acceder a esta página sin haber accedido desde la dirección provista en el email de cambio de contraseña. Si ha seguido las instrucciones del email, tenga a bien verificar que ha utilizado la dirección URL completa.
+      send_instructions: Recibirá un email con instrucciones para cambiar su contraseña en pocos minutos.
+      send_paranoid_instructions: Si su e-mail ya existe en nuestra base de datos, recibirá un enlace para reestablecer su contraseña.
+      updated: Su contraseña ha sido cambiada correctamente.
+      updated_not_active: Su contraseña ha sido cambiada correctamente.
+    change_password:
+      title: Cambiar contraseña
+      submit: Cambiar
+      current_password: Contraseña actual
+      password_confirmation: Confirma la contraseña nueva
+      new_password: Contraseña nueva
+    forgot_password:
+      title: Restablecimiento de contraseña
+      submit: Enviar instrucciones
+    sessions:
+      new: Inicio de sesión
+      signed_in: Sesión iniciada correctamente.
+      signed_out: Sesión finalizada correctamente.
+      form:
+        username:
+          placeholder: Ingrese su usuario
+        remember_me: Recordar mis datos por 2 semanas
+        submit: Iniciar sesión
+    registration:
+      new: Regístrate
+    links:
+      sign_in: Iniciar sesión
+      forgot_password: ¿Olvidaste tu contraseña?
+      confirmation_instruction: ¿No has recibido la confirmación?
+

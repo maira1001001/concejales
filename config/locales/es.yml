@@ -19,6 +19,16 @@ es:
   users:
     index:
       title: "Usuarios"
+    edit:
+      title: "Editar Usuario"
+    new:
+      title: "Nuevo Usuario"
+    show:
+      title: "Detalles del usuario"
+    roles:
+      admin:        "Admin"
+      colaborator:  "Colaborador"
+      councilor:    "Concejal"
   personal_informations:
     index:
       title: "Información Personal"

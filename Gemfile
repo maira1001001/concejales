@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'mysql2'
@@ -11,6 +10,7 @@ gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap-generators'
+gem 'bootstrap-material-design'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -30,8 +30,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# authentication
+# authentication & authorization
 gem 'devise'                        , '~> 3.5', '>= 3.5.2'
+gem 'cancancan', '~> 1.14'
 
 # upload files
 gem 'carrierwave'                   , '~> 0.11.2'
@@ -42,6 +43,7 @@ gem 'kaminari'                      , '~> 0.16.3'
 # Forms
 gem 'simple_form'
 gem 'nested_form'
+gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

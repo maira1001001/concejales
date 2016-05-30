@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :tests
-  resources :personal_informations
-  resources :personal_infos
-  resources :personal_infos
-  resources :personal_infos
-#  devise_for :users, path: 'usuarios', path_name: { sign_in: 'iniciar' }
+  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
 
-  resources :users, path: 'usuarios', path_names: { new: 'nuevo', edit: 'modificar' }
+  devise_for :users, path: 'usuarios', path_names: {sign_in: 'iniciar-sesion', sign_out: 'cerrar-sesion'}
 
   root 'projects#index'
 
