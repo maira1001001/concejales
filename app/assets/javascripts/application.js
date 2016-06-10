@@ -19,4 +19,5 @@
 //= require select2
 //= require select2/select2_locale_es
 //= require select2_simple_form
+//= require jquery_nested_form
 //= require_tree .

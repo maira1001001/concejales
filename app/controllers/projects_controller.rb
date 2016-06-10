@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    raise 3
     @project.save
     respond_with @project
    end
