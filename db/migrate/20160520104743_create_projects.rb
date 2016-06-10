@@ -5,7 +5,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :district
-      t.string :dosier
+      t.string :dossier
 
       t.timestamps null: false
     end

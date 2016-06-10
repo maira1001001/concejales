@@ -1,0 +1,19 @@
+<div class="page-header">
+  <%= link_to projects_path, class: 'btn btn-default' do %>
+    <%= icon('list-alt') %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <%= link_to edit_tag_path(@tag), class: 'btn btn-primary' do %>
+    <%= icon('info-sign') %>
+    <%= t 'global.actions.edit' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
+</div>
+
+
+<dl class="dl-horizontal">
+
+  <dt><%= t 'activerecord.attributes.tag.name' %></dt>
+  <dd><%= @tag.name %></dd>
+
+</dl>
