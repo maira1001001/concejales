@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.project_files.build
   end
 
   def edit
@@ -41,10 +42,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title,
-                                      :description,
-                                      :district,
-                                      :dosier,
-                                      :file)
+      params.require(:project).permit(:title, :description, :district, :dosier, project_files_attributes: [ :id, :name, { attachment: [] }, :_destroy ] )
     end
 end

@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160608024308) do
 
-  create_table "personal_informations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "project_files", force: :cascade do |t|
     t.string   "version",    limit: 255
     t.string   "attachment", limit: 255
@@ -36,13 +31,6 @@ ActiveRecord::Schema.define(version: 20160608024308) do
     t.string   "dosier",      limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-  end
-
-  create_table "tests", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "age",        limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
