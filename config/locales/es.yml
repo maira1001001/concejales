@@ -38,3 +38,15 @@ es:
       title: "Detalles de Información Personal"
     new:
       title: "Nuevo"
+  tags:
+    index:
+      title: "Etiquetas"
+    edit:
+      title: "Editar etiqueta"
+    show:
+      title: "Detalles de la etiqueta"
+    new:
+      title: "Nueva etiqueta"
+    actions:
+      new: "Nueva etiqueta"
+      confirm_destroy: "¿Desea eliminar la etiqueta seleccionada?"
