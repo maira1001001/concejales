@@ -5,12 +5,11 @@ class CreateProjectFiles < ActiveRecord::Migration
       t.string :attachment
       t.string :name
 
-      t.references :project, index: true
+      t.references :project, foreign_key: true, null: false
 
       t.timestamps null: false
     end
 
-    add_foreign_key :project_files, :projects
   end
 
   def self.down

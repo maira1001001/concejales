@@ -4,22 +4,32 @@
 
     <div class="row">
       <%= f.input :title, wrapper_html: { class: 'col-md-4' } %>
-      <%= f.input :district, wrapper_html: { class: 'col-md-4' } %>
-      <%= f.input :dosier %>
+      <%= f.association :district, as: :select2, 
+        collection: District.all,
+        wrapper_html: { class: 'col-md-4' } %>
+      <%= f.input :dossier, wrapper_html: { class: 'col-md-4' } %>
     </div>
-    <%= f.input :description, wrapper_html: { class: 'row' } %>
+    <div class="row">
+      <%= f.input :description, wrapper_html: { class: 'col-md-6' } %>
+      <%= f.input :category, wrapper_html: { class: 'col-md-6' } %>
+    </div>
     <%= f.simple_fields_for :project_files do |b| %>
-      <%= b.input :name, wrapper_html: { class: 'col-md-6' } %>
-      <%= b.input :file, wrapper_html: { class: 'col-md-6' } %>
-      <%= b.link_to_remove class: 'btn btn-xs btn-danger',
-        data: { toggle: 'tooltip', container: 'body' }, 
-        title: t('.destroy', destroy: t('global.actions.destroy')) do %>
-        <%= icon 'trash' %>
-      <% end %>
+      <div class="row">
+        <%= b.input :name, wrapper_html: { class: 'col-md-5' } %>
+        <%= b.input :attachment, wrapper_html: { class: 'col-md-6' } %>
+
+        <div class="col-md-1">
+          <%= b.link_to_remove class: 'btn btn-xs btn-danger',
+            data: { toggle: 'tooltip', container: 'body' }, 
+            title: t('.destroy', default: t('global.actions.destroy')) do %>
+            <%= icon 'trash' %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
 
 
-    <%= f.link_to_add icon('plus'), :activities, class: 'btn btn-success',
+    <%= f.link_to_add icon('plus'), :project_files, class: 'btn btn-success',
       title: t('global.tooltip.add'), data: { toggle:'tooltip', placement:'right'  } %>
 
     <div class="form-actions">

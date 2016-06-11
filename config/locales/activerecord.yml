@@ -11,8 +11,9 @@ es:
         title:            "Título"
         description:      "Descripción"
         district:         "Distrito"
-        dosier:           "Carátula"
+        dossier:          "Carátula"
         file:             "Archivo"
+        category:         "Categoria"
       user:
         username:               "Nombre de usuario"
         email:                  "E-mail"

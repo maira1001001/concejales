@@ -2,21 +2,12 @@
 -- Estructura de tabla para la tabla `cities`
 --
 
-CREATE TABLE IF NOT EXISTS `cities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Nombre',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Ciudades' AUTO_INCREMENT=800 ;
 
 --
 -- Volcado de datos para la tabla `cities`
 --
 
-INSERT INTO `cities` (`id`, `name`) VALUES
-(1, 'NO DENUNCIADO POR INCOMPAT.'),
-(2, '.'),
-(3, '.'),
-(4, 'DESCONOCIDO'),
+INSERT INTO `districts` (`id`, `name`) VALUES
 (460, 'FLORIDA'),
 (461, 'VILLA MARTELLI'),
 (462, 'CARAPACHAY - MUNRO'),
@@ -329,8 +320,3 @@ INSERT INTO `cities` (`id`, `name`) VALUES
 (794, 'SALLIQUELO'),
 (797, 'LA TABLADA'),
 (799, 'AJEJANDRO PETION ');
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -2,9 +2,9 @@ class Project < ActiveRecord::Base
 
   has_many :project_files, dependent: :destroy
 
-  validates :title, :description, :district, :dosier, presence: true
+  belongs_to :district
 
-  has_many :project_files, dependent: :destroy
+  validates :title, :description, :district, :dossier, :category, presence: true
 
   validates_associated :project_files
 
