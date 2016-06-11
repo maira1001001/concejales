@@ -5,6 +5,7 @@ es:
       project:            "Projectos Concejo Deliberante"
       user:               "Usuarios"
       project_files:      "Archivos"
+      tags:               "Etiquetas"
     ## ATTRIBUTES
     attributes:
       project:
@@ -14,6 +15,10 @@ es:
         dossier:          "Carátula"
         file:             "Archivo"
         category:         "Categoria"
+        dossier:           "Carátula"
+        file:             "Archivo"
+      tag:
+        name:             "Nombre"
       user:
         username:               "Nombre de usuario"
         email:                  "E-mail"
@@ -33,4 +38,3 @@ es:
           attributes:
             project_file:
               invalid: "Sólo se permiten archivo en formato ...COMPLETAR!! "
-
