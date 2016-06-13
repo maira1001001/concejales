@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    @project = Project.new(project_type: params[:project_type])
     @project.project_files.build
   end
 
@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    raise 3
     @project.save
     respond_with @project
    end
@@ -48,5 +47,9 @@ class ProjectsController < ApplicationController
                                       :dossier,
                                       :category,
                                       project_files_attributes: [ :id, :name, :attachment, :_destroy ] )
+    end
+
+    def project_type_params
+
     end
 end

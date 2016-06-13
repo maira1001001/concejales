@@ -7,8 +7,7 @@
     <%= f.input :username, autofocus: true, wrapper_html: { class: 'col-md-4'  }  %>
     <%= f.input :email, wrapper_html: { class: 'col-md-4'  }  %>
     <!-- unless current_user.id==@user.id -->
-    <%= f.input :roles, collection: collection_roles,
-      as: :select2, wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :roles, as: :enum, wrapper_html: { class: 'col-md-4'  }  %>
     <!-- end -->
   </div>
   <div class="row">

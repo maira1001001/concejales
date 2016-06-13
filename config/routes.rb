@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   resources :projects, path: 'proyectos',
     path_names: { new: 'nuevo', edit: 'editar', show: 'detalles' }
 
+#  resources :ordinances, path: 'proyectos/ordenanzas'
+#  resources :decrees, path: 'proyectos/decretos'
+#  resources :resolutions, path: 'proyectos/resoluciones'
+#  resources :communications, path: 'proyectos/comunicaciones'
+#  resources :documents, path: 'proyectos/documentos'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -52,9 +58,9 @@ Rails.application.routes.draw do
   #   end
 
   # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
+     concern :toggleable do
+       post 'toggle'
+     end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 

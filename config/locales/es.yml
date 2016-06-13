@@ -1,9 +1,16 @@
 es:
   views:
     application:
-      title: "Concejales JPBA - Proyectos concejo deliberante"
+      title: "Concejales FPV - Proyectos concejo deliberante"
   navbar:
-    projects: "Projectos Concejo Deliberante"
+    new_project:      "Nuevo projecto"
+    project_types: 
+      ordinance:      "Ordenanza"
+      decree:         "Decreto"
+      resolution:     "Resolución"
+      communication:  "Comunicación"
+      document:       "Document"
+    new_user:         "Nuevo Usuario"
   projects:
     index:
       title: "Mis proyectos"

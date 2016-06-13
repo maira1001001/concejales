@@ -5,3 +5,14 @@ es:
         admin:        "Admin"
         colaborator:  "Colaborador"
         councilor:    "Concejal"
+    project:
+      category:
+        salud: "Salud"
+        educacion: "Educación"
+      project_type:
+        ordinance:  "Ordenanza"
+        decree:     "Decreto"
+        resolution: "Resolución"
+        communication: "Comunicación"
+        document:       "Documento"
+

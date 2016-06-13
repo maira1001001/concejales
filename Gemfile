@@ -10,7 +10,6 @@ gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'bootstrap-generators'
-gem 'bootstrap-material-design'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -44,6 +43,8 @@ gem 'kaminari'                      , '~> 0.16.3'
 gem 'simple_form'
 gem 'nested_form'
 gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.5'
+
+gem 'acts-as-taggable-on'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
