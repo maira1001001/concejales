@@ -11,12 +11,11 @@ es:
       project:
         title:            "Título"
         description:      "Descripción"
-        district:         "Distrito"
         dossier:          "Carátula"
-        file:             "Archivo"
         category:         "Categoria"
-        dossier:           "Carátula"
-        file:             "Archivo"
+        dossier:          "Carátula"
+        project_type:     "Tipo de proyecto"
+        project_files:    "Archivos"
       tag:
         name:             "Nombre"
       user:

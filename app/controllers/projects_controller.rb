@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.save
     respond_with @project
-   end
+  end
 
   def update
     @project.update(project_params)
@@ -31,25 +31,22 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
+    respond_with @project
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(:title,
-                                      :description,
-                                      :district_id,
-                                      :dossier,
-                                      :category,
-                                      project_files_attributes: [ :id, :name, :attachment, :_destroy ] )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params
+    params.require(:project).permit(:title,
+                                    :description,
+                                    :category,
+                                    :project_type,
+                                    project_files_attributes: [ :id, :name, :attachment, :_destroy ] )
+  end
 
-    def project_type_params
-
-    end
 end

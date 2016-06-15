@@ -44,6 +44,7 @@ gem 'simple_form'
 gem 'nested_form'
 gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.5'
 
+# Tags
 gem 'acts-as-taggable-on'
 
 group :development, :test do

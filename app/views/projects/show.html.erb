@@ -19,10 +19,18 @@
   <dt><%= t 'activerecord.attributes.project.description' %></dt>
   <dd><%= @project.description %></dd>
 
-  <dt><%= t 'activerecord.attributes.project.district' %></dt>
-  <dd><%= @project.district %></dd>
+  <dt><%= t 'activerecord.attributes.project.category' %></dt>
+  <dd><%= t_enum @project, :category %></dd>
 
-  <dt><%= t 'activerecord.attributes.project.dossier' %></dt>
-  <dd><%= @project.dossier %></dd>
+  <dt><%= t 'activerecord.attributes.project.project_type' %></dt>
+  <dd><%= t_enum @project, :project_type %></dd>
+
+
+  <dt><%= t 'activerecord.attributes.project.project_files' %></dt>
+  <dd><%= content_tag_for :ul, @project.project_files do |file| %>
+    <li><%= file.name %></li>
+  <% end %>
+  </dd>
+
 
 </dl>

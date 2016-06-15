@@ -1,8 +1,8 @@
 class ProjectFile < ActiveRecord::Base
 
   belongs_to :project, autosave: true
-  
-#  validates :attachment, :name, :version, presence: true
+
+  validates :attachment, :name, presence: true
 
   validates :name, uniqueness: true
 

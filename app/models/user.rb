@@ -7,10 +7,14 @@ class User < ActiveRecord::Base
 
   attr_accessor :password_confirmation
 
+  belongs_to :person
+
   validates :username, uniqueness: true, presence: true, on: :create
   validates :roles, :password, presence: true
 
   validates_confirmation_of :password
+
+  validates_uniqueness_of :email
 
   def roles=(value)
     super(value) if User::Roles.valid?(value)

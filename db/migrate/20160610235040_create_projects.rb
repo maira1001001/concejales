@@ -6,11 +6,10 @@ class CreateProjects < ActiveRecord::Migration
       t.text :description
       t.integer :category
       t.integer :project_type
-
-      t.references :district, foreign_key: true, null: false
-      t.references :user, foreign_key: true, null: false
+      t.string :dossier
 
       t.timestamps null: false
     end
+
   end
 end

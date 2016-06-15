@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613033245) do
+ActiveRecord::Schema.define(version: 20160614222134) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "address",    limit: 255
+    t.string   "type",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -31,43 +39,31 @@ ActiveRecord::Schema.define(version: 20160613033245) do
   add_index "project_files", ["project_id"], name: "fk_rails_c26fbba4b3", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",        limit: 255
-    t.text     "description",  limit: 65535
-    t.integer  "category",     limit: 4
-    t.integer  "project_type", limit: 4
-    t.integer  "district_id",  limit: 4,     null: false
-    t.integer  "user_id",      limit: 4,     null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "title",         limit: 255
+    t.text     "description",   limit: 65535
+    t.integer  "category",      limit: 4
+    t.integer  "project_type",  limit: 4
+    t.string   "dossier",       limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "district_id",   limit: 4
+    t.integer  "councilor_id",  limit: 4
+    t.integer  "created_by_id", limit: 4
   end
 
-  add_index "projects", ["district_id"], name: "fk_rails_c18bcd8b34", using: :btree
-  add_index "projects", ["user_id"], name: "fk_rails_b872a6760a", using: :btree
-
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id",        limit: 4
-    t.integer  "taggable_id",   limit: 4
-    t.string   "taggable_type", limit: 255
-    t.integer  "tagger_id",     limit: 4
-    t.string   "tagger_type",   limit: 255
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+  add_index "projects", ["councilor_id"], name: "index_projects_on_councilor_id", using: :btree
+  add_index "projects", ["created_by_id"], name: "index_projects_on_created_by_id", using: :btree
+  add_index "projects", ["district_id"], name: "index_projects_on_district_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.integer "taggings_count", limit: 4,   default: 0
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               limit: 255
     t.integer  "roles",                  limit: 4
-    t.string   "type",                   limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "email",                  limit: 255, default: "", null: false
@@ -82,13 +78,15 @@ ActiveRecord::Schema.define(version: 20160613033245) do
     t.integer  "failed_attempts",        limit: 4,   default: 0,  null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
+    t.integer  "person_id",              limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "project_files", "projects"
   add_foreign_key "projects", "districts"
-  add_foreign_key "projects", "users"
+  add_foreign_key "users", "people"
 end

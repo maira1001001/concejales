@@ -1,10 +1,4 @@
 <div class="page-header">
-  <div class="actions">
-    <%= link_to new_project_path, class: 'btn btn-primary' do %>
-      <%= icon 'plus' %>
-      <%= t 'projects.actions.new' %>
-    <% end %>
-  </div>
   <h1><%= t '.title'  %></h1>
 </div>
 
@@ -14,8 +8,9 @@
       <tr>
         <th><%= t 'activerecord.attributes.project.title' %></th>
         <th><%= t 'activerecord.attributes.project.description' %></th>
-        <th><%= t 'activerecord.attributes.project.district' %></th>
+        <th><%= t 'activerecord.attributes.project.project_type' %></th>
         <th><%= t 'activerecord.attributes.project.dossier' %></th>
+        <th><%= t 'activerecord.attributes.project.project_files' %></th>
         <th><%= t 'global.index.actions'  %></th>
       </tr>
     </thead>
@@ -24,8 +19,13 @@
       <%= content_tag_for(:tr, @projects) do |project| %>
         <td><%= project.title %></td>
         <td><%= project.description %></td>
-        <td><%= project.district %></td>
+        <td><%= project.project_type %></td>
         <td><%= project.dossier %></td>
+        <td>
+          <%= content_tag_for :ul, project.project_files do |file| %>
+            <li><%= file.name %></li>
+          <% end %>
+        </td>
         <td>
           <%= link_to icon('search'), project,
             title: t('global.actions.show') ,
