@@ -1,10 +1,5 @@
 es:
   enum:
-    user:
-      roles:
-        admin:        "Admin"
-        colaborator:  "Colaborador"
-        councilor:    "Concejal"
     project:
       category:
         salud: "Salud"

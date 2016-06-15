@@ -6,7 +6,7 @@ es:
       user:               "Usuarios"
       project_files:      "Archivos"
       tags:               "Etiquetas"
-    ## ATTRIBUTES
+        ## ATTRIBUTES
     attributes:
       project:
         title:            "Título"
@@ -16,15 +16,12 @@ es:
         dossier:          "Carátula"
         project_type:     "Tipo de proyecto"
         project_files:    "Archivos"
-      tag:
-        name:             "Nombre"
       user:
         username:               "Nombre de usuario"
         email:                  "E-mail"
         password:               "Contraseña"
         password_confirmation:  "Confirmacion de contraseña"
         last_sign_in_at:        "Último inicio de sesión"
-        roles:                  "Roles"
       project_file:
         name:               "Nombre del archivo"
         version:            "Versión"
@@ -37,3 +34,14 @@ es:
           attributes:
             project_file:
               invalid: "Sólo se permiten archivo en formato ...COMPLETAR!! "
+        user:
+          attributes:
+            email:
+              taken: "Dirección de email ya registrada en el sistema"
+            password_confirmation:
+              confirmation: "Contraseñas no coinciden"
+            password:
+              too_short: "Contraseña demasiado corta. Debe tener al menos 8 caracteres."
+            reset_password_token:
+              invalid: "Token invalido. Puede ser que aun no haya confirmado su cuenta."
+

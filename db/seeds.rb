@@ -8,5 +8,4 @@
 
 User.create!(username: "peron",
              password:"volvemosen2019",
-             roles:"admin",
              email: "maira.diaz@protonmail.com")

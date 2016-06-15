@@ -31,7 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # authentication & authorization
 gem 'devise'                        , '~> 3.5', '>= 3.5.2'
+gem 'easy_roles'
 gem 'cancancan', '~> 1.14'
+
 
 # upload files
 gem 'carrierwave'                   , '~> 0.11.2'

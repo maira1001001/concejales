@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 #  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  respond_to  :html
+
   def index
    @users = User.all
   end
@@ -39,6 +41,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :roles)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end

@@ -6,9 +6,6 @@
   <div class="row">
     <%= f.input :username, autofocus: true, wrapper_html: { class: 'col-md-4'  }  %>
     <%= f.input :email, wrapper_html: { class: 'col-md-4'  }  %>
-    <!-- unless current_user.id==@user.id -->
-    <%= f.input :roles, as: :enum, wrapper_html: { class: 'col-md-4'  }  %>
-    <!-- end -->
   </div>
   <div class="row">
     <%= f.input :password, autocomplete: "off",

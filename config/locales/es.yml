@@ -36,6 +36,8 @@ es:
       admin:        "Admin"
       colaborator:  "Colaborador"
       councilor:    "Concejal"
+    actions:
+      new: "Nuevo Usuario"
   personal_informations:
     index:
       title: "Información Personal"
