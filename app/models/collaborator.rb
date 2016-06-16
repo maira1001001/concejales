@@ -1,2 +1,2 @@
-class Collaborator < ActiveRecord::Base
+class Collaborator < Person
 end

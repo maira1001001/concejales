@@ -3,7 +3,7 @@
     <%= icon 'list-alt' %>
     <%= t 'global.actions.back' %>
   <% end %>
-  <h1><%= t '.title' %></h1>
+  <h1><%= t "users.new.#{@user.person.type.downcase}" %></h1>
 </div>
 
 <%= render 'form' %>

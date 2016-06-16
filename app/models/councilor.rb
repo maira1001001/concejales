@@ -1,2 +1,2 @@
-class Councilor < ActiveRecord::Base
+class Councilor < Person
 end

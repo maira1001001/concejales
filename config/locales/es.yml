@@ -11,6 +11,9 @@ es:
       communication:  "Comunicación"
       document:       "Document"
     new_user:         "Nuevo Usuario"
+    user_types:
+        councilor:    "Nuevo Concejal"
+        collaborator: "Nuevo Colaborador"
   projects:
     index:
       title: "Mis proyectos"
@@ -19,7 +22,11 @@ es:
     show:
       title: "Detalles del proyecto"
     new:
-      title: "Nuevo proyecto"
+      ordinance:      "Nueva Ordenanza"
+      decree:         "Nuevo Decreto"
+      resolution:     "Nueva Resolución"
+      communication:  "Nueva Comunicación"
+      document:       "Nuevo Documento"
     actions:
       new: "Nuevo projecto"
       confirm_destroy: "¿Desea eliminar el projecto seleccionado?"
@@ -29,7 +36,8 @@ es:
     edit:
       title: "Editar Usuario"
     new:
-      title: "Nuevo Usuario"
+      collaborator: "Nuevo Colaborador"
+      councilor:    "Nuevo Concejal"
     show:
       title: "Detalles del usuario"
     roles:
