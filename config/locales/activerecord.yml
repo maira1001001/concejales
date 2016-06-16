@@ -5,7 +5,6 @@ es:
       project:            "Projectos Concejo Deliberante"
       user:               "Usuarios"
       project_files:      "Archivos"
-      tags:               "Etiquetas"
         ## ATTRIBUTES
     attributes:
       project:

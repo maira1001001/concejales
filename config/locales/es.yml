@@ -10,10 +10,7 @@ es:
       resolution:     "Resolución"
       communication:  "Comunicación"
       document:       "Document"
-    new_user:         "Nuevo Usuario"
-    user_types:
-        councilor:    "Nuevo Concejal"
-        collaborator: "Nuevo Colaborador"
+    new_councilor:    "Nuevo Concejal"
   projects:
     index:
       title: "Mis proyectos"
