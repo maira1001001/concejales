@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(person: person_type_params)
+    @user = User.new
   end
 
   def edit
@@ -33,6 +33,14 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  def invite_to_system
+    @user = User.new
+  end
+
+  def send_email_invitation
+    raise "enviar email"
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -41,7 +49,8 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation,
+                                 :councilor_name, :person_type)
   end
 
   def person_type_params

@@ -1,0 +1,48 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col-md-7">
+      <h1><%= t '.title'  %></h1>
+    </div>
+    <div class="col-md-5">
+      <div class="header-actions">
+        <%= link_to new_person_path,
+          class: 'btn btn-primary' do %>
+          <%= icon 'plus'  %>
+          <%= t "people.actions.new" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+                <th><%= t 'global.index.actions' %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @people) do |person| %>
+                <td>
+          <%= link_to icon('eye-open'), person,
+            class: 'btn btn-xs btn-default',
+            title: t('people.actions.show', default: t('global.actions.show')),
+            data: { toggle: 'tooltip', container: 'body', placement: 'left' } %>
+          <%= link_to icon('pencil'), edit_person_path(person),
+            class: 'btn btn-xs btn-primary',
+            title: t('people.actions.edit', default: t('global.actions.edit')),
+            data: { toggle: 'tooltip', container: 'body', placement: 'left' } %>
+          <%= link_to icon('trash'), person,  method: :delete,
+            class: 'btn btn-xs btn-danger',
+            title: t('people.actions.destroy', default: t('global.actions.destroy')),
+            data: { confirm: t('people.actions.confirm_destroy', default: t('global.actions.confirm_destroy')), toggle: 'tooltip', container: 'body', placement: 'left' } %>
+      </td>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>

@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to users_path, class: 'btn btn-default' do %>
+  <%= link_to people_path, class: 'btn btn-default' do %>
     <%= icon 'list-alt' %>
     <%= t 'global.actions.back' %>
   <% end %>
-  <h1><%= t "users.new.#{@user.person.type}" %></h1>
+  <h1><%= t '.title' %></h1>
 </div>
 
 <%= render 'form' %>

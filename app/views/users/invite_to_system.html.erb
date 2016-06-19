@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to users_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <h1>Crear Nuevo Usuario</h1>
+  <hr>
+  <div class="alert alert-info" role="alert">
+    Ingrese los datos que se solicitan para invitar al usuario al sistema. Luego, el usuario debe recibir un email y confirmar su participación en el sistema.
+  </div>
+</div>
+
+<%= render 'invite_form' %>
