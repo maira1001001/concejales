@@ -6,27 +6,27 @@
     return $('.selector-roles').length > 0;
   }
 
-  function updateUserType(){
+  function updateUserRoles(){
     var $selector = $(this),
       $holder = $selector.closest('.invite-user-block'),
       $holderCollaboratorBlock = $holder.find('.collaborator-block'),
-      $holderUserType   = $holder.find('.selector-roles'),
-      $collaboratorType = $holderUserType.data('collaborator'),
-      $councilorType    = $holderUserType.data('councilor'),
+      $holderUserRoles   = $holder.find('.selector-roles'),
+      $collaboratorRole = $holderUserRoles.data('collaborator'),
+      $councilorRole    = $holderUserRoles.data('councilor'),
       $inputCouncilorName = $holder.find('.input-councilor-name');
 
-    if ($collaboratorType == $holderUserType.val()) {
+    if ($collaboratorRole == $holderUserRoles.val()) {
       $holderCollaboratorBlock.removeClass('hidden');
       $inputCouncilorName.prop("disabled", false);
     }
-    else if ($councilorType == $holderUserType.val()) {
+    else if ($councilorRole == $holderUserRoles.val()) {
       $holderCollaboratorBlock.addClass('hidden');
       $inputCouncilorName.prop("disabled", true);
     }
   }
 
   function initialize(){
-    $('form').on('change', '.selector-roles', updateUserType);
+    $('form').on('change', '.selector-roles', updateUserRoles);
 
   }
 

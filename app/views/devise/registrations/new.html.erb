@@ -16,32 +16,33 @@
 
     <%= f.error_notification %>
     <div class="row">
-      <%= f.input :email, wrapper_html: { class: 'col-md-4'  }  %>
-      <%= f.input :roles, as: :enum, wrapper_html: { class: 'col-md-4' },
-        input_html: { class: 'selector-roles',
-                      data: { collaborator: role_type[:collaborator],
-                              councilor: role_type[:councilor] } } %>
-
-      <%= f.fields_for :person do |p| %>
-        <%= p.input :name, wrapper_html: { class: 'col-md-4' }%>
-        <%= p.input :last_name, wrapper_html: { class: 'col-md-4' }%>
-        <%= p.fields_for :district do |d| %>
-          <%= p.input :name, as: :select2, collection: District.all,
-            wrapper_html: { class: 'col-md-4' }%>
-       <% end %>
-        <div class="hidden alert alert-warning collaborator-block" role="alert">
-          Seleccione el concejal al que pertenece el asesor que invitará al sistema
-          <%= p.input :councilor_name, as: :select2, collection: Councilor.all,
-            input_html: { class: 'input-councilor-name' }  %>
-      </div>
+      <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
+      <%= f.input :roles, as: :enum, wrapper_html: { class: 'col-md-6' }, input_html: { class: 'selector-roles',
+                  data: { collaborator: "collaborator",
+                          councilor: "councilor" } } %>
+  </div>
+  <div class="row">
+    <%= f.fields_for :person do |p| %>
+      <%= p.input :name, wrapper_html: { class: 'col-md-4' }%>
+      <%= p.input :last_name, wrapper_html: { class: 'col-md-4' }%>
+      <%= p.fields_for :district do |d| %>
+        <%= d.input :name, as: :select2, collection: District.all,
+          wrapper_html: { class: 'col-md-4' }%>
+      <% end %>
+  </div>
+  <div class="hidden alert alert-warning collaborator-block" role="alert">
+    Seleccione el concejal al que pertenece el asesor que invitará al sistema
+    <%= p.input :councilor_name, as: :select2, collection: Councilor.all,
+      input_html: { class: 'input-councilor-name' }  %>
+</div>
     <% end %>
 
-  </div>
+</div>
 
 
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-success',
-      value: t('.submit', default: t('global.form.actions.submit')) %>
+<div class="form-actions">
+  <%= f.button :submit, class: 'btn btn-success',
+    value: t('.submit', default: t('global.form.actions.submit')) %>
 </div>
 <% end %>
 </div>

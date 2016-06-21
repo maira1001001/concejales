@@ -11,9 +11,15 @@ class User < ActiveRecord::Base
 
   belongs_to :person
 
+  after_initialize :set_person
+
   validates :email, uniqueness: true, presence: true, on: :create
 
 
+  def username=
+#    username = "#{person.last_name.gsub(/\s+/, ".")}, #{person.name.gsub(/\s+/, ".")}"
+    "nombre usuario"
+  end
 
   def password_required?
     super if confirmed?
@@ -24,6 +30,12 @@ class User < ActiveRecord::Base
     errors.add(:password_confirmation, :blank) if password_confirmation.blank?
     errors.add(:password_confirmation, :confirmation) if password != password_confirmation
     password == password_confirmation && !password.blank?
+  end
+
+  private
+
+  def set_person
+    self.person ||= self.build_person
   end
 end
 
