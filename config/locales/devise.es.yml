@@ -1,61 +1,104 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 es:
+  devise:
+    links:
+      sing_in: "Iniciar Sesión"
+      forgot_password: "¿Olvidó su contraseña?"
+      confirmation_instructions_not_receive: "¿No ha recibido el email con la invitación al sistema?"
+      unlock_instructions_not_receive: "¿No ha recibido instrucciones para desbloquear su cuenta?"
+    confirmations:
+      new:
+        title: "Reenvio instrucciones de confirmación"
+        confirm: "Confirmar cuenta"
+        password_lenght: "La contraseña debe tener al menos 8 carácteres"
+      show:
+        title: "Casi finaliza!. Por favor, ingrese una contraseña para poder acceder al sistema de forma segura."
+      confirmed: "Su dirección de correo electrónico se ha confirmado con éxito."
+      send_instructions: "Usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en pocos minutos."
+      send_paranoid_instructions: "Si existe su dirección de correo electrónico en nuestra base de datos, usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en pocos minutos."
+      resend_instructions: "Reenviar instrucciones de confirmación"
+    failure:
+      already_authenticated: "Ya se se ha identificado."
+      inactive: "Su cuenta aún no está habilitada. Por favor comuniquese con un administrador para que la habilite."
+      invalid: "Contraseña o %{authentication_keys} inválido."
+      locked: "Su cuenta esta bloqueada."
+      last_attempt: "Usted tiene un intento más antes de que su cuenta está bloqueada."
+      not_found_in_database: "Contraseña o %{authentication_keys} inválido."
+      timeout: "Su sesión ha finalizado. Por favor Ingrese de nuevo para continuar."
+      unauthenticated: "Tiene que iniciar sesión o registrarse para continuar."
+      unconfirmed: "Tiene que confirmar su dirección de correo antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones para confirmación"
+        welcome: "Bienvenido %{email}!"
+        instructions: "Puede confirmar su email accediendo al siguiente link:"
+        confirm: "Confirmar cuenta"
+      reset_password_instructions:
+        subject: "Instrucciones para reestablecer la contraseña"
+        welcome: "Hola %{email}!"
+        instructions: "Alguien solicito el reseteo de su contraseña. Puede efectuarlo accediendo al siguiente link:"
+        first_comment: "Si usted no lo solicitó, por favor ignore este email."
+        second_comment: "Tu contraseña no se cambiará hasta que accedas al link e ingreses una nueva."
+        change_password: "Cambiar contraseña"
+      unlock_instructions:
+        subject: "Instrucciones para desbloqueo"
+        welcome: "Hola %{email}!"
+        message: "Su cuenta fue bloqueada a causa de excesivos intentos de iniciar sesión fallidos."
+        instructions: "Acceda al siguiente link para desbloquear su cuenta:"
+        unlock: "Desbloquear cuenta"
+    omniauth_callbacks:
+      failure: "No se pudo autenticarlo desde %{kind} porque aun no esta registrado en el sitio o el mail con el que se registro no coincide con el de su cuenta de %{kind}."
+      success: "Autenticado satisfactoriamente con la cuenta %{kind}."
+    passwords:
+      title: "Cambio de contraseña"
+      password_label: "Nueva contraseña" 
+      new_password_label: "Confirme la contraseña"
+      hint: "%{length} caracteres mínimo"
+      change_password: "Cambiar contraseña"
+      no_token: "No puede acceder a esta página sin venir de un correo electrónico de restablecimiento de contraseña. Si vienes de un correo electrónico de restablecimiento de contraseña, por favor asegúrese de que ha utilizado la URL proporcionada completa."
+      send_instructions: "Usted recibirá un correo electrónico con instrucciones sobre cómo restablecer la contraseña en pocos minutos."
+      send_paranoid_instructions: "Si existe su dirección de correo electrónico en nuestra base de datos, usted recibirá un enlace de recuperación de contraseña a su dirección de correo electrónico en pocos minutos."
+      updated: "Su contraseña ha sido cambiada exitosamente. Ahora está identificado."
+      updated_not_active: "Su contraseña se ha cambiado satisfactoriamente."
+    registrations:
+      edit:
+        title: "Editar perfil"
+      new:
+        title: "Registrarse"
+      autocomplete: "No"
+      unhappy: ¿No esta conforme?
+      password_hint: "Dejelo en blanco si no desea cambiarlo"
+      current_password_hint: "Se requiere su contraseña actual para confirmar los cambios"
+      update: "Actualizar"
+      cancel_account: "Cancelar cuenta"
+      cancel_account_title: "Cancelar cuenta"
+      cancel_confirmation: "¿Estas seguro?"
+      back: "Volver"
+      destroyed: "Adiós! Su cuenta ha sido cancelada con éxito."
+      signed_up: "Bienvenido!. Se ha registrado satisfactoriamente."
+      signed_up_but_inactive: "Se ha registrado satisfactoriamente. El usuario recibirá recibirá un correo electrónico con instrucciones para confirmar la participación al sistema de Concejales."
+      signed_up_but_locked: "Se ha registrado satisfactoriamente. Sin embargo, no podra acceder debido a que su cuenta esta bloqueada."
+      signed_up_but_unconfirmed: "Un mensaje con un enlace de confirmación ha sido enviada a su correo electrónico. Por favor siga el enlace para activar tu cuenta."
+      update_needs_confirmation: "Ha actualizado su cuenta con éxito, pero necesitamos verificar su nueva dirección de correo electrónico. Por favor, consulte su correo electrónico y siga el vínculo de confirmación para confirmar su nueva dirección de correo electrónico."
+      updated: "Su cuenta ha sido actualizada satisfactoriamente."
+      user:
+        signed_up_but_not_approved: "Se ha registrado satisfactoriamente. Sin embargo, no podrá acceder debido a que su cuenta aún no está habilitada. Por favor comuníquese con un administrador para que la habilite."
+      failure:
+        not_approved: "Su cuenta aun no fue habilitada."
+    sessions:
+      signed_in: "Sesión iniciada satisfactoriamente."
+      signed_out: "Sesión cerrada satisfactoriamente."
+      already_signed_out: "Sesión cerrada satisfactoriamente."
+    unlocks:
+      send_instructions: "Usted recibirá un correo electrónico con instrucciones para desbloquear su cuenta en pocos minutos."
+      send_paranoid_instructions: "Si su cuenta, usted recibirá un correo electrónico con instrucciones sobre cómo desbloquearlo en pocos minutos."
+      unlocked: "Su cuenta ha sido desbloqueado con éxito. Por favor inicie sesión para continuar."
   errors:
     messages:
-      already_confirmed: ya ha sido confirmada
-      confirmation_period_expired: debía confirmarse en el lapso de %{period}, por favor solicite una nueva
-      expired: ha caducado, por favor pida uno nuevo
-      not_found: no encontrado
-      not_locked: no está bloqueada
+      already_confirmed: "Ya se confirmó, por favor intente iniciar sesión"
+      confirmation_period_expired: "Debe ser confirmado %{period}, por favor solicitelo nuevamente"
+      expired: "Expiró, por favor solicitelo nuevamente"
+      not_found: "No encontrado"
+      not_locked: "No esta bloqueado"
       not_saved:
-        one: "1 error evitó guardar este %{resource}:"
-        other: "%{count} errores evitaron guardar este %{resource}:"
-
-  devise:
-    failure:
-      already_authenticated: Ya está conectado/a.
-      inactive: Su cuenta no ha sido activada.
-      invalid: Datos de acceso incorrectos.
-      last_attempt: Dispone de un intento más antes que su cuenta sea bloqueada.
-      not_found_in_database: Datos de acceso incorrectos.
-      unauthenticated: ''
-      timeout: ''
-    mailer:
-      reset_password_instructions:
-        subject: Instrucciones para cambiar su contraseña
-        body:
-          hello_message: Hola, %{email}!
-          confirm_text: Alguien ha solicitado reestablecer su contraseña. Haga click en el siguiente enlace para confirmar el cambio.
-          link: Reestablecer contraseña
-          ignore_text: Ignore este correo si usted no desea reestablecer su contraseña.
-    passwords:
-      no_token: No puede acceder a esta página sin haber accedido desde la dirección provista en el email de cambio de contraseña. Si ha seguido las instrucciones del email, tenga a bien verificar que ha utilizado la dirección URL completa.
-      send_instructions: Recibirá un email con instrucciones para cambiar su contraseña en pocos minutos.
-      send_paranoid_instructions: Si su e-mail ya existe en nuestra base de datos, recibirá un enlace para reestablecer su contraseña.
-      updated: Su contraseña ha sido cambiada correctamente.
-      updated_not_active: Su contraseña ha sido cambiada correctamente.
-    change_password:
-      title: Cambiar contraseña
-      submit: Cambiar
-      current_password: Contraseña actual
-      password_confirmation: Confirma la contraseña nueva
-      new_password: Contraseña nueva
-    forgot_password:
-      title: Restablecimiento de contraseña
-      submit: Enviar instrucciones
-    sessions:
-      new: Inicio de sesión
-      signed_in: Sesión iniciada correctamente.
-      signed_out: Sesión finalizada correctamente.
-      form:
-        username:
-          placeholder: Ingrese su usuario
-        remember_me: Recordar mis datos por 2 semanas
-        submit: Iniciar sesión
-    registration:
-      new: Regístrate
-    links:
-      sign_in: Iniciar sesión
-      forgot_password: ¿Olvidaste tu contraseña?
-      confirmation_instruction: ¿No has recibido la confirmación?
-
+        one: "1 error prohibe que %{resource} sea guardado:"
+        other: "%{count} errores prohiben que %{resource} sea guardado:"

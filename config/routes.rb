@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
-  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
-
-  devise_for :users, path: 'usuarios', path_names: {sign_in: 'iniciar-sesion', sign_out: 'cerrar-sesion'}
 
   resources :projects, path: 'proyectos',
     path_names: { new: 'nuevo', edit: 'editar', show: 'detalles' }
@@ -13,12 +10,19 @@ Rails.application.routes.draw do
   resources :councilors,    path: 'concejales'
   resources :people,        path: 'personas'
 
-  get 'invitar-al-sistema', to: "users#invite_to_system",
-    as: :invite_to_system_user
-  post 'send_email_invitation', to: "users#send_email_invitation", 
-    as: :send_email_invitation_user
   get 'asignar-asesor', to: "users#assign_collaborator_to_councilor",
     as: :assign_collaborators_to_councilor_user
+
+  devise_scope :user do
+    get 'iniciar-sesion', to: 'devise/sessions#new'
+    put 'confirm', to: 'devise/confirmation#show'
+  end
+
+  devise_for :users, controllers: {  confirmation: "users/confirmation",
+                                     sessions:     "users/session",
+                                     registrations: "users/registrations" }
+
+  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
 
   #  resources :ordinances, path: 'proyectos/ordenanzas'
   #  resources :decrees, path: 'proyectos/decretos'

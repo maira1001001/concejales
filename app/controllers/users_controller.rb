@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  #  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   respond_to  :html
@@ -33,14 +32,6 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
-  def invite_to_system
-    @user = User.new
-  end
-
-  def send_email_invitation
-    raise "enviar email"
-  end
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -50,15 +41,7 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation,
-                                 :councilor_name, :person_type)
-  end
-
-  def person_type_params
-    ##TODO refactorizar este strong parameter. no se cmo manejarlo si me pasan mal el parametro!!!!
-    person_type = if params.has_key? :person_type
-                    params.require(:person_type) == 'councilor' ? 'Councilor' : 'Collaborator'
-                  end
-    Person.new(type: person_type)
+                                 :councilor_name, :roles)
   end
 
 end

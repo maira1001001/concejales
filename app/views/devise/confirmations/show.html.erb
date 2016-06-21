@@ -1,0 +1,15 @@
+<h2><%= t '.title', default: t('devise.confirmations.show.title') %></h2>
+<%= simple_form_for(resource, as: resource_name, url: confirm_path, method: :put) do |f| %>
+  <%= f.error_notification %>
+  <%= f.full_error :confirmation_token %>
+
+  <div class="form-inputs">
+    <%= f.input :password, required: true, autofocus: true, hint: t("devise.confirmations.new.password_lenght") %>
+    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :confirmation_token, as: :hidden, required: true, input_html: { value: @original_token } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('devise.confirmations.new.confirm') %>
+  </div>
+<% end %>

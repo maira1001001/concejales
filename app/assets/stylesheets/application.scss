@@ -20,37 +20,65 @@
 
 
 .navbar .navbar-nav > li > a {
-    padding-top: 2em!important;
+  padding-top: 2em!important;
 
 }
 
 .navbar-default {
-   background-color: #005f61 !important;
-    border-color: #003f40;
+  background-color: #005f61 !important;
+  border-color: #003f40;
 
 }
 
 .sub_title{ color: #696666;  }
 
 .contact-info{
-    font-size: 1.3em;
-      margin-bottom: 2px;
+  font-size: 1.3em;
+  margin-bottom: 2px;
 
 }
 
 .contact-detail {
-    color: #005F61;
-      font-size: 0.97em;
-        margin-bottom: 1.5em;
+  color: #005F61;
+  font-size: 0.97em;
+  margin-bottom: 1.5em;
 
 }
 
 .button-position {
-    top: 1.5em;
+  top: 1.5em;
 
 }
 
-.btn-default {
-    background-color: #ddd!important;
 
+// LOGIN
+.login-button{
+  text-align: center;
+  vertical-align: middle;
+  background-color: #38a2ba ;
+  border: 0;
+  padding: 0.5em 3em 0.5em 3em; 
 }
+
+.login-background {
+  top: 0;
+  left: 0;
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url("background-light.png");
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, #4baad3, rgba(240, 96, 80, 3.62));
+    opacity: .6;
+  }
+}
+
+// END LOGIN
+

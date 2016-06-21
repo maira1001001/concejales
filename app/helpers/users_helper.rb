@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def user_types
+  def role_type
     { councilor: 0, collaborator: 1 }
   end
 

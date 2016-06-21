@@ -6,4 +6,10 @@ class Councilor < Person
   def to_s
     "#{last_name}, #{name}"
   end
+
+  #Return last district where actually belongs
+  def district
+    district.first unless district.blank?
+  end
+
 end

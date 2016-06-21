@@ -43,6 +43,8 @@ es:
       councilor:    "Concejal"
     actions:
       new: "Nuevo Usuario"
+    sign_in:
+      sign_in: "Iniciar Sesión"
   personal_informations:
     index:
       title: "Información Personal"

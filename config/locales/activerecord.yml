@@ -5,6 +5,8 @@ es:
       project:            "Projectos Concejo Deliberante"
       user:               "Usuarios"
       project_files:      "Archivos"
+      person:             "Person"
+      district:           "Distrito"
         ## ATTRIBUTES
     attributes:
       project:
@@ -20,11 +22,17 @@ es:
         email:                  "E-mail"
         password:               "Contraseña"
         password_confirmation:  "Confirmacion de contraseña"
+        roles:                  "Tipo de usuario"
         last_sign_in_at:        "Último inicio de sesión"
       project_file:
         name:               "Nombre del archivo"
         version:            "Versión"
         attachment:         "Archivo"
+      person:
+        name:               "Nombre"
+        last_name:          "Apellido"
+      district:
+        name:               "Nombre del distrito"
     errors:
       messages:
         blank: "El campo no puede estar en blanco."
@@ -35,10 +43,13 @@ es:
               invalid: "Sólo se permiten archivo en formato ...COMPLETAR!! "
         user:
           attributes:
+            username:
+              taken: "Nombre de usuario ya registrado en el sistema."
             email:
-              taken: "Dirección de email ya registrada en el sistema"
+              taken: "Dirección de email ya registrada en el sistema."
+              invalid: "Dirección de email inválida."
             password_confirmation:
-              confirmation: "Contraseñas no coinciden"
+              confirmation: "Contraseñas no coinciden."
             password:
               too_short: "Contraseña demasiado corta. Debe tener al menos 8 caracteres."
             reset_password_token:
