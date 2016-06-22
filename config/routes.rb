@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: {  confirmation: "users/confirmation",
-                                     sessions:     "users/session",
+                                     sessions:     "users/sessions",
                                      registrations: "users/registrations" }
 
   resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
