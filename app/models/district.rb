@@ -1,5 +1,5 @@
 class District < ActiveRecord::Base
-  has_many :people
+  has_many :terms
 
   def to_s
     name

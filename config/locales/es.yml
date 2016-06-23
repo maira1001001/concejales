@@ -33,8 +33,7 @@ es:
     edit:
       title: "Editar Usuario"
     new:
-      collaborator: "Nuevo Colaborador"
-      councilor:    "Nuevo Concejal"
+      title: "Nuevo Usuario"
     show:
       title: "Detalles del usuario"
     roles:

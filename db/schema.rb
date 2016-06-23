@@ -11,21 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619010344) do
-
-  create_table "collaborators", force: :cascade do |t|
-    t.integer "status",  limit: 4
-    t.integer "team_id", limit: 4
-  end
-
-  add_index "collaborators", ["team_id"], name: "index_collaborators_on_team_id", using: :btree
-
-  create_table "councilors", force: :cascade do |t|
-    t.string  "personal_website", limit: 255
-    t.integer "team_id",          limit: 4
-  end
-
-  add_index "councilors", ["team_id"], name: "index_councilors_on_team_id", using: :btree
+ActiveRecord::Schema.define(version: 20160622205349) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -33,6 +19,16 @@ ActiveRecord::Schema.define(version: 20160619010344) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer "role",      limit: 4
+    t.integer "status",    limit: 4
+    t.integer "person_id", limit: 4
+    t.integer "term_id",   limit: 4
+  end
+
+  add_index "participations", ["person_id"], name: "index_participations_on_person_id", using: :btree
+  add_index "participations", ["term_id"], name: "index_participations_on_term_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -70,18 +66,14 @@ ActiveRecord::Schema.define(version: 20160619010344) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "teams", force: :cascade do |t|
-    t.string "active", limit: 255
-  end
-
   create_table "terms", force: :cascade do |t|
-    t.integer  "councilor_id",       limit: 4
     t.integer  "district_id",        limit: 4
     t.integer  "political_party_id", limit: 4
     t.string   "start_date",         limit: 255
     t.string   "end_date",           limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "councilor_id",       limit: 4
   end
 
   add_index "terms", ["councilor_id"], name: "index_terms_on_councilor_id", using: :btree
@@ -117,9 +109,7 @@ ActiveRecord::Schema.define(version: 20160619010344) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  add_foreign_key "collaborators", "teams"
-  add_foreign_key "councilors", "teams"
   add_foreign_key "project_files", "projects"
-  add_foreign_key "terms", "people", column: "councilor_id"
+  add_foreign_key "terms", "participations", column: "councilor_id"
   add_foreign_key "users", "people"
 end

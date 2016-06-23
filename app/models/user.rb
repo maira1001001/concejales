@@ -5,20 +5,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :lockable, :timeoutable,
     :recoverable, :trackable, :validatable, :confirmable, :registerable
 
-  enum roles: { councilor: 0, collaborator: 1 }
+  enum roles: %i(admin councilor)
 
   attr_accessor :password_confirmation
 
   belongs_to :person
+
+  accepts_nested_attributes_for :person
 
   after_initialize :set_person
 
   validates :email, uniqueness: true, presence: true, on: :create
 
 
-  def username=
-#    username = "#{person.last_name.gsub(/\s+/, ".")}, #{person.name.gsub(/\s+/, ".")}"
-    "nombre usuario"
+  def save
+    username="#{person.last_name.gsub(/\s+/, ".")}, #{person.name.gsub(/\s+/, ".")}"
+    super(username)
   end
 
   def password_required?

@@ -1,12 +1,15 @@
 class Person < ActiveRecord::Base
   has_one :user
+  has_one :participation, autosave: true
 
   attr_accessor :district
 
-  before_create :add_district_to_collection if @district.present?
+  def to_s
+    "#{last_name}, #{name}"
+  end
 
-  def add_district_to_collection
-    districts << district
+  def save
+    participation.create(status: :pending_approval)
   end
 
 end

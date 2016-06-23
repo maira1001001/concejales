@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.save
     respond_with @user
   end
 
@@ -40,8 +41,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation,
-                                 :councilor_name, :roles)
+    params.require(:user).permit(:email, :roles, person_attributes: [:name, :last_name, :district])
   end
 
 end

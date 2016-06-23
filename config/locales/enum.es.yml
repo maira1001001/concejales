@@ -13,5 +13,5 @@ es:
     user:
       roles:
         councilor: "Concejal"
-        collaborator: "Asesor"
+        admin:     "Admin"
 
