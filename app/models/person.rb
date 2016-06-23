@@ -8,8 +8,8 @@ class Person < ActiveRecord::Base
     "#{last_name}, #{name}"
   end
 
-  def save
-    participation.create(status: :pending_approval)
-  end
+#  def save
+#    participation.create(status: :pending_approval)
+#  end
 
 end

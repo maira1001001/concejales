@@ -18,10 +18,10 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true, presence: true, on: :create
 
 
-  def save
-    username="#{person.last_name.gsub(/\s+/, ".")}, #{person.name.gsub(/\s+/, ".")}"
-    super(username)
-  end
+#  def save
+#    username="#{person.last_name.gsub(/\s+/, ".")}, #{person.name.gsub(/\s+/, ".")}"
+#    super
+#  end
 
   def password_required?
     super if confirmed?

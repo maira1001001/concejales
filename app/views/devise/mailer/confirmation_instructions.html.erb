@@ -1,5 +1,9 @@
-<p>Welcome <%= @email %>!</p>
+<p>Bienvenido <%= @resource.person %> al Sistema Integral de Concejales del Frente Para la victoria </p>
 
-<p>You can confirm your account email through the link below:</p>
+<p> Usted ha recibido este email con el motivo de participar en el sistema publicando los proyectos que se presentan en el concejo deliberante de su distrito y de forma tal de compartirlos con los otros concejales de los distritos de la Provincia de Buenos Aires </p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p> Si no reconoce el email, pues no le preste atención </p>
+
+<p> Usted puede confirmar su participación haciendo click en el siguiente link </p>
+
+<%= link_to 'Link al sistema', confirmation_url(@resource, confirmation_token: @token) %></p>

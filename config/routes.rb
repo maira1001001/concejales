@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'iniciar-sesion', to: 'devise/sessions#new'
-    put 'confirm', to: 'devise/confirmation#show'
+    put "/confirm" => "users/confirmations#confirm"
   end
 
   devise_for :users, controllers: {  confirmation: "users/confirmation",
