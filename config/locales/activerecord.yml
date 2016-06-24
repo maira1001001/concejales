@@ -18,7 +18,6 @@ es:
         project_type:     "Tipo de proyecto"
         project_files:    "Archivos"
       user:
-        username:               "Nombre de usuario"
         email:                  "E-mail"
         password:               "Contraseña"
         password_confirmation:  "Confirmacion de contraseña"
@@ -45,8 +44,6 @@ es:
               invalid: "Sólo se permiten archivo en formato ...COMPLETAR!! "
         user:
           attributes:
-            username:
-              taken: "Nombre de usuario ya registrado en el sistema."
             email:
               taken: "Dirección de email ya registrada en el sistema."
               invalid: "Dirección de email inválida."

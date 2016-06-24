@@ -37,12 +37,17 @@ gem 'devise'                        , '~> 3.5', '>= 3.5.2'
 gem 'easy_roles'
 gem 'cancancan', '~> 1.14'
 
+# Omniauth Google
+gem "omniauth-google-oauth2"
 
 # upload files
 gem 'carrierwave'                   , '~> 0.11.2'
 
 # paginator
 gem 'kaminari'                      , '~> 0.16.3'
+
+# Search gem
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Forms
 gem 'simple_form'
