@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-gem 'mysql'
-#gem 'pg'
+gem 'mysql2'
+gem 'pg', '~> 0.18.4'
 
 #  Heroku integration
 gem 'rails_12factor', group: :production
@@ -79,3 +78,4 @@ group :development do
   gem 'spring'
 end
 
+ruby '2.3.0'
