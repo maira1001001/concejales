@@ -1,27 +1,28 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :omniauthable,
-  # :rememberable, :registerable
-  devise :database_authenticatable, :lockable, :timeoutable,
-    :recoverable, :trackable, :validatable, :confirmable, :registerable
-
-  enum roles: %i(admin councilor)
-
-  attr_accessor :password_confirmation
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable,
+    :timeoutable, :confirmable, :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
   belongs_to :person
 
   accepts_nested_attributes_for :person
 
+  enum state: [:pending, :active]
+
+  enum roles: %i(admin councilor)
+
   after_initialize :set_person
 
-  validates :email, uniqueness: true, presence: true, on: :create
+  validates :email, uniqueness: true, presence: true
 
+  scope :all_without_current, -> (current_user) { where.not(id: current_user ) }
 
-#  def save
-#    username="#{person.last_name.gsub(/\s+/, ".")}, #{person.name.gsub(/\s+/, ".")}"
-#    super
-#  end
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    :inactive
+  end
 
   def password_required?
     super if confirmed?
@@ -34,10 +35,45 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
+  def toggle_state
+    active? ? pending! : active!
+  end
+
+  # Omniauth facebook provider
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      User.find_by(email: auth.info.email)
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+
+  # Omniauth google provider
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    User.find_by(email: data["email"])
+  end
+
+  def only_if_unconfirmed
+    pending_any_confirmation {yield}
+  end
+
   private
 
   def set_person
     self.person ||= self.build_person
   end
+
+  def set_password
+    self.password = Devise.friendly_token.first(8) unless self.encrypted_password.present?
+  end
+
 end
+
 

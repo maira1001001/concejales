@@ -8,7 +8,6 @@
       <tr>
         <th><%= t 'activerecord.attributes.user.roles' %></th>
         <th><%= t 'activerecord.attributes.person.full_name' %></th>
-        <th><%= t 'activerecord.attributes.user.username' %></th>
         <th><%= t 'activerecord.attributes.user.email' %></th>
         <th><%= t 'activerecord.attributes.person.district' %></th>
         <th><%= t 'global.index.actions'  %></th>
@@ -19,7 +18,6 @@
       <%= content_tag_for(:tr, @users) do |user| %>
         <td><%= user.roles %></td>
         <td><%= user.person %></td>
-        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><%= user.person.district %></td>
         <td>
