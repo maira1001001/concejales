@@ -9,7 +9,8 @@
         <th><%= t 'activerecord.attributes.user.roles' %></th>
         <th><%= t 'activerecord.attributes.person.full_name' %></th>
         <th><%= t 'activerecord.attributes.user.email' %></th>
-        <th><%= t 'activerecord.attributes.person.district' %></th>
+        <th><%= t 'activerecord.attributes.person.current_district' %></th>
+        <th><%= t 'activerecord.attributes.status' %></th>
         <th><%= t 'global.index.actions'  %></th>
       </tr>
     </thead>
@@ -19,7 +20,8 @@
         <td><%= user.roles %></td>
         <td><%= user.person %></td>
         <td><%= user.email %></td>
-        <td><%= user.person.district %></td>
+        <td><%= user.person.current_district %></td>
+        <td><%= t_enum user, :status %></td>
         <td>
           <%= link_to icon('search'), user,
             title: t('global.actions.show') ,

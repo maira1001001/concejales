@@ -23,6 +23,7 @@ es:
         password_confirmation:  "Confirmacion de contraseña"
         roles:                  "Tipo de usuario"
         last_sign_in_at:        "Último inicio de sesión"
+        status:                 "Estado"
       project_file:
         name:               "Nombre del archivo"
         version:            "Versión"
@@ -31,7 +32,7 @@ es:
         name:               "Nombre"
         last_name:          "Apellido"
         full_name:          "Nombre Completo"
-        district:           "Distrito"
+        current_district:           "Distrito"
       district:
         name:               "Nombre del distrito"
     errors:
@@ -48,9 +49,12 @@ es:
               taken: "Dirección de email ya registrada en el sistema."
               invalid: "Dirección de email inválida."
             password_confirmation:
-              confirmation: "Contraseñas no coinciden."
+              confirmation: "Las contraseñas no coinciden."
             password:
               too_short: "Contraseña demasiado corta. Debe tener al menos 8 caracteres."
             reset_password_token:
               invalid: "Token invalido. Puede ser que aun no haya confirmado su cuenta."
+            confirmation_token:
+              invalid: "El link de invitación es inválido. Tal vez usted ya había accedido antes."
+
 

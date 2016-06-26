@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :person
 
-  enum state: [:pending, :active]
+  enum status: [:pending_invitation, :enable, :disable]
 
   enum roles: %i(admin councilor)
 
@@ -16,27 +16,15 @@ class User < ActiveRecord::Base
 
   scope :all_without_current, -> (current_user) { where.not(id: current_user ) }
 
-  def active_for_authentication?
-    super && active?
-  end
+  validates_with PasswordValidator, on: :update
+#  before_validation :password_match, on: :update
 
-  def inactive_message
-    :inactive
+  def active_for_authentication?
+    super && enable?
   end
 
   def password_required?
     super if confirmed?
-  end
-
-  def password_match?
-    errors.add(:password, :blank) if password.blank?
-    errors.add(:password_confirmation, :blank) if password_confirmation.blank?
-    errors.add(:password_confirmation, :confirmation) if password != password_confirmation
-    password == password_confirmation && !password.blank?
-  end
-
-  def toggle_state
-    active? ? pending! : active!
   end
 
   # Omniauth facebook provider

@@ -14,4 +14,8 @@ es:
       roles:
         councilor: "Concejal"
         admin:     "Admin"
+      status:
+        enable:     "Habilitado"
+        disable:    "Desabilitado"
+        pending_invitation: "Invitación Pendiente"
 

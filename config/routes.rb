@@ -14,11 +14,10 @@ Rails.application.routes.draw do
     as: :assign_collaborators_to_councilor_user
 
   devise_scope :user do
-    get 'iniciar-sesion', to: 'devise/sessions#new'
     put "/confirm" => "users/confirmations#confirm"
   end
 
-  devise_for :users, controllers: {  confirmation: "users/confirmation", sessions: "users/sessions", registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { confirmations: "users/confirmations", sessions: "users/sessions", registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
 
