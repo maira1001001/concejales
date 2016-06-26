@@ -4,20 +4,14 @@
 
   <%= f.error_notification %>
   <div class="row">
-    <%= f.input :username, autofocus: true, wrapper_html: { class: 'col-md-4'  }  %>
-    <%= f.input :email, wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
+
+    <%= f.input :roles, as: :enum, wrapper_html: { class:' col-md-6' }%>
+    <%= f.simple_fields_for :person do |p| %>
+      <%= p.input :name, wrapper_html: { class: 'col-md-4' }  %>
+      <%= p.input :last_name, wrapper_html: { class: 'col-md-4' } %>
+    <% end %>
   </div>
-  <div class="row">
-    <%= f.input :password, autocomplete: "off",
-      label: t('activerecord.attributes.user.password'),
-      wrapper_html: { class: 'col-md-4'  }  %>
-    <%= f.input :password_confirmation, autocomplete: "off",
-      label: t('activerecord.attributes.user.password_confirmation'),
-      wrapper_html: { class: 'col-md-4'  } %>
-</div>
-<% @user.errors[:role].each do |message| %>
-  <p class="text-danger"><%= message %></p>
-<% end %>
 
 <div class="form-actions">
   <%= f.button :submit, class: 'btn btn-success',

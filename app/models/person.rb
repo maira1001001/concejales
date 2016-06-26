@@ -1,5 +1,9 @@
 class Person < ActiveRecord::Base
-  belongs_to :district
   has_one :user
-  has_many :projects
+  has_one :participation, autosave: true
+
+  def to_s
+    "#{last_name}, #{name}"
+  end
+
 end

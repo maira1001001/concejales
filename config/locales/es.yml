@@ -10,10 +10,7 @@ es:
       resolution:     "Resolución"
       communication:  "Comunicación"
       document:       "Document"
-    new_user:         "Nuevo Usuario"
-    user_types:
-        councilor:    "Nuevo Concejal"
-        collaborator: "Nuevo Colaborador"
+    new_councilor:    "Nuevo Concejal"
   projects:
     index:
       title: "Mis proyectos"
@@ -36,8 +33,7 @@ es:
     edit:
       title: "Editar Usuario"
     new:
-      collaborator: "Nuevo Colaborador"
-      councilor:    "Nuevo Concejal"
+      title: "Nuevo Usuario"
     show:
       title: "Detalles del usuario"
     roles:
@@ -46,6 +42,8 @@ es:
       councilor:    "Concejal"
     actions:
       new: "Nuevo Usuario"
+    sign_in:
+      sign_in: "Iniciar Sesión"
   personal_informations:
     index:
       title: "Información Personal"

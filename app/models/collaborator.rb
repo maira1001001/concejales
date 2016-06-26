@@ -1,2 +1,0 @@
-class Collaborator < Person
-end

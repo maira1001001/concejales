@@ -1,0 +1,48 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col-md-7">
+      <h1><%= t '.title'  %></h1>
+    </div>
+    <div class="col-md-5">
+      <div class="header-actions">
+        <%= link_to new_collaborator_path,
+          class: 'btn btn-primary' do %>
+          <%= icon 'plus'  %>
+          <%= t "collaborators.actions.new" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+                <th><%= t 'global.index.actions' %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @collaborators) do |collaborator| %>
+                <td>
+          <%= link_to icon('eye-open'), collaborator,
+            class: 'btn btn-xs btn-default',
+            title: t('collaborators.actions.show', default: t('global.actions.show')),
+            data: { toggle: 'tooltip', container: 'body', placement: 'left' } %>
+          <%= link_to icon('pencil'), edit_collaborator_path(collaborator),
+            class: 'btn btn-xs btn-primary',
+            title: t('collaborators.actions.edit', default: t('global.actions.edit')),
+            data: { toggle: 'tooltip', container: 'body', placement: 'left' } %>
+          <%= link_to icon('trash'), collaborator,  method: :delete,
+            class: 'btn btn-xs btn-danger',
+            title: t('collaborators.actions.destroy', default: t('global.actions.destroy')),
+            data: { confirm: t('collaborators.actions.confirm_destroy', default: t('global.actions.confirm_destroy')), toggle: 'tooltip', container: 'body', placement: 'left' } %>
+      </td>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>

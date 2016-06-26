@@ -10,4 +10,8 @@ es:
         resolution: "Resolución"
         communication: "Comunicación"
         document:       "Documento"
+    user:
+      roles:
+        councilor: "Concejal"
+        admin:     "Admin"
 

@@ -1,2 +1,0 @@
-class Councilor < Person
-end

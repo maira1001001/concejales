@@ -1,20 +1,32 @@
 Rails.application.routes.draw do
 
-  resources :tags, path: 'etiquetas', path_names: {new: 'nueva', edit: 'modificar'}
-  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
-
-  devise_for :users, path: 'usuarios', path_names: {sign_in: 'iniciar-sesion', sign_out: 'cerrar-sesion'}
-
   root 'projects#index'
+
 
   resources :projects, path: 'proyectos',
     path_names: { new: 'nuevo', edit: 'editar', show: 'detalles' }
 
-#  resources :ordinances, path: 'proyectos/ordenanzas'
-#  resources :decrees, path: 'proyectos/decretos'
-#  resources :resolutions, path: 'proyectos/resoluciones'
-#  resources :communications, path: 'proyectos/comunicaciones'
-#  resources :documents, path: 'proyectos/documentos'
+  resources :collaborators, path: 'asesores'
+  resources :councilors,    path: 'concejales'
+  resources :people,        path: 'personas'
+
+  get 'asignar-asesor', to: "users#assign_collaborator_to_councilor",
+    as: :assign_collaborators_to_councilor_user
+
+  devise_scope :user do
+    get 'iniciar-sesion', to: 'devise/sessions#new'
+    put "/confirm" => "users/confirmations#confirm"
+  end
+
+  devise_for :users, controllers: {  confirmation: "users/confirmation", sessions: "users/sessions", registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
+
+  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
+
+  #  resources :ordinances, path: 'proyectos/ordenanzas'
+  #  resources :decrees, path: 'proyectos/decretos'
+  #  resources :resolutions, path: 'proyectos/resoluciones'
+  #  resources :communications, path: 'proyectos/comunicaciones'
+  #  resources :documents, path: 'proyectos/documentos'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -58,9 +70,9 @@ Rails.application.routes.draw do
   #   end
 
   # Example resource route with concerns:
-     concern :toggleable do
-       post 'toggle'
-     end
+  concern :toggleable do
+    post 'toggle'
+  end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
 

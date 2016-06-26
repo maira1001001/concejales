@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
-  #  load_and_authorize_resource
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :toggle_state, :update_profile]
 
   respond_to  :html
 
   def index
-    @users = User.all
+    @q = User.all_without_current(current_user).page(params[:page]).ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def show
   end
 
   def new
-    @user = User.new(person: person_type_params)
+    @user = User.new
   end
 
   def edit
@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.save
     respond_with @user
   end
 
@@ -33,6 +34,11 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  def toggle_state
+    @user.toggle_state
+    respond_with(@user)
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -41,15 +47,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
-  end
-
-  def person_type_params
-    ##TODO refactorizar este strong parameter. no se cmo manejarlo si me pasan mal el parametro!!!!
-    person_type = if params.has_key? :person_type
-                    params.require(:person_type) == 'councilor' ? 'Councilor' : 'Collaborator'
-                  end
-    Person.new(type: person_type)
+    params.require(:user).permit(:email, :roles, person_attributes: [:name, :last_name])
   end
 
 end

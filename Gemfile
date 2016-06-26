@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'mysql2'
+gem 'pg', '~> 0.18.4'
+
+#  Heroku integration
+gem 'rails_12factor', group: :production
 
 #--- ASSETS
 gem 'sprockets'
@@ -24,6 +28,9 @@ end
 gem 'jquery-ui-rails'
 gem 'modernizr-rails'
 
+#Initialize JavaScript
+gem 'js-initializers'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,6 +41,8 @@ gem 'devise'                        , '~> 3.5', '>= 3.5.2'
 gem 'easy_roles'
 gem 'cancancan', '~> 1.14'
 
+# Omniauth Google
+gem "omniauth-google-oauth2"
 
 # upload files
 gem 'carrierwave'                   , '~> 0.11.2'
@@ -41,13 +50,17 @@ gem 'carrierwave'                   , '~> 0.11.2'
 # paginator
 gem 'kaminari'                      , '~> 0.16.3'
 
+# Search gem
+gem 'ransack', github: 'activerecord-hackery/ransack'
+
 # Forms
 gem 'simple_form'
 gem 'nested_form'
 gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.5'
 
-# Tags
-gem 'acts-as-taggable-on'
+# Applications settings
+gem 'config'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,3 +78,4 @@ group :development do
   gem 'spring'
 end
 
+ruby '2.3.0'

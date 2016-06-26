@@ -11,18 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614222134) do
+ActiveRecord::Schema.define(version: 20160622205349) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.string   "website",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
+  create_table "participations", force: :cascade do |t|
+    t.integer "role",      limit: 4
+    t.integer "status",    limit: 4
+    t.integer "person_id", limit: 4
+    t.integer "term_id",   limit: 4
+  end
+
+  add_index "participations", ["person_id"], name: "index_participations_on_person_id", using: :btree
+  add_index "participations", ["term_id"], name: "index_participations_on_term_id", using: :btree
+
   create_table "people", force: :cascade do |t|
+    t.string   "name",                limit: 255
+    t.string   "last_name",           limit: 255
+    t.string   "photo",               limit: 255
+    t.string   "type",                limit: 255
+    t.integer  "current_district_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "people", ["current_district_id"], name: "index_people_on_current_district_id", using: :btree
+
+  create_table "political_parties", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.string   "address",    limit: 255
-    t.string   "type",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -39,54 +60,61 @@ ActiveRecord::Schema.define(version: 20160614222134) do
   add_index "project_files", ["project_id"], name: "fk_rails_c26fbba4b3", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.text     "description",   limit: 65535
-    t.integer  "category",      limit: 4
-    t.integer  "project_type",  limit: 4
-    t.string   "dossier",       limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "district_id",   limit: 4
-    t.integer  "councilor_id",  limit: 4
-    t.integer  "created_by_id", limit: 4
+    t.string   "title",        limit: 255
+    t.text     "description",  limit: 65535
+    t.integer  "category",     limit: 4
+    t.integer  "project_type", limit: 4
+    t.string   "dossier",      limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  add_index "projects", ["councilor_id"], name: "index_projects_on_councilor_id", using: :btree
-  add_index "projects", ["created_by_id"], name: "index_projects_on_created_by_id", using: :btree
-  add_index "projects", ["district_id"], name: "index_projects_on_district_id", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "terms", force: :cascade do |t|
+    t.integer  "district_id",        limit: 4
+    t.integer  "political_party_id", limit: 4
+    t.string   "start_date",         limit: 255
+    t.string   "end_date",           limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "councilor_id",       limit: 4
   end
+
+  add_index "terms", ["councilor_id"], name: "index_terms_on_councilor_id", using: :btree
+  add_index "terms", ["district_id"], name: "index_terms_on_district_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",               limit: 255
     t.integer  "roles",                  limit: 4
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.integer  "state",                  limit: 4,   default: 0
+    t.boolean  "force_password_change",              default: true
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "email",                  limit: 255, default: "",   null: false
+    t.string   "encrypted_password",     limit: 255
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.integer  "failed_attempts",        limit: 4,   default: 0,  null: false
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
+    t.integer  "failed_attempts",        limit: 4,   default: 0,    null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.integer  "person_id",              limit: 4
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "people", "districts", column: "current_district_id"
   add_foreign_key "project_files", "projects"
-  add_foreign_key "projects", "districts"
+  add_foreign_key "terms", "participations", column: "councilor_id"
   add_foreign_key "users", "people"
 end
