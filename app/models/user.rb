@@ -12,12 +12,15 @@ class User < ActiveRecord::Base
 
   after_initialize :set_person
 
-  validates :email, uniqueness: true, presence: true
+  validates :email, :roles, presence: true
+  
+  validates :email, uniqueness: true
+
+  validates_associated :person, on: :create
 
   scope :all_without_current, -> (current_user) { where.not(id: current_user ) }
 
   validates_with PasswordValidator, on: :update
-#  before_validation :password_match, on: :update
 
   def active_for_authentication?
     super && enable?
@@ -50,6 +53,10 @@ class User < ActiveRecord::Base
 
   def only_if_unconfirmed
     pending_any_confirmation {yield}
+  end
+
+  def personal_data_completed?
+    person.current_district.present? && person.current_term.present?
   end
 
   private

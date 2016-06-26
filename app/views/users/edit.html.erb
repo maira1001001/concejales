@@ -1,13 +1,12 @@
 <div class="page-header">
   <%= link_to users_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
   <% end %>
-  <%= link_to @user, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-info-sign"></span>
-    Show
-  <% end %>
-  <h1>Editing user</h1>
+  <h1><%= t '.title' %></h1>
+
 </div>
 
 <%= render 'form' %>
+
+

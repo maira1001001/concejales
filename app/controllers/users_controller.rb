@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :toggle_state, :update_profile]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   respond_to  :html
 
@@ -32,11 +32,6 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_with @user
-  end
-
-  def toggle_state
-    @user.toggle_state
-    respond_with(@user)
   end
 
   private

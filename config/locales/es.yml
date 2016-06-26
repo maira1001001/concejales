@@ -44,24 +44,13 @@ es:
       new: "Nuevo Usuario"
     sign_in:
       sign_in: "Iniciar Sesión"
-  personal_informations:
-    index:
-      title: "Información Personal"
-    edit:
-      title: "Editar Información Personal"
-    show:
-      title: "Detalles de Información Personal"
-    new:
-      title: "Nuevo"
-  tags:
-    index:
-      title: "Etiquetas"
-    edit:
-      title: "Editar etiqueta"
-    show:
-      title: "Detalles de la etiqueta"
-    new:
-      title: "Nueva etiqueta"
-    actions:
-      new: "Nueva etiqueta"
-      confirm_destroy: "¿Desea eliminar la etiqueta seleccionada?"
+  people:
+      index:
+        title: "Personas"
+      edit:
+        title: "Editar Persona"
+      new:
+        title: "Nueva Persona"
+      show:
+        title: "Detalles de la Persona"
+

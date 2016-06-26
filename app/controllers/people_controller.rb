@@ -18,6 +18,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
+    @person.build_participation
   end
 
   def create
