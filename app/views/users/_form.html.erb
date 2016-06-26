@@ -5,12 +5,11 @@
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
+
     <%= f.input :roles, as: :enum, wrapper_html: { class:' col-md-6' }%>
     <%= f.simple_fields_for :person do |p| %>
       <%= p.input :name, wrapper_html: { class: 'col-md-4' }  %>
       <%= p.input :last_name, wrapper_html: { class: 'col-md-4' } %>
-      <%= p.input :district, as: :select2,
-        collection: District.all, wrapper_html: { class: 'col-md-4' }%>
     <% end %>
   </div>
 

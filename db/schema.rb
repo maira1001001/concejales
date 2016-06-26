@@ -31,13 +31,16 @@ ActiveRecord::Schema.define(version: 20160622205349) do
   add_index "participations", ["term_id"], name: "index_participations_on_term_id", using: :btree
 
   create_table "people", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "photo",      limit: 255
-    t.string   "type",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",                limit: 255
+    t.string   "last_name",           limit: 255
+    t.string   "photo",               limit: 255
+    t.string   "type",                limit: 255
+    t.integer  "current_district_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
+
+  add_index "people", ["current_district_id"], name: "index_people_on_current_district_id", using: :btree
 
   create_table "political_parties", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -109,6 +112,7 @@ ActiveRecord::Schema.define(version: 20160622205349) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "people", "districts", column: "current_district_id"
   add_foreign_key "project_files", "projects"
   add_foreign_key "terms", "participations", column: "councilor_id"
   add_foreign_key "users", "people"

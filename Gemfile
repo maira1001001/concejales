@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'mysql2'
+
+#  Heroku integration
+gem 'rails_12factor', group: :production
 
 #--- ASSETS
 gem 'sprockets'
@@ -51,6 +55,9 @@ gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.5'
 
 # Applications settings
 gem 'config'
+
+#Server
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

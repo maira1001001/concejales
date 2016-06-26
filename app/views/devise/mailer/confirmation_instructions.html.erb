@@ -6,4 +6,4 @@
 
 <p> Usted puede confirmar su participación haciendo click en el siguiente link </p>
 
-<%= link_to 'Link al sistema', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%= link_to 'Link al sistema', confirm_user_path(@resource, confirmation_token: @token) %></p>

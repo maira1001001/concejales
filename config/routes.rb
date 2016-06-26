@@ -18,9 +18,10 @@ Rails.application.routes.draw do
     put "/confirm" => "users/confirmations#confirm"
   end
 
-  devise_for :users, controllers: {  confirmation: "users/confirmation",
-                                     sessions:     "users/sessions",
-                                     registrations: "users/registrations" }
+  devise_for :users, path: 'usuarios', 
+      controllers: {  confirmation: "users/confirmation",
+                      sessions:     "users/sessions",
+                      registrations: "users/registrations" }
 
   resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
 
