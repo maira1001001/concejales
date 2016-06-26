@@ -276,7 +276,7 @@ DEPENDENCIES
   mysql2
   nested_form
   omniauth-google-oauth2
-  pg
+  pg (~> 0.18.4)
   quiet_assets
   rails (= 4.2.6)
   rails-assets-jquery!
