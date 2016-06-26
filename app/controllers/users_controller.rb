@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-raise 2
     @user.save
     respond_with @user
   end
