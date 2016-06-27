@@ -1,17 +1,19 @@
-class Users::ConfirmationsController < Devise::ConfirmationsController
+  class Users::ConfirmationsController < Devise::ConfirmationsController
 
   respond_to :html
 
-  #redirect:  confirmation#show | confirmation#new
   def show
-    #si tiene los siguientes errores: redirect confirmations#show
-    #1. token usado -> confirmed: true
-    #2. param[:confirmation_token] no existe
-    #3. user.errors.present? -> ver q tipo de errores
+    @user = confirmable_user
+    if confirmation_token.blank?
+      #ver de poner otra url que diga "link inválido"
+      respond_with @user, location: :new_user_confirmation
+    elsif @user.confirmed?
+      #msg: "cuenta ya confirmada"
+      respond_with @user, location: :new_user_session
+    end
     @original_token = confirmation_token
-    self.resource = confirmable_user
-    if resource.confirmed? || params[:confirmation_token].blank?
-      render 'devise/confirmations/new'
+    unless @original_token == @user.confirmation_token
+      respond_with @user, location: :new_user_confirmation
     end
   end
 
@@ -40,12 +42,13 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   private
 
+
   def confirmation_params
     params.require(resource_name).permit(:confirmation_token, :password, :password_confirmation)
   end
 
   def confirmation_token
-    @confirmation_token ||= (params["user"] && params["user"]["confirmation_token"]) || params["confirmation_token"]
+    params[:confirmation_token]
   end
 
   def confirmable_user
