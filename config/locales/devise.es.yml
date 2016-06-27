@@ -1,17 +1,17 @@
 es:
   devise:
     links:
-      sing_in: "Iniciar Sesión"
+      sign_in: "Iniciar Sesión"
       forgot_password: "¿Olvidó su contraseña?"
-      confirmation_instructions_not_receive: "¿No ha recibido el email con la invitación al sistema?"
-      unlock_instructions_not_receive: "¿No ha recibido instrucciones para desbloquear su cuenta?"
+      confirmation_instructions_not_received: "¿No ha recibido el email con la invitación al sistema?"
+      unlock_instructions_not_received: "¿No ha recibido instrucciones para desbloquear su cuenta?"
     confirmations:
       new:
         title: "Reenvio instrucciones de confirmación"
         confirm: "Confirmar cuenta"
         password_lenght: "La contraseña debe tener al menos 8 carácteres"
       show:
-        title: "Casi finaliza!. Por favor, ingrese una contraseña para poder acceder al sistema de forma segura."
+        title: "Ingrese una contraseña para poder acceder al sistema de forma segura."
       confirmed: "Su dirección de correo electrónico se ha confirmado con éxito."
       send_instructions: "Usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en pocos minutos."
       send_paranoid_instructions: "Si existe su dirección de correo electrónico en nuestra base de datos, usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en pocos minutos."

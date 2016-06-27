@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   after_initialize :set_person
 
   validates :email, :roles, presence: true
-  
+
   validates :email, uniqueness: true
 
   validates_associated :person, on: :create

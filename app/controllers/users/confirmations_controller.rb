@@ -1,41 +1,41 @@
-  class Users::ConfirmationsController < Devise::ConfirmationsController
+class Users::ConfirmationsController < Devise::ConfirmationsController
 
   respond_to :html
 
   def show
-    @user = confirmable_user
-    if confirmation_token.blank?
-      #ver de poner otra url que diga "link inválido"
-      respond_with @user, location: :new_user_confirmation
+    confirmation_token_param = params[:confirmation_token]
+    @user = find_user_by_token(confirmation_token_param)
+    if @user.nil?
+      respond_with @user, location: -> { new_user_confirmation }
     elsif @user.confirmed?
-      #msg: "cuenta ya confirmada"
-      respond_with @user, location: :new_user_session
-    end
-    @original_token = confirmation_token
-    unless @original_token == @user.confirmation_token
-      respond_with @user, location: :new_user_confirmation
+      sign_out(@user)
+      redirect_to new_user_session_path, notice: 'Su cuenta ya fue confirmada'
+    else
+      unless confirmation_token_param == @user.confirmation_token
+        respond_with @user, location: :new_user_confirmation
+      end
     end
   end
 
   def confirm
-    @original_token = params[resource_name].try(:[], :confirmation_token)
+    @original_token = user_confirmation_params[:confirmation_token]
     digested_token = Devise.token_generator.digest(self, :confirmation_token, @original_token)
-    ## CHANGEME original params[resource_name].try(:[], :confirmation_token)find resurce by digested_token
-    self.resource = resource_class.find_by_confirmation_token! @original_token
-    if resource.confirmed?
-      flash[:error] = "Su cuenta ya había sido confirmada"
-      render action: 'new'
+    @user = find_user_by_token(@original_token)
+    if @user.nil?
+      redirect_to new_user_session_path
     else
-      resource.update(confirmation_params)
-      if resource.valid?
-        resource.confirm!
-        resource.status = :enable
-        resource.save
-        sign_in_and_redirect(resource_name, confirmable_user)
+      if @user.confirmed?
+        redirect_to new_user_session_path, notice: 'Su cuenta ya ha sido confirmada'
       else
-        respond_with resource, resource_name, @original_token, 
-          location: -> { user_confirmation_path(confirmation_token: @original_token) },
-          action: :show
+        if @user.update(user_confirmation_params)
+          @user.confirm! #setear confirmation_token = nil
+          @user.update(status: :enable)
+          redirect_to new_user_session_path, notice: 'Su cuenta fue activada'
+        else
+          respond_with @user,
+            location: -> { user_confirmation_path(confirmation_token: @original_token) },
+            action: :show
+        end
       end
     end
   end
@@ -43,16 +43,12 @@
   private
 
 
-  def confirmation_params
-    params.require(resource_name).permit(:confirmation_token, :password, :password_confirmation)
+  def user_confirmation_params
+    params.require(:user).permit(:confirmation_token, :password, :password_confirmation)
   end
 
-  def confirmation_token
-    params[:confirmation_token]
-  end
-
-  def confirmable_user
-    @confirmable_user ||= User.find_or_initialize_with_error_by(:confirmation_token, confirmation_token)
+  def find_user_by_token(token)
+    User.find_by(confirmation_token: token)
   end
 
 end
