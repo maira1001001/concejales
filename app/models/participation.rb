@@ -1,6 +1,6 @@
 class Participation < ActiveRecord::Base
   belongs_to :person
-  belongs_to :term, autosave: true
+  has_many :terms, autosave: true
   has_one :collaborator, class_name: 'Participation', foreign_key: 'collaborator_id'
 
   accepts_nested_attributes_for :term

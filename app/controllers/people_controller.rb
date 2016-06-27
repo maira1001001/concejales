@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    @person.build_participation
     respond_with(@person)
   end
 
