@@ -7,6 +7,14 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def my_projects
+    @q = Project.my_projects(current_user.person)
+    @projects = @q.results.page(page_params)
+    @title = t('projects.my_projects.title')
+    @url = my_project_path
+    render 'index'
+  end
+
   def show
   end
 

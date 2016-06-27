@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   resources :councilors,    path: 'concejales'
   resources :people,        path: 'personas'
 
-  get 'asignar-asesor', to: "users#assign_collaborator_to_councilor",
-    as: :assign_collaborators_to_councilor_user
+  get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 
   devise_scope :user do
     put "/confirm" => "users/confirmations#confirm"
@@ -21,11 +20,6 @@ Rails.application.routes.draw do
 
   resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
 
-  #  resources :ordinances, path: 'proyectos/ordenanzas'
-  #  resources :decrees, path: 'proyectos/decretos'
-  #  resources :resolutions, path: 'proyectos/resoluciones'
-  #  resources :communications, path: 'proyectos/comunicaciones'
-  #  resources :documents, path: 'proyectos/documentos'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

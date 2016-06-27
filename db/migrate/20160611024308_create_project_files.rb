@@ -5,8 +5,6 @@ class CreateProjectFiles < ActiveRecord::Migration
       t.string :attachment
       t.string :name
 
-      t.references :project, foreign_key: true, null: false
-
       t.timestamps null: false
     end
 

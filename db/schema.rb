@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622205349) do
+ActiveRecord::Schema.define(version: 20160627202435) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 20160622205349) do
     t.string   "version",    limit: 255
     t.string   "attachment", limit: 255
     t.string   "name",       limit: 255
-    t.integer  "project_id", limit: 4,   null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "project_id", limit: 4
   end
 
-  add_index "project_files", ["project_id"], name: "fk_rails_c26fbba4b3", using: :btree
+  add_index "project_files", ["project_id"], name: "index_project_files_on_project_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title",        limit: 255
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160622205349) do
     t.integer  "category",     limit: 4
     t.integer  "project_type", limit: 4
     t.string   "dossier",      limit: 255
+    t.string   "dossier_url",  limit: 255
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160622205349) do
 
   add_index "terms", ["councilor_id"], name: "index_terms_on_councilor_id", using: :btree
   add_index "terms", ["district_id"], name: "index_terms_on_district_id", using: :btree
+  add_index "terms", ["political_party_id"], name: "index_terms_on_political_party_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "roles",                  limit: 4

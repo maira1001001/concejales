@@ -4,14 +4,7 @@
   <%= f.input :name %>
   <%= f.input :last_name %>
   <%= f.association :current_district, as: :select2, collection: District.all %>
-  <%= f.simple_fields_for :participation do |p| %>
-    <%= p.simple_fields_for :term do |t| %>
-      <%= t.input :start_date %>
-    <% end %>
-  <% end %>
-
-  <div class="form-inputs">
-  </div>
+  <%= f.input :photo %>
 
   <div class="form-actions">
     <%= f.button :submit %>

@@ -7,6 +7,7 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :category
       t.integer :project_type
       t.string :dossier
+      t.string :dossier_url
 
       t.timestamps null: false
     end
