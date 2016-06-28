@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :lockable,
     :timeoutable, :confirmable, :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
-  belongs_to :person
+  belongs_to :person, dependent: :destroy
 
   accepts_nested_attributes_for :person
 
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def personal_data_completed?
-    person.current_district.present? && person.current_term.present?
+    person.principal_data_completed?
   end
 
   private

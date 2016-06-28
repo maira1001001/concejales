@@ -1,0 +1,13 @@
+es:
+  ransack:
+    global:
+      apply_filter: 'Aplicar Filtro'
+      clear_filters: 'Limpiar Filtros Aplicados'
+    users:
+      labels:
+        name_or_last_name: 'Nombre del Usuario'
+      placeholders:
+        name_or_last_name: 'Buscar por nombre o apellido'
+
+
+

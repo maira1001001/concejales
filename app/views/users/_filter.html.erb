@@ -1,0 +1,27 @@
+<div class="collapse" id="collapse_search_form">
+  <%= search_form_for(@q) do |f| -%>
+    <div class="row">
+      <%= f.input :name_or_last_name_cont,
+        label: t('ransack.users.labels.name_or_last_name'),
+        placeholder: t('ransack.users.placeholders.name_or_last_name'),
+        wrapper_html: { class: 'col-md-4' } %>
+      <%= f.input :roles_eq, as: :enum,
+        label: t('activerecord.attributes.users.roles'),
+        wrapper_html: { class: 'col-md-4' } %>
+      <%= f.input :district_eq, as: :select2,
+        collection: District.all,
+        wrapper_html: { class: 'col-md-4' },
+        label: t('activerecord.attributes.person.current_district'),
+        opts_for_select2: {
+          allowClear: true,
+          placeholder: t('.search', default: t('global.index.search')) } %>
+  </div>
+  <div class="form-actions">
+    <%- if @q.conditions.any? %>
+      <%= link_to t('ransack.global.clears_filters'),
+        users_path(_reset: 'reset'), class: 'btn btn-default' %>
+    <% end -%>
+    <%= f.submit t('ransack.global.apply_filter'),  class: 'btn btn-default btn-primary' %>
+  </div>
+<% end %>
+</div>

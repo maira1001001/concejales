@@ -17,4 +17,8 @@ class Person < ActiveRecord::Base
     participation.current_term
   end
 
+  def principal_data_completed?
+    false
+  end
+
 end

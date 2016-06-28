@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save
-    respond_with @user
+    respond_with @user, location: :users
   end
 
   def update

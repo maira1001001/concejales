@@ -11,46 +11,46 @@ es:
         communication:  "Comunicación"
         document:       "Document"
       new_councilor:    "Nuevo Concejal"
-    projects:
+  projects:
+    index:
+      title: "Mis proyectos"
+    edit:
+      title: "Editar proyecto"
+    show:
+      title: "Detalles del proyecto"
+    new:
+      ordinance:      "Nueva Ordenanza"
+      decree:         "Nuevo Decreto"
+      resolution:     "Nueva Resolución"
+      communication:  "Nueva Comunicación"
+      document:       "Nuevo Documento"
+    actions:
+      new: "Nuevo projecto"
+      confirm_destroy: "¿Desea eliminar el projecto seleccionado?"
+  users:
+    index:
+      title: "Usuarios"
+    edit:
+      title: "Editar Usuario"
+    new:
+      title: "Nuevo Usuario"
+    show:
+      title: "Detalles del usuario"
+    roles:
+      admin:        "Admin"
+      colaborator:  "Colaborador"
+      councilor:    "Concejal"
+    actions:
+      new: "Nuevo Usuario"
+    sign_in:
+      title: "Iniciar Sesión"
+  people:
       index:
-        title: "Mis proyectos"
+        title: "Personas"
       edit:
-        title: "Editar proyecto"
-      show:
-        title: "Detalles del proyecto"
+        title: "Editar Persona"
       new:
-        ordinance:      "Nueva Ordenanza"
-        decree:         "Nuevo Decreto"
-        resolution:     "Nueva Resolución"
-        communication:  "Nueva Comunicación"
-        document:       "Nuevo Documento"
-      actions:
-        new: "Nuevo projecto"
-        confirm_destroy: "¿Desea eliminar el projecto seleccionado?"
-    users:
-      index:
-        title: "Usuarios"
-      edit:
-        title: "Editar Usuario"
-      new:
-        title: "Nuevo Usuario"
+        title: "Nueva Persona"
       show:
-        title: "Detalles del usuario"
-      roles:
-        admin:        "Admin"
-        colaborator:  "Colaborador"
-        councilor:    "Concejal"
-      actions:
-        new: "Nuevo Usuario"
-      sign_in:
-        title: "Iniciar Sesión"
-    people:
-        index:
-          title: "Personas"
-        edit:
-          title: "Editar Persona"
-        new:
-          title: "Nueva Persona"
-        show:
-          title: "Detalles de la Persona"
-  
+        title: "Detalles de la Persona"
+ 
