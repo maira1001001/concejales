@@ -3,16 +3,16 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   respond_to :html
 
   def show
-    confirmation_token_param = params[:confirmation_token]
-    @user = find_user_by_token(confirmation_token_param)
+    @original_token = params[:confirmation_token]
+    @user = find_user_by_token(@original_token)
     if @user.nil?
-      respond_with @user, location: -> { new_user_confirmation }
+      redirect_to new_user_confirmation, notice: 'Link inválido. Solicite nuevamente invitación al sistema.'
     elsif @user.confirmed?
       sign_out(@user)
-      redirect_to new_user_session_path, notice: 'Su cuenta ya fue confirmada'
+      redirect_to new_user_session_path, notice: 'Su cuenta ya fue confirmada.'
     else
-      unless confirmation_token_param == @user.confirmation_token
-        respond_with @user, location: :new_user_confirmation
+      unless @original_token == @user.confirmation_token
+        redirect_to new_user_confirmation, notice: 'Link inválido. Solicite nuevamente invitación al sistema.token inválido.'
       end
     end
   end
@@ -22,15 +22,15 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     digested_token = Devise.token_generator.digest(self, :confirmation_token, @original_token)
     @user = find_user_by_token(@original_token)
     if @user.nil?
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, notice: 'Inicie sesión para continuar.'
     else
       if @user.confirmed?
-        redirect_to new_user_session_path, notice: 'Su cuenta ya ha sido confirmada'
+        redirect_to new_user_session_path, notice: 'Su cuenta ya ha sido confirmada.'
       else
         if @user.update(user_confirmation_params)
           @user.confirm! #setear confirmation_token = nil
           @user.update(status: :enable)
-          redirect_to new_user_session_path, notice: 'Su cuenta fue activada'
+          redirect_to new_user_session_path, notice: 'Su cuenta fue activada.'
         else
           respond_with @user,
             location: -> { user_confirmation_path(confirmation_token: @original_token) },
@@ -38,6 +38,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
         end
       end
     end
+
   end
 
   private
