@@ -19,6 +19,7 @@ class Person < ActiveRecord::Base
 
   def principal_data_completed?
     false
+#    name.present? && last_name.present? && current_term.present?
   end
 
 end

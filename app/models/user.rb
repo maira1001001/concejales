@@ -7,21 +7,27 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :person
 
   enum status: [:pending_invitation, :enable, :disable]
-
-  enum roles: %i(admin councilor)
+  enum roles: %i(admin councilor collaborator)
 
   after_initialize :set_person
 
   validates :email, :roles, presence: true
-
   validates :email, uniqueness: true
-
   validates_associated :person, on: :create
 
   scope :all_without_current, -> (current_user) { where.not(id: current_user ) }
 
   validates_with PasswordValidator, on: :update
 
+  def save
+    unless admin?
+      participation = Participation.new
+      participation.person = person
+      participation.role = roles
+      participation.save
+    end
+    super
+  end
 
   def full_name
     person

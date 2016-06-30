@@ -1,12 +1,3 @@
---
--- Estructura de tabla para la tabla `cities`
---
-
-
---
--- Volcado de datos para la tabla `cities`
---
-
 INSERT INTO `districts` (`id`, `name`) VALUES
 (460, 'FLORIDA'),
 (461, 'VILLA MARTELLI'),

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :people, path: 'personas'
 
-  get 'mis-asesores', to: 'persons#my_collaborators', as: :my_collaborators
+  get 'mi-equipo', to: 'terms#my_term', as: :my_term
 
   get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 

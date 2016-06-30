@@ -28,8 +28,8 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
         redirect_to new_user_session_path, notice: 'Su cuenta ya ha sido confirmada.'
       else
         if @user.update(user_confirmation_params)
-          @user.confirm! #setear confirmation_token = nil
-          @user.update(status: :enable)
+          @user.confirm!
+          @user.update(status: :enable, confirmation_token: nil)
           redirect_to new_user_session_path, notice: 'Su cuenta fue activada.'
         else
           respond_with @user,

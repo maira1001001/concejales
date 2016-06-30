@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627202435) do
+ActiveRecord::Schema.define(version: 20160630003606) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160627202435) do
 
   create_table "participations", force: :cascade do |t|
     t.integer "role",      limit: 4
-    t.integer "status",    limit: 4
+    t.integer "status",    limit: 4, default: 0
     t.integer "person_id", limit: 4
     t.integer "term_id",   limit: 4
   end
@@ -31,16 +31,17 @@ ActiveRecord::Schema.define(version: 20160627202435) do
   add_index "participations", ["term_id"], name: "index_participations_on_term_id", using: :btree
 
   create_table "people", force: :cascade do |t|
-    t.string   "name",                limit: 255
-    t.string   "last_name",           limit: 255
-    t.string   "photo",               limit: 255
-    t.string   "type",                limit: 255
-    t.integer  "current_district_id", limit: 4
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "name",                       limit: 255
+    t.string   "last_name",                  limit: 255
+    t.string   "type",                       limit: 255
+    t.integer  "current_district_id",        limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "current_political_party_id", limit: 4
   end
 
   add_index "people", ["current_district_id"], name: "index_people_on_current_district_id", using: :btree
+  add_index "people", ["current_political_party_id"], name: "index_people_on_current_political_party_id", using: :btree
 
   create_table "political_parties", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 20160627202435) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "people", "districts", column: "current_district_id"
+  add_foreign_key "people", "political_parties", column: "current_political_party_id"
   add_foreign_key "project_files", "projects"
   add_foreign_key "terms", "participations", column: "councilor_id"
   add_foreign_key "users", "people"
