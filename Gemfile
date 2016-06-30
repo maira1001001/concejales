@@ -25,6 +25,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-select2', '~> 3.5.2'
 end
 
+#Avatar: photo
+gem 'gravatarify', '~> 3.1', '>= 3.1.1'
+
 gem 'jquery-ui-rails'
 gem 'modernizr-rails'
 

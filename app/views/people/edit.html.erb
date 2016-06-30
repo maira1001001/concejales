@@ -1,16 +1,11 @@
 <div class="page-header">
-  <div class="row">
-    <div class="col-md-6">
-      <h1><%= t '.title', default: t('global.edit.title') %></h1>
-    </div>
-    <div class="col-md-6">
-      <div class="header-actions">
-        <%= link_to icon('chevron-left'), root_path, class: 'btn btn-default', data: { toggle: 'tooltip', container: 'body' }, title: t('.back', default: t('global.actions.back')) %>
-        <%= link_to icon('eye-open'), @person, class: 'btn btn-default', data: { toggle: 'tooltip', container: 'body' }, title: t('.show', default: t('global.actions.show')) %>
-      </div>
-    </div>
-  </div>
+  <%= link_to users_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
 </div>
+
 <div class="alert alert-info" role="alert">
   Lo primero que debe realizar en el sistema, es completar el formulario con sus  datos personales y sus datos laborales
 </div>

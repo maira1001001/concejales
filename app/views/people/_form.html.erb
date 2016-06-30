@@ -1,12 +1,24 @@
 <%= simple_form_for(@person) do |f| %>
   <%= f.error_notification %>
-
-  <%= f.input :name %>
-  <%= f.input :last_name %>
-  <%= f.association :current_district, as: :select2, collection: District.all %>
-  <%= f.input :photo %>
+  <div class="row">
+    <%= f.input :name, wrapper_html: { class: 'col-md-6' } %>
+    <%= f.input :last_name, wrapper_html: { class: 'col-md-6' } %>
+  </div>
+  <div class="row">
+    <%= f.association :current_district, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-6' } %>
+    <div class="col-md-6">
+      <div class="col-md-3">
+        <%= gravatar_tag current_user.email, size: 100 %>
+      </div>
+      <div class="col-md-3">
+        <span><%= t("people.form.help.gravatar").html_safe %></span>
+      </div>
+    </div>
+  </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.button :submit, class: 'btn btn-success',
+      value: t('.submit', default: t('global.form.actions.submit')) %>
+</div>
+
 <% end %>

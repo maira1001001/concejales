@@ -39,11 +39,11 @@ class PeopleController < ApplicationController
   end
 
   private
-    def set_person
-      @person = Person.find(params[:id])
-    end
+  def set_person
+    @person = Person.find(params[:id])
+  end
 
-    def person_params
-      params[:person]
-    end
+  def person_params
+    params.require(:person).permit(:name, :last_name, :current_district)
+  end
 end

@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
 
   validates_with PasswordValidator, on: :update
 
+
+  def full_name
+    person
+  end
+
   def active_for_authentication?
     super && enable?
   end

@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :projects, path: 'proyectos',
     path_names: { new: 'nuevo', edit: 'editar', show: 'detalles' }
 
-  resources :collaborators, path: 'asesores'
-  resources :councilors,    path: 'concejales'
-  resources :people,        path: 'personas'
+  resources :people, path: 'personas'
+
+  get 'mis-asesores', to: 'persons#my_collaborators', as: :my_collaborators
 
   get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 

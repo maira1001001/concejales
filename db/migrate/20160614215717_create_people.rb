@@ -3,7 +3,6 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name
       t.string :last_name
-      t.string :photo
       t.string :type
 
       t.belongs_to :current_district, index: true

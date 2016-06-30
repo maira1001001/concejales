@@ -1,4 +1,5 @@
 require "application_responder"
+require "gravatarify"
 
 class ApplicationController < ActionController::Base
 

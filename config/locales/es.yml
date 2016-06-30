@@ -10,7 +10,8 @@ es:
         resolution:     "Resolución"
         communication:  "Comunicación"
         document:       "Document"
-      new_councilor:    "Nuevo Concejal"
+      profile: "Perfil"
+      sign_out: "Cerrar Sesión"
   projects:
     index:
       title: "Mis proyectos"
@@ -48,9 +49,13 @@ es:
       index:
         title: "Personas"
       edit:
-        title: "Editar Persona"
+        title: "Datos del Perfil"
       new:
         title: "Nueva Persona"
       show:
         title: "Detalles de la Persona"
+      form:
+        help:
+          gravatar:  Puede cambiar su foto a través de <a href="http://gravatar.com">gravatar.com</a>
+
  
