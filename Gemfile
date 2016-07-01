@@ -25,6 +25,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-select2', '~> 3.5.2'
 end
 
+# Datepicker with bootstrap
+gem 'momentjs-rails',                  '~> 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+
 #Avatar: photo
 gem 'gravatarify', '~> 3.1', '>= 3.1.1'
 

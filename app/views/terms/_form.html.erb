@@ -1,0 +1,18 @@
+<%= simple_form_for(:term) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <%= f.input :district, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :political_party, as: :select2, collection: PoliticalParty.all, wrapper_html: { class:' col-md-4' }%> 
+  </div>
+  <div class="row">
+    <%= f.input :start_date, as: :date_picker, wrapper_html: { class: 'col-md-3' } %>
+    <%= f.input :end_date, as: :date_picker, wrapper_html: { class: 'col-md-3' } %>
+  </div>
+
+<div class="form-actions">
+  <%= f.button :submit, class: 'btn btn-success',
+    value: t('.submit', default: t('global.form.actions.submit')) %>
+  </div>
+
+<% end %>
+

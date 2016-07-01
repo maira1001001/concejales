@@ -3,52 +3,46 @@ class TermsController < ApplicationController
 
   respond_to  :html
 
-  def my_term
-    @participation = Participation.my_participation(current_user.person)
-    @term = Term.my_term(@participation)
-    render 'index'
-  end
-
   def show
   end
 
+  ##TODO : asi no se crea. se crea como @term.build_councilor ....
   def new
-    @project = Project.new(project_type: params[:project_type])
-    @project.project_files.build
+    @term = Term.new
+    @term.build_district
+    @term.build_political_party
+    participation = Participation.new(person: current_user.person, role: 'councilor')
+    @term.councilor = participation
   end
 
   def edit
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.save
-    respond_with @project
+    @term = Term.new(term_params)
+    @term.save
+    respond_with @term
   end
 
   def update
-    @project.update(project_params)
-    respond_with @project
+    @term.update(term_params)
+    respond_with @term
   end
 
   def destroy
-    @project.destroy
-    respond_with @project
+    @term.destroy
+    respond_with @term
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_project
-    @project = Project.find(params[:id])
+  def set_term
+    @term = Term.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def project_params
-    params.require(:project).permit(:title,
-                                    :description,
-                                    :category,
-                                    :project_type,
-                                    project_files_attributes: [ :id, :name, :attachment, :_destroy ] )
+  def term_params
+    params.require(:term).permit(:district, :political_party, :start_date, :end_date)
   end
 
 end

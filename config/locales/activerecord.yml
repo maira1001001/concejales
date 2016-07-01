@@ -7,7 +7,8 @@ es:
       project_files:      "Archivos"
       person:             "Person"
       district:           "Distrito"
-        ## ATTRIBUTES
+      term:               "Mandato"
+    ## ATTRIBUTES
     attributes:
       project:
         title:            "Título"
@@ -35,6 +36,11 @@ es:
         current_district:           "Distrito"
       district:
         name:               "Nombre del distrito"
+      term:
+        start_date:         "Inicio Mandato"
+        end_date:           "Fin Mandato"
+      political_party:
+        name:               "Partido Político"
     errors:
       messages:
         blank: "El campo no puede estar en blanco."

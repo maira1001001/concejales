@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to my_projects_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
+</div>
+
+  <div class="row">
+    <p> DATOS DEL MANDATO </p>
+    <dl class="dl-horizontal">
+      <dt><%= t 'activerecord.attributes.term.district' %></dt>
+      <dd><%= @term.district %></dd>
+
+      <dt><%= t 'activerecord.attributes.term.political_party' %></dt>
+      <dd><%= @term.political_party %></dd>
+
+      <dt><%= t 'activerecord.attributes.term.start_date' %></dt>
+      <dd><%= @term.start_date %></dd>
+
+      <dt><%= t 'activerecord.attributes.term.end_date' %></dt>
+      <dd><%= @term.end_date %></dd>
+    </dl>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p> DATOS DE LOS ASESORES</p>
+       
+    </div>
+    <div class="col-md-6">
+      <p> DATOS DE los proyectos publicados</p>
+    </div>
+  </div>
+
+

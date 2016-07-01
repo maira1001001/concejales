@@ -22,4 +22,8 @@ class Person < ActiveRecord::Base
 #    name.present? && last_name.present? && current_term.present?
   end
 
+  def has_participation?
+    participation.present?
+  end
+
 end

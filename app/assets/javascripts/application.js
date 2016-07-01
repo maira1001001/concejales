@@ -18,6 +18,9 @@
 //= require select2
 //= require select2/select2_locale_es
 //= require select2_simple_form
+//= require moment
+//= require moment/es
+//= require bootstrap-datetimepicker
 //= require jquery_nested_form
 //= require js-initializers
 //= require_tree .
