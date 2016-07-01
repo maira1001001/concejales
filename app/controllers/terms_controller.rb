@@ -6,13 +6,7 @@ class TermsController < ApplicationController
   def show
   end
 
-  ##TODO : asi no se crea. se crea como @term.build_councilor ....
   def new
-    @term = Term.new
-    @term.build_district
-    @term.build_political_party
-    participation = Participation.new(person: current_user.person, role: 'councilor')
-    @term.councilor = participation
   end
 
   def edit
@@ -20,6 +14,7 @@ class TermsController < ApplicationController
 
   def create
     @term = Term.new(term_params)
+    @term.build_councilor(person: Person.find_by user: current_user)
     @term.save
     respond_with @term
   end
