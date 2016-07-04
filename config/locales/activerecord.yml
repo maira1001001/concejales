@@ -39,6 +39,9 @@ es:
       term:
         start_date:         "Inicio Mandato"
         end_date:           "Fin Mandato"
+        section_id:         "Section"
+        district_id:        "Districto"
+        political_party_id: "Partido Político"
       political_party:
         name:               "Partido Político"
     errors:

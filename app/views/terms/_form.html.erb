@@ -1,8 +1,9 @@
-<%= simple_form_for(:term) do |f| %>
+<%= simple_form_for(@term, url: term_path) do |f| %>
   <%= f.error_notification %>
   <div class="row">
-    <%= f.input :district, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-4'  }  %>
-    <%= f.input :political_party, as: :select2, collection: PoliticalParty.all, wrapper_html: { class:' col-md-4' }%> 
+    <%= f.input :section_id, as: :select2, collection: Section.all, wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :district_id, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-4'  }  %>
+    <%= f.input :political_party_id, as: :select2, collection: PoliticalParty.all, wrapper_html: { class:' col-md-4' }%> 
   </div>
   <div class="row">
     <%= f.input :start_date, as: :date_picker, wrapper_html: { class: 'col-md-3' } %>
