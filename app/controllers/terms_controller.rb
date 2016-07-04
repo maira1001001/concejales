@@ -1,6 +1,6 @@
 class TermsController < ApplicationController
-  before_action :set_term, only: [:show, :edit, :update, :destroy]
-  before_action :has_participation
+  before_action :set_term, only: [:show, :update, :destroy]
+  before_action :has_term?, only: :edit
 
   respond_to  :html
 
@@ -8,6 +8,7 @@ class TermsController < ApplicationController
   end
 
   def new
+    @term = Term.new
   end
 
   def edit
@@ -15,7 +16,7 @@ class TermsController < ApplicationController
 
   def create
     @term = Term.new(term_params)
-    @term.build_councilor(person: Person.find_by user: current_user)
+    @term.build_councilor(person: current_user.person)
     @term.save
     respond_with @term
   end
@@ -32,12 +33,12 @@ class TermsController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_term
-    @term = Term.find(params[:id])
+  def has_term?
+    redirect_to new_term_path unless false # current_user.person.belongs_to_term?
   end
 
-  def has_participation?
-    redirect_to term_path(@term) if councilor.has_participation?
+  def set_term
+    @term = Term.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
