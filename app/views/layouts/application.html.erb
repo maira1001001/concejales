@@ -20,14 +20,10 @@
   </head>
   <body>
 
-    <div class="mdl-layout__container has-scrolling-header">
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-tabs is-upgraded" data-upgraded=",MaterialLayout">
-        <%= render 'navbar' %>
-        <%= render 'flashes' %>
-        <div id="content" class="container">
-          <%= yield -%>
-        </div>
-      </div>
+    <%= render 'navbar' %>
+    <%= render 'flashes' %>
+    <div id="content" class="container">
+      <%= yield -%>
     </div>
   </body>
 </html>
