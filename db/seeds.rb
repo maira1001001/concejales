@@ -16,3 +16,8 @@ Section.create([
   {name: "Seccion VII"},
   {name: "Seccion VIII"}
 ])
+
+PoliticalParty.create([
+  {name: "FPV"},
+  {name: "Frente Social"}
+])

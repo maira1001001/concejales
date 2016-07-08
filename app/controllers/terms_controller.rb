@@ -1,6 +1,6 @@
 class TermsController < ApplicationController
+  before_action :has_term?, only: :show
   before_action :set_term, only: [:show, :update, :destroy]
-  before_action :has_term?, only: :edit
 #  before_action :set_term, only: [:edit, :update, :destroy]
 #  before_action :has_participation?
 
@@ -11,6 +11,7 @@ class TermsController < ApplicationController
 
   def new
     @term = Term.new
+    @term.build_councilor(person: current_user.person)
   end
 
   def edit
@@ -18,7 +19,6 @@ class TermsController < ApplicationController
 
   def create
     @term = Term.new(term_params)
-    @term.build_councilor(person: current_user.person)
     @term.save
     respond_with @term
   end
@@ -44,7 +44,7 @@ class TermsController < ApplicationController
   end
 
   def term_params
-    params.require(:term).permit(:section, :district, :political_party, :start_date, :end_date)
+    params.require(:term).permit(:district_id, :political_party_id, :start_date, :end_date)
   end
 
 end

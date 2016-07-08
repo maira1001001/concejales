@@ -9,31 +9,31 @@ gem 'pg', '~> 0.18.4'
 gem 'rails_12factor', group: :production
 
 #--- ASSETS
-gem 'sprockets'
-gem 'sass-rails'
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
-gem 'bootstrap-generators'
-gem 'uglifier'
-gem 'jquery-rails'
-gem 'turbolinks'
+gem 'sprockets',              '~> 3.6.3'
+gem 'sass-rails',             '~> 5.0.5'
+gem 'bootstrap-sass',         '~> 3.3.6'
+gem 'autoprefixer-rails',     '~> 6.3.7'
+gem 'bootstrap-generators',   '~> 3.3.4'
+gem 'uglifier',               '>= 1.3.0'
+gem 'jquery-rails',           '~> 4.1.1'
+gem 'turbolinks',             '~> 2.5.3'
 
 #--- Rails Assets Group -------
 source 'https://rails-assets.org' do
-  gem 'rails-assets-jquery'
-  gem 'rails-assets-jquery-ujs'
-  gem 'rails-assets-select2', '~> 3.5.2'
+  gem 'rails-assets-jquery',        '~> 1.11'
+  gem 'rails-assets-jquery-ujs',    '~> 1.0'
+  gem 'rails-assets-select2',       '~> 3.5.2'
 end
 
 # Datepicker with bootstrap
-gem 'momentjs-rails',                  '~> 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+gem 'momentjs-rails',                     '~> 2.9.0'
+gem 'bootstrap3-datetimepicker-rails',    '~> 4.7.14'
 
 #Avatar: photo
 gem 'gravatarify', '~> 3.1', '>= 3.1.1'
 
-gem 'jquery-ui-rails'
-gem 'modernizr-rails'
+gem 'jquery-ui-rails',    '~> 5.0.5'
+gem 'modernizr-rails',    '~> 2.7', '>= 2.7.1' 
 
 #Initialize JavaScript
 gem 'js-initializers'

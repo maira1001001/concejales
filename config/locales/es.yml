@@ -62,5 +62,7 @@ es:
   terms:
     new:
       title: "Nuevo Mandato"
+    form:
+      in_function: "Ejerce el cargo actualmente"
 
  
