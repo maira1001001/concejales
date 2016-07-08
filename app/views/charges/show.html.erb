@@ -1,0 +1,35 @@
+<div class="page-header">
+  <%= link_to my_projects_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
+</div>
+
+  <div class="row">
+    <p> DATOS DEL CARGO PUBLICO </p>
+    <dl class="dl-horizontal">
+      <dt><%= t 'activerecord.attributes.charge.district' %></dt>
+      <dd><%= @charge.district %></dd>
+
+      <dt><%= t 'activerecord.attributes.charge.political_party' %></dt>
+      <dd><%= @charge.political_party %></dd>
+
+      <dt><%= t 'activerecord.attributes.charge.start_date' %></dt>
+      <dd><%= @charge.start_date %></dd>
+
+      <dt><%= t 'activerecord.attributes.charge.end_date' %></dt>
+      <dd><%= @charge.end_date %></dd>
+    </dl>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p> DATOS DE LOS ASESORES</p>
+       
+    </div>
+    <div class="col-md-6">
+      <p> DATOS DE los proyectos publicados</p>
+    </div>
+  </div>
+
+

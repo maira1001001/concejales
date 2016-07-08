@@ -1,6 +1,6 @@
 class Charge < ActiveRecord::Base
-  has_one    :councilor, -> { councilor }, class_name: 'Participation', foreign_key: 'charge_id', autosave: true
-  has_many   :collaborators, -> { collaborator }, class_name: 'Participation', foreign_key: 'charge_id', autosave: true
+  has_one    :councilor, -> { councilor }, class_name: 'Participation', foreign_key: 'charge_id'
+  has_many   :collaborators, -> { collaborator }, class_name: 'Participation', foreign_key: 'charge_id'
   belongs_to :section
   belongs_to :district
   belongs_to :political_party

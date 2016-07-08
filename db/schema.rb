@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20160703022713) do
   end
 
   create_table "participations", force: :cascade do |t|
-    t.integer "role",       limit: 4
-    t.integer "status",     limit: 4, default: 0
-    t.integer "person_id",  limit: 4
-    t.integer "charges_id", limit: 4
+    t.integer "role",      limit: 4
+    t.integer "status",    limit: 4, default: 0
+    t.integer "person_id", limit: 4
+    t.integer "charge_id", limit: 4
   end
 
-  add_index "participations", ["charges_id"], name: "index_participations_on_charges_id", using: :btree
+  add_index "participations", ["charge_id"], name: "index_participations_on_charge_id", using: :btree
   add_index "participations", ["person_id"], name: "index_participations_on_person_id", using: :btree
 
   create_table "people", force: :cascade do |t|

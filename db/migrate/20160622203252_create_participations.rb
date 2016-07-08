@@ -4,7 +4,7 @@ class CreateParticipations < ActiveRecord::Migration
       t.integer :role
       t.integer :status, default: 0
       t.belongs_to :person, index: true
-      t.belongs_to :charges,   index: true
+      t.belongs_to :charge, index: true
     end
   end
 end

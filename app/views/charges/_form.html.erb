@@ -1,4 +1,4 @@
-<%= simple_form_for(@term, url: term_path) do |f| %>
+<%= simple_form_for(@charge, url: charge_path) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :district_id, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-6'  }  %>
@@ -15,7 +15,7 @@
         input_html: { disabled: false, class: 'input-end-date'  } %>
     <% end %>
     <%= f.input :in_function, input_html: { class: 'check-end-date'  } %>  
-    <small><%= t('terms.form.in_function') %></small>
+    <small><%= t('charges.form.in_function') %></small>
   </div>
 
   <div class="form-actions">

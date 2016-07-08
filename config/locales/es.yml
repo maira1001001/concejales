@@ -59,7 +59,7 @@ es:
       form:
         help:
           gravatar:  Puede cambiar su foto a través de <a href="http://gravatar.com">gravatar.com</a>
-  terms:
+  charges:
     new:
       title: "Nuevo Mandato"
     form:
