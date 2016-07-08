@@ -9,6 +9,13 @@
       <%= f.input :description, wrapper_html: { class: 'col-md-4' } %>
       <%= f.input :category, as: :enum, wrapper_html: { class: 'col-md-4' } %>
     </div>
+    <div class="row">
+      <%= f.input :dossier, wrapper_html: { class: 'col-md-4' } %>
+      <%= f.input :dossier_url, wrapper_html: { class: 'col-md-8' } %>
+      <div class="alert alert-info">
+        <p><%= t 'projects.form.dossier_legend' %></p>
+      </div>
+    </div>
     <%= f.simple_fields_for :project_files do |b| %>
       <div class="row">
         <%= b.input :name, wrapper_html: { class: 'col-md-5' } %>
@@ -25,7 +32,7 @@
     <% end %>
 
 
-    <%= f.link_to_add icon('plus'), :project_files, class: 'btn btn-success',
+    <%= f.link_to_add icon('plus'), :project_files, class: 'btn btn-success btn-xs',
       title: t('global.tooltip.add'), data: { toggle:'tooltip', placement:'right'  } %>
 
     <div class="form-actions">

@@ -18,37 +18,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//VERSION DE PRUEBA
+.trivial-version {
+    background-color: #d41454;
+    text-align: right;
+    color: white;
+    padding: .25em .5em;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
 
-.navbar .navbar-nav > li > a {
-  padding-top: 2em!important;
-
+    i {
+      display: inline-block;
+      padding-left: .5em;
+      line-height: 1.4;
+    }
 }
 
-.navbar-default {
-  background-color: #005f61 !important;
-  border-color: #003f40;
-
-}
-
-.sub_title{ color: #696666;  }
-
-.contact-info{
-  font-size: 1.3em;
-  margin-bottom: 2px;
-
-}
-
-.contact-detail {
-  color: #005F61;
-  font-size: 0.97em;
-  margin-bottom: 1.5em;
-
-}
-
-.button-position {
-  top: 1.5em;
-
-}
+//
 
 
 // LOGIN

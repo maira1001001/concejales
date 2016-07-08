@@ -13,9 +13,9 @@ es:
       project:
         title:            "Título"
         description:      "Descripción"
-        dossier:          "Carátula"
+        dossier:          "N° expediente"
+        dossier_url:      "Url del expediente"
         category:         "Categoria"
-        dossier:          "Carátula"
         project_type:     "Tipo de proyecto"
         project_files:    "Archivos"
       user:
@@ -52,6 +52,10 @@ es:
           attributes:
             project_file:
               invalid: "Sólo se permiten archivo en formato ...COMPLETAR!! "
+        project_files:
+          attributes:
+            name:
+              taken: "El nombre del archivo ya fue elegido. (testear que el nombre tiene que se único por usuario)"
         user:
           attributes:
             email:

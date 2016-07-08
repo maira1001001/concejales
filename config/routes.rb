@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 
   resources :projects, path: 'proyectos',
-    path_names: { new: 'nuevo', edit: 'editar', show: 'detalles' }
+    path_names: { new: 'nuevo', edit: 'editar' }
 
   resources :people, path: 'personas'
 

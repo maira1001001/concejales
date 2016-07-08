@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy]
 
   respond_to  :html
 
@@ -15,9 +15,6 @@ class ProjectsController < ApplicationController
     render 'index'
   end
 
-  def show
-  end
-
   def new
     @project = Project.new(project_type: params[:project_type])
     @project.project_files.build
@@ -29,7 +26,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
-    respond_with @project
+    respond_with @project, location: -> { my_projects_path  }
   end
 
   def update

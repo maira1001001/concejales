@@ -13,3 +13,8 @@ mailer:
 
 registration_mailer:
   from_header: 'maira.diaz.73@gmail.com'
+
+
+version: development
+debug_mode: true
+

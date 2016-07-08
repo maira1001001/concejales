@@ -25,6 +25,8 @@ es:
       resolution:     "Nueva Resolución"
       communication:  "Nueva Comunicación"
       document:       "Nuevo Documento"
+    form:
+      dossier_legend: "El n° de expediente es para corroborar que el proyecto existe y fue presentado en el Concejo Deliberante. No es obligatorio completarlo. Para más detalles ... (continuar idea)"
     actions:
       new: "Nuevo projecto"
       confirm_destroy: "¿Desea eliminar el projecto seleccionado?"
