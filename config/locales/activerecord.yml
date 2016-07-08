@@ -37,8 +37,9 @@ es:
       district:
         name:               "Nombre del distrito"
       charge:
-        start_date:         "Inicio Mandato"
-        end_date:           "Fin Mandato"
+        start_date:         "Inicio Cargo Público"
+        end_date:           "Fin Cargo Público"
+        in_function:        "En función"
         district_id:        "Distrito"
         political_party_id: "Partido Político"
       political_party:

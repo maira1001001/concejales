@@ -61,7 +61,7 @@ es:
           gravatar:  Puede cambiar su foto a través de <a href="http://gravatar.com">gravatar.com</a>
   charges:
     new:
-      title: "Nuevo Mandato"
+      title: "Nuevo Cargo"
     form:
       in_function: "Ejerce el cargo actualmente"
 

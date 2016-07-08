@@ -1,4 +1,4 @@
-<%= simple_form_for(@charge, url: charge_path) do |f| %>
+<%= simple_form_for(@charge, url: charge_path, html: { class: 'charge-form' }) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :district_id, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-6'  }  %>
