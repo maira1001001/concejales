@@ -19,6 +19,7 @@ class ChargesController < ApplicationController
 
   def create
     @charge = Charge.new(charge_params)
+    @charge.councilor = Participation.new(person: current_user.person)
     @charge.save
     respond_with @charge
   end
@@ -44,7 +45,7 @@ class ChargesController < ApplicationController
   end
 
   def charge_params
-    params.require(:charge).permit(:district_id, :political_party_id, :start_date, :end_date)
+    params.require(:charge).permit(:district_id, :political_party_id, :start_date, :end_date, :in_function)
   end
 
 end
