@@ -1,6 +1,8 @@
 class TermsController < ApplicationController
   before_action :set_term, only: [:show, :update, :destroy]
   before_action :has_term?, only: :edit
+#  before_action :set_term, only: [:edit, :update, :destroy]
+#  before_action :has_participation?
 
   respond_to  :html
 
@@ -32,16 +34,15 @@ class TermsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def has_term?
-    redirect_to new_term_path unless false # current_user.person.belongs_to_term?
+    redirect_to new_term_path unless current_user.person.belongs_to_term?
   end
 
   def set_term
     @term = Term.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def term_params
     params.require(:term).permit(:section, :district, :political_party, :start_date, :end_date)
   end

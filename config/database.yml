@@ -1,11 +1,10 @@
 development:
-
   database: concejales_development
   adapter: mysql2
   encoding: utf8
   pool: 5
   username: root
-  password: 
+  password: root
   host: localhost
 
 

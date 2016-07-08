@@ -1,15 +1,11 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_person, only: [:edit, :update, :destroy]
 
   respond_to :html
 
   def index
     @people = Person.all
     respond_with(@people)
-  end
-
-  def show
-    respond_with(@person)
   end
 
   def new
@@ -30,7 +26,7 @@ class PeopleController < ApplicationController
 
   def update
     @person.update(person_params)
-    respond_with(@person)
+    redirect_to term_path
   end
 
   def destroy
@@ -44,6 +40,6 @@ class PeopleController < ApplicationController
   end
 
   def person_params
-    params.require(:person).permit(:name, :last_name, :current_district)
+    params.require(:person).permit(:name, :last_name, :current_district_id)
   end
 end

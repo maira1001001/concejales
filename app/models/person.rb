@@ -5,8 +5,8 @@ class Person < ActiveRecord::Base
 
   accepts_nested_attributes_for :participation
 
-  validates :name, :last_name, presence: true
-  validates_associated :current_district_id, :participation, presence: true, on: :update
+  validates :name, :last_name, :current_district_id, presence: true
+#  validates_associated :current_district_id, :participation, presence: true, on: :update
 
 
   def to_s
@@ -18,11 +18,10 @@ class Person < ActiveRecord::Base
   end
 
   def principal_data_completed?
-    false
-#    name.present? && last_name.present? && current_term.present?
+    name.present? && last_name.present? && current_term.present?
   end
 
-  def has_participation?
+  def belongs_to_term?
     participation.present?
   end
 
