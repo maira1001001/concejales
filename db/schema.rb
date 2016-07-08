@@ -13,6 +13,23 @@
 
 ActiveRecord::Schema.define(version: 20160703022713) do
 
+  create_table "charges", force: :cascade do |t|
+    t.integer  "district_id",        limit: 4
+    t.integer  "political_party_id", limit: 4
+    t.string   "start_date",         limit: 255
+    t.string   "end_date",           limit: 255
+    t.boolean  "in_function",                    default: true
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.integer  "councilor_id",       limit: 4
+    t.integer  "section_id",         limit: 4
+  end
+
+  add_index "charges", ["councilor_id"], name: "index_charges_on_councilor_id", using: :btree
+  add_index "charges", ["district_id"], name: "index_charges_on_district_id", using: :btree
+  add_index "charges", ["political_party_id"], name: "index_charges_on_political_party_id", using: :btree
+  add_index "charges", ["section_id"], name: "index_charges_on_section_id", using: :btree
+
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "website",    limit: 255
@@ -21,14 +38,14 @@ ActiveRecord::Schema.define(version: 20160703022713) do
   end
 
   create_table "participations", force: :cascade do |t|
-    t.integer "role",      limit: 4
-    t.integer "status",    limit: 4, default: 0
-    t.integer "person_id", limit: 4
-    t.integer "term_id",   limit: 4
+    t.integer "role",       limit: 4
+    t.integer "status",     limit: 4, default: 0
+    t.integer "person_id",  limit: 4
+    t.integer "charges_id", limit: 4
   end
 
+  add_index "participations", ["charges_id"], name: "index_participations_on_charges_id", using: :btree
   add_index "participations", ["person_id"], name: "index_participations_on_person_id", using: :btree
-  add_index "participations", ["term_id"], name: "index_participations_on_term_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "name",                       limit: 255
@@ -76,22 +93,6 @@ ActiveRecord::Schema.define(version: 20160703022713) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "terms", force: :cascade do |t|
-    t.integer  "district_id",        limit: 4
-    t.integer  "political_party_id", limit: 4
-    t.string   "start_date",         limit: 255
-    t.string   "end_date",           limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "councilor_id",       limit: 4
-    t.integer  "section_id",         limit: 4
-  end
-
-  add_index "terms", ["councilor_id"], name: "index_terms_on_councilor_id", using: :btree
-  add_index "terms", ["district_id"], name: "index_terms_on_district_id", using: :btree
-  add_index "terms", ["political_party_id"], name: "index_terms_on_political_party_id", using: :btree
-  add_index "terms", ["section_id"], name: "index_terms_on_section_id", using: :btree
-
   create_table "users", force: :cascade do |t|
     t.integer  "roles",                  limit: 4
     t.integer  "status",                 limit: 4,   default: 0
@@ -124,10 +125,10 @@ ActiveRecord::Schema.define(version: 20160703022713) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "charges", "participations", column: "councilor_id"
+  add_foreign_key "charges", "sections"
   add_foreign_key "people", "districts", column: "current_district_id"
   add_foreign_key "people", "political_parties", column: "current_political_party_id"
   add_foreign_key "project_files", "projects"
-  add_foreign_key "terms", "participations", column: "councilor_id"
-  add_foreign_key "terms", "sections"
   add_foreign_key "users", "people"
 end

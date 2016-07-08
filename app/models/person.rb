@@ -13,15 +13,15 @@ class Person < ActiveRecord::Base
     "#{last_name}, #{name}"
   end
 
-  def current_term
-    participation.current_term
+  def current_charge
+    participation.current_charge
   end
 
   def principal_data_completed?
-    name.present? && last_name.present? && current_term.present?
+    name.present? && last_name.present? && current_charge.present?
   end
 
-  def belongs_to_term?
+  def belongs_to_charge?
     participation.present?
   end
 

@@ -12,11 +12,11 @@ class ParticipationsController < ApplicationController
 
   def new
     @participation = Participation.new
-    @participation.build_term
+    @participation.build_charge
   end
 
   def edit
-    @participation.build_term
+    @participation.build_charge
   end
 
   def create

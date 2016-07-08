@@ -1,5 +1,5 @@
 class District < ActiveRecord::Base
-  has_many :terms
+  has_many :charges
 
   def to_s
     name

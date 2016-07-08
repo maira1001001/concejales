@@ -1,3 +1,3 @@
 class Section < ActiveRecord::Base
-  has_many :terms
+  has_many :charges
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :people, path: 'personas'
 
 
-  resource :term, path: 'mi-equipo'
+  resource :charge, path: 'mi-equipo'
 
   get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 
