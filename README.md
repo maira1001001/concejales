@@ -1,4 +1,3 @@
-== README
 
 ## Inicializar la Aplicación:
 
@@ -7,5 +6,7 @@
 ## Abriendo la aplicación:
 
 * Inicio de sesión:
-> usuario: concejales-bsas@yopmail.com
-> contraseña: 77777777  (8 veces 7)
+ 
+usuario: `concejales-bsas@yopmail.com`
+
+contraseña: `77777777`  (8 veces 7)
