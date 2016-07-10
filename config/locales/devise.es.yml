@@ -49,11 +49,17 @@ es:
       failure: "No se pudo autenticarlo desde %{kind} porque aun no esta registrado en el sitio o el mail con el que se registro no coincide con el de su cuenta de %{kind}."
       success: "Autenticado satisfactoriamente con la cuenta %{kind}."
     passwords:
-      title: "Cambio de contraseña"
-      password_label: "Nueva contraseña" 
-      new_password_label: "Confirme la contraseña"
-      hint: "%{length} caracteres mínimo"
-      change_password: "Cambiar contraseña"
+      new:
+        title: "Cambio de contraseña"
+        sub_title: "Usted recibirá un correo electrónico con instrucciones sobre cómo restablecer la contraseña en pocos minutos."
+        submit: "Restablecer contraseña"
+      edit:
+        title:      "Cambio de contraseña"
+        sub_title:  "Ingrese una nueva contraseña para su cuenta"
+        password_label: "Nueva contraseña" 
+        new_password_label: "Confirme la contraseña"
+        hint: "%{length} caracteres mínimo"
+        change_password: "Cambiar contraseña"
       no_token: "No puede acceder a esta página sin venir de un correo electrónico de restablecimiento de contraseña. Si vienes de un correo electrónico de restablecimiento de contraseña, por favor asegúrese de que ha utilizado la URL proporcionada completa."
       send_instructions: "Usted recibirá un correo electrónico con instrucciones sobre cómo restablecer la contraseña en pocos minutos."
       send_paranoid_instructions: "Si existe su dirección de correo electrónico en nuestra base de datos, usted recibirá un enlace de recuperación de contraseña a su dirección de correo electrónico en pocos minutos."
@@ -85,10 +91,17 @@ es:
       failure:
         not_approved: "Su cuenta aun no fue habilitada."
     sessions:
+      new:
+        title: "Iniciar Sesión"
+        submit: "Iniciar sesión"
       signed_in: "Sesión iniciada satisfactoriamente."
       signed_out: "Sesión cerrada satisfactoriamente."
       already_signed_out: "Sesión cerrada satisfactoriamente."
     unlocks:
+      new:
+        title:      "Reenvio instrucciones de desbloqueo"
+        sub_title:  "Usted recibirá un correo electrónico con instrucciones para desbloquear su cuenta en pocos minutos."
+        submit:     "Reenviar instrucciones"
       send_instructions: "Usted recibirá un correo electrónico con instrucciones para desbloquear su cuenta en pocos minutos."
       send_paranoid_instructions: "Si su cuenta, usted recibirá un correo electrónico con instrucciones sobre cómo desbloquearlo en pocos minutos."
       unlocked: "Su cuenta ha sido desbloqueado con éxito. Por favor inicie sesión para continuar."

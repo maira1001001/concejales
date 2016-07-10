@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :person
 
-  enum status: [:pending_invitation, :enable, :disable]
+  enum status: %i(pending_invitation enabled disabled)
   enum roles: %i(admin manager simple)
 
   after_initialize :set_person
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def active_for_authentication?
-    super && enable?
+    super && enabled?
   end
 
   def password_required?
@@ -58,6 +58,14 @@ class User < ActiveRecord::Base
 
   def personal_data_completed?
     person.principal_data_completed?
+  end
+
+  def enable
+    update_attribute(:status, 'enabled')
+  end
+
+  def disable
+    update_attribute(:status, 'disabled')
   end
 
   private

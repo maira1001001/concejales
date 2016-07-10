@@ -33,20 +33,23 @@ es:
   users:
     index:
       title: "Usuarios"
+      sub_title: "Listado de usuario que has invitado a participar al sistema"
+      tooltip:
+        disabled: "Deshabilitado (presione para habilitar)"
+        enabled: "Habilitado (presione para deshablitar)"
+        resend_invitation: "Reenviar email de invitación"
+      confirm:
+        disable: "Se deshabilitará al usuario %{email} y este no podrá publicar proyectos. ¿Está seguro que desea deshabilitarlo?"
+        enable:  "Se habilitará al usuario %{email} y podrá volver a publicar proyectos. ¿Está seguro que desea habilitarlo?"
+        resend_invitation: "Se enviará un email invitando nuevamente al usuario al sistema. ¿Desea enviarlo?"
     edit:
       title: "Editar Usuario"
     new:
       title: "Nuevo Usuario"
     show:
       title: "Detalles del usuario"
-    roles:
-      admin:        "Admin"
-      colaborator:  "Colaborador"
-      councilor:    "Concejal"
     actions:
       new: "Nuevo Usuario"
-    sign_in:
-      title: "Iniciar Sesión"
   people:
       index:
         title: "Personas"

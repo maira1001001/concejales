@@ -1,6 +1,5 @@
-<div class="page-header">
-  <h1><%= t '.title'  %></h1>
-</div>
+<%= render partial: 'page_header', locals: { title: t('users.index.title'), 
+                                             sub_title: t('users.index.sub_title')  } %>
 
 <div class="row">
   <div class="col-md-12">
@@ -17,7 +16,7 @@
         <th><%= t 'activerecord.attributes.person.full_name' %></th>
         <th><%= t 'activerecord.attributes.user.email' %></th>
         <th><%= t 'activerecord.attributes.person.current_district' %></th>
-        <th><%= t 'activerecord.attributes.status' %></th>
+        <th><%= t 'activerecord.attributes.user.status' %></th>
         <th><%= t 'global.index.actions'  %></th>
       </tr>
     </thead>
@@ -30,15 +29,18 @@
         <td><%= user.person.current_district %></td>
         <td><%= t_enum user, :status %></td>
         <td>
-          <%= link_to icon('search'), user,
-            title: t('global.actions.show') ,
-            data: { toggle: 'tooltip', placement: 'right' } %>
+          <%= render 'enabling_disabling', user: user -%>
           <%= link_to icon('pencil'), edit_user_path(user),
             title: t('global.actions.edit'),
             data: { toggle: 'tooltip', placement: 'right' } %>
           <%= link_to icon('trash'), user_path(user), method: :delete,
             title: t('global.actions.destroy'),
             data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
+          <% if user.pending_invitation? %>
+            <%= link_to icon('search'), user,
+              title: t('users.index.tooltip.resend_invitation') ,
+              data: { toggle: 'tooltip', placement: 'right' } %>
+          <% end %>
       </td>
     <% end %>
     </tbody>

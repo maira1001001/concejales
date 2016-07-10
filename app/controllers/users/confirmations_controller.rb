@@ -6,7 +6,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     @original_token = params[:confirmation_token]
     @user = find_user_by_token(@original_token)
     if @user.nil?
-      redirect_to new_user_confirmation, notice: 'Link inválido. Solicite nuevamente invitación al sistema.'
+      redirect_to new_user_confirmation_path, notice: 'Link inválido. Solicite nuevamente invitación al sistema.'
     elsif @user.confirmed?
       sign_out(@user)
       redirect_to new_user_session_path, notice: 'Su cuenta ya fue confirmada.'
@@ -29,7 +29,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       else
         if @user.update(user_confirmation_params)
           @user.confirm!
-          @user.update(status: :enable, confirmation_token: nil)
+          @user.update(status: :enable)
           redirect_to new_user_session_path, notice: 'Su cuenta fue activada.'
         else
           respond_with @user,

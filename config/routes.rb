@@ -19,6 +19,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { confirmations: "users/confirmations", sessions: "users/sessions", registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar'}
+  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar' } do
+    member do
+      post :disable,     path: 'deshabilitar'
+      post :enable,      path: 'habilitar'
+    end
+  end
 
 end
