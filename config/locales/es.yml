@@ -62,7 +62,13 @@ es:
   charges:
     new:
       title: "Nuevo Cargo"
+    show:
+      title:                "Datos del Concejal"
+      data_current_charge:  "Datos del cargo público"
+      data_collaborators:   "Datos de los asesores"
+      data_proyects:        "Datos de mis proyectos publicados"
     form:
       in_function: "Ejerce el cargo actualmente"
+
 
  

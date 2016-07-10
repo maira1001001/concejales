@@ -1,4 +1,9 @@
 module ApplicationHelper
+
+  def boolean(value)
+    value ? icon('ok') : icon('remove')
+  end
+
   def icon(name, attributes = nil)
     attributes ||= {}
     attributes[:class] = "#{attributes[:class]} glyphicon glyphicon-#{name}".strip

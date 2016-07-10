@@ -6,30 +6,85 @@
   <h1><%= t '.title' %></h1>
 </div>
 
-  <div class="row">
-    <p> DATOS DEL CARGO PUBLICO </p>
-    <dl class="dl-horizontal">
-      <dt><%= t 'activerecord.attributes.charge.district' %></dt>
-      <dd><%= @charge.district %></dd>
 
-      <dt><%= t 'activerecord.attributes.charge.political_party' %></dt>
-      <dd><%= @charge.political_party %></dd>
+<h3><%= t 'charges.show.data_current_charge' %></h3>
+<div class="row alert alert-info">
+  <dl class="dl-horizontal">
+    <dt><%= t 'activerecord.attributes.charge.district_id' %></dt>
+    <dd><%= @charge.district %></dd>
 
-      <dt><%= t 'activerecord.attributes.charge.start_date' %></dt>
-      <dd><%= @charge.start_date %></dd>
+    <dt><%= t 'activerecord.attributes.charge.political_party_id' %></dt>
+    <dd><%= @charge.political_party %></dd>
 
+    <dt><%= t 'activerecord.attributes.charge.start_date' %></dt>
+    <dd><%= @charge.start_date %></dd>
+
+    <% if @charge.in_function? %>
+      <dt><%= t 'activerecord.attributes.charge.in_function' %></dt>
+      <dd><%= boolean @charge.in_function %></dd>
+    <% else %>
       <dt><%= t 'activerecord.attributes.charge.end_date' %></dt>
       <dd><%= @charge.end_date %></dd>
-    </dl>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <p> DATOS DE LOS ASESORES</p>
-       
+    <% end %>
+  </dl>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h3><%= t 'charges.show.data_collaborators' %></h3>
+    <div class="row">
+      <div class="col-md-10">
+        buscador ransack
+      </div>
+      <div class="col-md-2">
+        <%= link_to new_projects_path, 'Invitar Asesor al Sistema', class: 'btn btn-small btn-primary' %>
+      </div>
     </div>
-    <div class="col-md-6">
-      <p> DATOS DE los proyectos publicados</p>
+    <div class="row">
+      <% if collaborators.blank? %>
+        <div class="alert alert-info">
+          Aún no ha invitado a ningún asesor al sistema. 
+        </div>
+      <% else %>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th><%= t 'activerecord.attributes.user.roles' %></th>
+                <th><%= t 'activerecord.attributes.person.full_name' %></th>
+                <th><%= t 'activerecord.attributes.user.email' %></th>
+                <th><%= t 'activerecord.attributes.person.current_district' %></th>
+                <th><%= t 'activerecord.attributes.status' %></th>
+                <th><%= t 'global.index.actions'  %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%= content_tag_for(:tr, @charge.collaborators) do |collaborator| %>
+                <td><%= t_enum collaborator, :roles %></td>
+                <td><%= collaborator.full_name %></td>
+                <td><%= collaborator.email %></td>
+                <td><%= collaborator.current_district %></td>
+                <td><%= t_enum user, :status %></td>
+                <td>
+                  <%= link_to icon('search'), user,
+                    title: t('global.actions.show') ,
+                    data: { toggle: 'tooltip', placement: 'right' } %>
+                  <%= link_to icon('pencil'), edit_user_path(user),
+                    title: t('global.actions.edit'),
+                    data: { toggle: 'tooltip', placement: 'right' } %>
+                  <%= link_to icon('trash'), user_path(user), method: :delete,
+                    title: t('global.actions.destroy'),
+                    data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
+              </td>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
     </div>
   </div>
+  <div class="col-md-6">
+    <h3><%= t 'charges.show.data_proyects' %></h3>
+  </div>
+</div>
 
 
