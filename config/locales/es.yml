@@ -20,6 +20,7 @@ es:
     show:
       title: "Detalles del proyecto"
     new:
+      title:          "Nuevo Proyecto"
       ordinance:      "Nueva Ordenanza"
       decree:         "Nuevo Decreto"
       resolution:     "Nueva Resolución"
@@ -66,10 +67,16 @@ es:
     new:
       title: "Nuevo Cargo"
     show:
-      title:                "Datos del Concejal"
-      data_current_charge:  "Datos del cargo público"
-      data_collaborators:   "Datos de los asesores"
-      data_proyects:        "Datos de mis proyectos publicados"
+      title:     "Mi equipo"
+      sub_title:  "Aquí encontrará la lista de sus asesores y de los proyectos que ha publicado."
+      current_charge:  "Cargo público"
+      collaborators:
+        title:      "Asesores"
+        new_collaborator: "Nuevo asesor"
+        empty_list: "Aún no ha invitado a ningún asesor al sistema."
+      projects:
+        title:      "Mis proyectos publicados"
+        empty_list: "Aún no ha publicado ningún proyecto."
     form:
       in_function: "Ejerce el cargo actualmente"
 

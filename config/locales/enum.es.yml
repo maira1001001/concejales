@@ -12,8 +12,10 @@ es:
         document:       "Documento"
     user:
       roles:
-        councilor: "Concejal"
-        admin:     "Admin"
+        admin:    "Administrador"
+        manager:  "Manager"
+        simple:   "Simple"
+        visitor:  "Visitante"
       status:
         enabled:     "Habilitado"
         disabled:    "Desabilitado"

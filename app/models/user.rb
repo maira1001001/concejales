@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :person
 
   enum status: %i(pending_invitation enabled disabled)
-  enum roles: %i(admin manager simple)
+  enum roles: %i(admin manager simple guest)
 
   after_initialize :set_person
 

@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :people, path: 'personas'
 
 
-  resource :charge, path: 'mi-equipo'
+  resource :charge, path: 'mi-equipo' do
+    member do
+      get 'nuevo-asesor', to: :new_collaborator, as: :new_collaborator
+      post 'invitar-asesor', to: :invite_collaborator, as: :invite_collaborator
+    end
+  end
 
   get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 

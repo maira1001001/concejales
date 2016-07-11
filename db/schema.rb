@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703022713) do
+ActiveRecord::Schema.define(version: 20160711010655) do
 
   create_table "charges", force: :cascade do |t|
     t.integer  "district_id",        limit: 4
@@ -85,7 +85,10 @@ ActiveRecord::Schema.define(version: 20160703022713) do
     t.string   "dossier_url",  limit: 255
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "charge_id",    limit: 4
   end
+
+  add_index "projects", ["charge_id"], name: "index_projects_on_charge_id", using: :btree
 
   create_table "sections", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -130,5 +133,6 @@ ActiveRecord::Schema.define(version: 20160703022713) do
   add_foreign_key "people", "districts", column: "current_district_id"
   add_foreign_key "people", "political_parties", column: "current_political_party_id"
   add_foreign_key "project_files", "projects"
+  add_foreign_key "projects", "charges"
   add_foreign_key "users", "people"
 end
