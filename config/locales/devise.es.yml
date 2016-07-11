@@ -110,7 +110,7 @@ es:
       already_confirmed: "Ya se confirmó, por favor intente iniciar sesión"
       confirmation_period_expired: "Debe ser confirmado %{period}, por favor solicitelo nuevamente"
       expired: "Expiró, por favor solicitelo nuevamente"
-      not_found: "No encontrado"
+      not_found: "Email no encontrado"
       not_locked: "No esta bloqueado"
       not_saved:
         one: "1 error prohibe que %{resource} sea guardado:"

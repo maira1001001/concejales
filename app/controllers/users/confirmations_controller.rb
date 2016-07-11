@@ -2,6 +2,14 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   respond_to :html
 
+  def create
+    @user = User.find_by(user_email_params)
+    if @user.nil?
+      notice = 'Si ingresó un email que se encontraba en el sistema, entonces recibirá en su casilla de email las instrucciones para confirmar su cuenta'
+    end
+    redirect_to new_user_session_path, notice: notice
+  end
+
   def show
     @original_token = params[:confirmation_token]
     @user = find_user_by_token(@original_token)
@@ -46,6 +54,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   def user_confirmation_params
     params.require(:user).permit(:confirmation_token, :password, :password_confirmation)
+  end
+
+  def user_email_params
+    params.require(:user).permit(:email)
   end
 
   def find_user_by_token(token)
