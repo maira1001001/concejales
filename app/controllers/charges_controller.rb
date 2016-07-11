@@ -34,6 +34,11 @@ class ChargesController < ApplicationController
     respond_with @charge
   end
 
+  def new_collaborator
+    ##TODO : ver si se puede reutilizar users/form
+    @user = User.new(roles: 'simple')
+  end
+
   private
 
   def has_charge?

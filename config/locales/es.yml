@@ -46,7 +46,7 @@ es:
     edit:
       title: "Editar Usuario"
     new:
-      title: "Nuevo Usuario"
+      title: "Nuevo %{user}"
     show:
       title: "Detalles del usuario"
     actions:
@@ -74,6 +74,9 @@ es:
         title:      "Asesores"
         new_collaborator: "Nuevo asesor"
         empty_list: "Aún no ha invitado a ningún asesor al sistema."
+        new:
+          title: "Nuevo Asesor"
+          sub_title: "Se enviará un email al asesor invitandolo a participar del sistema."
       projects:
         title:      "Mis proyectos publicados"
         empty_list: "Aún no ha publicado ningún proyecto."

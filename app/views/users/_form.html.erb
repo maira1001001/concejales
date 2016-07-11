@@ -11,7 +11,8 @@
     <%= f.simple_fields_for :person do |p| %>
       <%= p.input :name, wrapper_html: { class: 'col-md-4' }  %>
       <%= p.input :last_name, wrapper_html: { class: 'col-md-4' } %>
-      <%= p.input :current_district_id, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-4' } %>
+      <!-- p.input :current_district_id, as: :select2, collection: District.all,
+        wrapper_html: { class: 'col-md-4' } -->
     <% end %>
   </div>
 
