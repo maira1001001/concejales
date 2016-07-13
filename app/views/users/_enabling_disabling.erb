@@ -1,4 +1,4 @@
-<% if user.enabled? -%>
+<% if user.enabled? || user.pending_invitation? -%>
   <%= link_to(icon('ok-circle'), disable_user_path(user),
               method: :post,
               title: t('users.index.tooltip.enabled'),

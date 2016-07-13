@@ -37,7 +37,7 @@
             title: t('global.actions.destroy'),
             data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
           <% if user.pending_invitation? %>
-            <%= link_to icon('search'), user,
+            <%= link_to icon('share-alt'), user,
               title: t('users.index.tooltip.resend_invitation') ,
               data: { toggle: 'tooltip', placement: 'right' } %>
           <% end %>
