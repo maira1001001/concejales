@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   
 #  scope new_user_roles
 
-  before_save :set_role
+#  before_save :set_role
 
   after_initialize :set_person
 
