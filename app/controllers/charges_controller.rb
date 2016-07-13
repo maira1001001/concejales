@@ -39,6 +39,10 @@ class ChargesController < ApplicationController
     @user = User.new(roles: 'simple')
   end
 
+  def invite_collaborator
+    collaborator_params.merge(roles: 'simple')
+  end
+
   private
 
   def has_charge?
