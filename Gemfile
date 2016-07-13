@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-gem 'mysql2'
 gem 'pg', '~> 0.18.4'
 
 #  Heroku integration
@@ -75,6 +74,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'binding_of_caller'
+  gem 'mysql2'
 end
 
 group :development do
@@ -86,3 +86,4 @@ group :development do
 end
 
 ruby '2.3.0'
+gem 'puma', '~> 3.4.0'

@@ -173,6 +173,7 @@ GEM
     pkg-config (1.1.7)
     polyamorous (1.3.0)
       activerecord (>= 3.0)
+    puma (3.4.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -285,6 +286,7 @@ DEPENDENCIES
   nested_form
   omniauth-google-oauth2
   pg (~> 0.18.4)
+  puma (~> 3.4.0)
   quiet_assets
   rails (= 4.2.6)
   rails-assets-jquery (~> 1.11)!
@@ -301,6 +303,9 @@ DEPENDENCIES
   turbolinks (~> 2.5.3)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5

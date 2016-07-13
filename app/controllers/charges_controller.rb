@@ -1,8 +1,6 @@
 class ChargesController < ApplicationController
   before_action :has_charge?, only: :show
   before_action :set_charge, only: [:show, :update, :destroy]
-#  before_action :set_term, only: [:edit, :update, :destroy]
-#  before_action :has_participation?
 
   respond_to  :html
 

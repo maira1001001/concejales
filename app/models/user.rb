@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
   enum status: %i(pending_invitation enabled disabled)
   enum roles: %i(admin manager simple guest)
+  
+  scope new_user_roles
+
+  before_save :set_role
 
   after_initialize :set_person
 

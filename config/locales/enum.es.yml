@@ -13,9 +13,9 @@ es:
     user:
       roles:
         admin:    "Administrador"
-        manager:  "Manager"
-        simple:   "Simple"
-        visitor:  "Visitante"
+        manager:  "Concejal"  ##esta traducción es para safar del momento
+#        simple:   "Simple"
+#        visitor:  "Visitante"
       status:
         enabled:     "Habilitado"
         disabled:    "Desabilitado"
