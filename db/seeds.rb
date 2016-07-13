@@ -1,5 +1,5 @@
 #Create First User account
-admin = User.create(email: "concejales-bsas@yopmail.com", password: '77777777', roles: "admin", status: "enable")
+admin = User.create(email: "concejales-bsas@yopmail.com", password: '77777777', roles: "admin", status: "enabled")
 admin.confirm! # user account confirmed
 
 #Populate ddbb with Districts
