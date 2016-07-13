@@ -87,3 +87,4 @@ end
 
 ruby '2.3.0'
 gem 'puma', '~> 3.4.0'
+gem "rack-timeout"
