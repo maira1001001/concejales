@@ -1,7 +1,7 @@
 es:
   views:
     application:
-      title: "Concejales FPV - Proyectos concejo deliberante"
+      title: "Red Legislativa"
     navbar:
       new_project:      "Nuevo projecto"
       project_types: 
