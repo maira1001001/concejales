@@ -16,7 +16,8 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # GET /resource/edit
   def edit
-
+    super
+=begin
     @user = resource
     sign_out(@user) if  @user.current_user
     set_minimum_password_length
@@ -25,7 +26,8 @@ class Users::PasswordsController < Devise::PasswordsController
     if @user.nil?
       notice = 'Link inválido. Puede que ya haya modificado su contraseña' ##TODO hacer nueva vista para esto
       redirect_to new_user_session_path , notice: notice
-    else
+    end
+=end
   end
 
   # PUT /resource
