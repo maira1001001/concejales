@@ -43,18 +43,39 @@
 .login-button{
   text-align: center;
   vertical-align: middle;
-  background-color: #38a2ba ;
-  border: 0;
-  padding: 0.5em 3em 0.5em 3em; 
+  background-color: #046FDB;
+  border: 2px solid #046FDB;
+  border-radius: 0em;
+  padding: 1em 4em 1em 4em;
+  color: white;
+  font-weight: bold;
+  &:hover{
+    border: 2px solid #046FDB;
+    color:white;
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
+a.forgot_password {
+  text-align: center;
+  vertical-align: middle;
+  background-color: #ff5253;
+  border: 2px solid #ff5253;
+  border-radius: 0em;
+  padding: 1.1em 3.4em 1.1em 3.4em;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0);
+  }
 }
 
 .login-background {
   top: 0;
   left: 0;
-  /* Preserve aspet ratio */
   min-width: 100%;
   min-height: 100%;
-  background-image: url("background-light.png");
 
   &:before {
     content: '';
@@ -63,8 +84,12 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(to bottom right, #4baad3, rgba(240, 96, 80, 3.62));
-    opacity: .6;
+    background: url("argentina3.jpg");
+    /*background-image: linear-gradient(to bottom right, #FFFCBF, #03D6D2, #062D92 );*/
+    /*opacity: .6;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*-webkit-filter: grayscale(0) blur(6px);*/
   }
 }
 
