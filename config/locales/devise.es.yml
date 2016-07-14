@@ -7,7 +7,8 @@ es:
       unlock_instructions_not_received: "¿No ha recibido instrucciones para desbloquear su cuenta?"
     confirmations:
       new:
-        title: "Reenvio instrucciones de confirmación"
+        title: "Solicitud de confirmación al sistema"
+        sub_title: "En el siguiente formulario, se le solicitará su dirección de correo electrónico para enviarle un e-mail con la invitación al sistema."
         confirm: "Confirmar cuenta"
         password_lenght: "La contraseña debe tener al menos 8 carácteres"
       show:
@@ -50,8 +51,9 @@ es:
       success: "Autenticado satisfactoriamente con la cuenta %{kind}."
     passwords:
       new:
-        title: "Cambio de contraseña"
-        sub_title: "Usted recibirá un correo electrónico con instrucciones sobre cómo restablecer la contraseña en pocos minutos."
+        title: "Solicitud de regeneración de clave"
+        sub_title: "En el siguiente formulario, se le solicitará su dirección de correo electrónico para poder enviarle un e-mail con su nueva clave"
+
         submit: "Restablecer contraseña"
       edit:
         title:      "Cambio de contraseña"

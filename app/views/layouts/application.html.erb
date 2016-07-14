@@ -21,8 +21,8 @@
   <body>
 
     <%= render 'navbar' %>
-    <%= render 'flashes' %>
-    <div id="content" class="container">
+    <div id="content" class="container main-content">
+      <%= render 'flashes' %>
       <%= yield -%>
     </div>
   </body>

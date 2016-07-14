@@ -5,7 +5,7 @@ class Person < ActiveRecord::Base
 
   accepts_nested_attributes_for :participation
 
-  validates :name, :last_name, presence: true
+  validates :name, :last_name, :current_district_id, presence: true
 
   def to_s
     "#{last_name}, #{name}"

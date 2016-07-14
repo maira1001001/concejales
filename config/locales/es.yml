@@ -15,6 +15,7 @@ es:
   projects:
     index:
       title: "Mis proyectos"
+      sub_title: "Proyectos publicados"
     edit:
       title: "Editar proyecto"
     show:
@@ -46,7 +47,7 @@ es:
     edit:
       title: "Editar Usuario"
     new:
-      title: "Nuevo %{user}"
+      title: "Nuevo usuario"
     show:
       title: "Detalles del usuario"
     actions:

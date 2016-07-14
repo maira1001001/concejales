@@ -2,19 +2,12 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   respond_to :html
 
-  def create
-    @user = User.find_by(user_email_params)
-    if @user.nil?
-      notice = 'Si ingresó un email que se encontraba en el sistema, entonces recibirá en su casilla de email las instrucciones para confirmar su cuenta'
-    end
-    redirect_to new_user_session_path, notice: notice
-  end
-
   def show
     @original_token = params[:confirmation_token]
+    sign_out(@user) if current_user
     @user = find_user_by_token(@original_token)
     if @user.nil?
-      redirect_to new_user_confirmation_path, notice: 'Link inválido. Solicite nuevamente invitación al sistema.'
+      redirect_to new_user_confirmation_path, notice: 'Link inválido. Solicite nuevamente invitación al sistema.' ##TODO hacer nueva vista para esto
     elsif @user.confirmed?
       sign_out(@user)
       redirect_to new_user_session_path, notice: 'Su cuenta ya fue confirmada.'
@@ -37,7 +30,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       else
         if @user.update(user_confirmation_params)
           @user.confirm!
-          @user.update(status: :enable)
+          @user.update(status: 'enabled')
           redirect_to new_user_session_path, notice: 'Su cuenta fue activada.'
         else
           respond_with @user,
