@@ -16,7 +16,7 @@
               <span class="input-group-addon" id="basic-addon1"><%= icon('envelope')%></span>
               <%= f.input :email, required: false, autofocus: true, value: params[:email], class: 'form-control', placeholder: 'Email', 'aria-describedby': 'basic-addon1', label: false %>
             </div>
-             <div class="input-group">
+            <div class="input-group">
               <span class="input-group-addon" id="basic-addon1"><%= icon('lock')%></span>
               <%= f.input :password, required: false, autofocus: true, class: 'form-control', placeholder: 'Contraseña', 'aria-describedby': 'basic-addon1', label: false %>
             </div>
@@ -29,7 +29,9 @@
           </div>
         <% end %>
 
-        <%= render "devise/shared/links" %>
+        <div class="session-links-light">
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>

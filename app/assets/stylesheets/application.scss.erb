@@ -16,25 +16,29 @@
  *= require_self
  */
 
-@IMPOrt "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
+
+//navbar-fixed-top will overlay the other content, unless you add padding
+body { padding-top: 100px; }
+
 
 //VERSION DE PRUEBA
 .trivial-version {
-    background-color: #d41454;
-    text-align: right;
-    color: white;
-    padding: .25em .5em;
-    font-size: 12px;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
+  background-color: #d41454;
+  text-align: right;
+  color: white;
+  padding: .25em .5em;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
 
-    i {
-      display: inline-block;
-      padding-left: .5em;
-      line-height: 1.4;
-    }
+  i {
+    display: inline-block;
+    padding-left: .5em;
+    line-height: 1.4;
+  }
 }
 
 //
@@ -94,8 +98,85 @@ a.forgot_password {
   }
 }
 
+.jumbotron.session {
+  margin-top: 7%;
+}
+
 // END LOGIN
 
-.main-content{
-  margin-top: 50px;
+
+// NAVBAR 
+.navbar-gradient{
+  background: #59adea;
+  background: -webkit-linear-gradient(left, #59adea , rgba(220, 169, 22, 0.47));
+  background: -o-linear-gradient(right, #59adea, rgba(220, 169, 22, 0.47));
+  background: -moz-linear-gradient(right, #59adea, rgba(220, 169, 22, 0.47));
+  background: linear-gradient(to right, #59adea , rgba(220, 169, 22, 0.47));
 }
+//END NAVBAR
+
+.page-header{
+  font-size: 1.8em;
+  font-weight: 200;
+  color: #66757f;
+  margin-bottom: 36px;
+}
+
+.input-text{
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  padding: 1.7em;
+}
+
+
+.btn-submit, .btn-submit:hover{
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  border: 1px solid #3b94d9;
+  background-color: #50a5e6;
+  border-radius: 0em;
+  padding: 1em 4em 1em 4em;
+}
+
+// alert messages
+
+.alert {
+  background-color: white;
+  border-color: white;
+  padding: 0px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.alert-danger{
+  color: #c33;
+  font-size: 0.9em;
+}
+
+// error messaged
+.has-error .help-block, .has-error .control-label, .has-error .radio, 
+.has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, 
+.has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, 
+.has-error.checkbox-inline label{
+  color: #c33;
+  font-size: 0.9em;
+}
+
+.has-error .form-control, .has-error .form-control:focus {
+  box-shadow: 0 0 0 1px #dd2e44;
+  border: 1px solid #dd2e44;
+}
+
+//devise SESSION LINKS
+.session-links {
+  margin-top: 20px;
+}
+
+.session-links a, .session-links a:hover{
+  color: #333;
+}
+
+.session-links-light a, .session-links-light a:hover{
+  color: white;
+}
+//END devise SESSION LINKS

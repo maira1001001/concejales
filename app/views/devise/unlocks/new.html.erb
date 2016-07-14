@@ -1,16 +1,24 @@
-<%= render partial: 'page_header', locals: { title: t('devise.unlocks.new.title'),
-                                             sub_title: t('devise.unlocks.new.sub_title') } %>
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :unlock_token %>
+<%= render 'top_bar_public' %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2">
+    <div class="page-header"><%= t 'devise.unlocks.new.title' %></div>
+    <p><%= t 'devise.unlocks.new.sub_title' %></p>
+
+    <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <%= f.full_error :unlock_token %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true, label: false, input_html: { class: 'input-text' }, placeholder: 'Email' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, value: t('devise.unlocks.new.submit'), class: 'btn-submit' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, value: t('devise.unlocks.new.submit') %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

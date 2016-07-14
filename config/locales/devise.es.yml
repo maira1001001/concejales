@@ -51,7 +51,7 @@ es:
       success: "Autenticado satisfactoriamente con la cuenta %{kind}."
     passwords:
       new:
-        title: "Solicitud de regeneración de clave"
+        title: "Confirmación de la cuenta"
         sub_title: "En el siguiente formulario, se le solicitará su dirección de correo electrónico para poder enviarle un e-mail con su nueva clave"
 
         submit: "Restablecer contraseña"
