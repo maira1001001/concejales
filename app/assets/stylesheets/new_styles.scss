@@ -211,3 +211,38 @@ html, body {
 .mdl-demo .mdl-menu__container {
   z-index: 99;
 }
+
+.jumbotron.session {
+  margin-top: 15%;
+  border-radius: 0em!important;
+  background-color: rgba(26, 109, 109, 0.55);
+  
+  .logo {
+    margin-top: 9em;
+  }
+  .well {
+    background-color: rgba(245, 245, 245, 0);
+    border-color: rgba(245, 245, 245, 0);
+  }
+  
+  .form-inputs {
+    .input-group {
+      margin-bottom: 1em;
+      span {
+        background-color: white!important;
+        padding: 1.5em;
+      }
+      input {
+        padding: 2.3em;
+      }
+    }
+  }
+  .form-actions {
+    margin-bottom: 2em;
+  }
+}
+
+.session-links a {
+  color: white;
+  line-height: 1em;
+}
