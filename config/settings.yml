@@ -5,14 +5,14 @@ mailer:
     address: 'smtp.gmail.com'
     port: '587'
     domain: 'gmail.com'
-    user_name: 'maira.diaz.73@gmail.com'
-    password: 'patrialibrejustaysoberana'
+    user_name: 'red.legislativa@gmail.com'
+    password: 'los_pueblos_siempre_insurgimos'
     authentication: 'plain'
     enable_starttls_auto: true
 
 
 registration_mailer:
-  from_header: 'maira.diaz.73@gmail.com'
+  from_header: 'red.legislativa@gmail.com'
 
 
 version: development
