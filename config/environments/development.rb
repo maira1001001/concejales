@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
 #------------------------------------------
-    # Mailers settings
+  # Mailers settings
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = Settings.mailer.smtp_settings.to_hash
 

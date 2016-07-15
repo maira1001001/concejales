@@ -20,7 +20,10 @@
 @import "bootstrap";
 
 //navbar-fixed-top will overlay the other content, unless you add padding
-body { padding-top: 100px; }
+body { 
+  padding-top: 250px;
+  background-color: #f5f8fa;
+}
 
 
 //VERSION DE PRUEBA
@@ -33,6 +36,7 @@ body { padding-top: 100px; }
   font-weight: bold;
   position: absolute;
   right: 0;
+  top: 0;
 
   i {
     display: inline-block;
@@ -104,8 +108,53 @@ a.forgot_password {
 
 // END LOGIN
 
+// deluxe NAVBAR
+.navbar-deluxe{
+  background: url("<%= asset_path("header_gradient.png") %> ");
+  //  background: #59adea;
+  //  background: -webkit-linear-gradient(left, #59adea , rgba(0, 80, 163, 0.45));
+  //  background: -o-linear-gradient(right, #59adea, rgba(0, 80, 163, 0.45));
+  //  background: -moz-linear-gradient(right, #12b8c0, rgba(0, 80, 163, 0.45));
+  //  background: linear-gradient(to right, #12b8c0, rgba(0, 80, 163, 0.45));
+}
+.menu{
+  background-color: white;
 
-// NAVBAR 
+  .menu-item {
+    font-size: 1.3em;
+    color: #1b95e0;
+    text-align: center;
+    border-left-style: solid;
+    border-left-color: rgba(158, 158, 158, 0.7);
+    border-left-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding: 0.7em;
+    width:  210px;
+
+    .item-name{
+      color: #1da1f2;
+    }
+    .item-name:hover, .item.name:link {
+      background-color: white;
+    }
+  }
+  .menu-item:hover {
+    background-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: #1da1f2;
+  }
+}
+
+
+
+
+
+// end deluxe NAVBAR 
+
+
+// public NAVBAR 
 .navbar-gradient{
   background: #59adea;
   background: -webkit-linear-gradient(left, #59adea , rgba(220, 169, 22, 0.47));
