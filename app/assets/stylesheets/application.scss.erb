@@ -21,9 +21,12 @@
 
 //navbar-fixed-top will overlay the other content, unless you add padding
 body { 
-  padding-top: 250px;
   background-color: #f5f8fa;
 }
+
+.crud-page-header{
+  margin-top: 250px;
+  }
 
 
 //VERSION DE PRUEBA
@@ -49,6 +52,9 @@ body {
 
 
 // LOGIN
+.jumbotron.session{
+  background-color: rgba(89, 173, 235, 0.27); 
+}
 .login-button{
   text-align: center;
   vertical-align: middle;
@@ -93,7 +99,7 @@ a.forgot_password {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url("<%= asset_path("cristina_y_nestor.jpg") %> ");
+//    background: url("<= asset_path("cristina_y_nestor.jpg") %> ");
     /*background-image: linear-gradient(to bottom right, #FFFCBF, #03D6D2, #062D92 );*/
     /*opacity: .6;*/
     background-repeat: no-repeat;
@@ -161,6 +167,10 @@ a.forgot_password {
   background: -o-linear-gradient(right, #59adea, rgba(220, 169, 22, 0.47));
   background: -moz-linear-gradient(right, #59adea, rgba(220, 169, 22, 0.47));
   background: linear-gradient(to right, #59adea , rgba(220, 169, 22, 0.47));
+}
+
+.user-content{
+  margin-top: 130px;
 }
 //END NAVBAR
 

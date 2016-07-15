@@ -1,13 +1,3 @@
-<div class="page-header">
-  <%= link_to my_projects_path, class: 'btn btn-default' do %>
-    <%= icon 'list-alt' %>
-    <%= t 'global.actions.back' %>
-  <% end %>
-  <h1><%= t '.title' %></h1>
-  <div class="alert alert-warning" role="alert">
-    Para poder publicar los proyectos, primero debe crear su mandato y completar los siguientes datos
-  </div>
-
-</div>
+<%= render partial: 'page_header', locals: {title: t('.title'), sub_title: 'Para poder publicar los proyectos, primero debe crear su mandato y completar los siguientes datos'} %>
 
 <%= render 'form' %>

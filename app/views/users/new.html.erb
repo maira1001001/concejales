@@ -1,13 +1,3 @@
-<div class="page-header">
-  <%= link_to users_path, class: 'btn btn-default' do %>
-    <%= icon 'list-alt' %>
-    <%= t 'global.actions.back' %>
-  <% end %>
-  <h1><%= t '.title' %></h1>
-  <div class="alert alert-info" role="alert">
-    Ingrese los datos que se solicitan para invitar al usuario al sistema. Luego, el usuario debe recibir un email y confirmar su participación en el sistema.
-  </div>
-
-</div>
+<%= render partial: 'page_header', locals: { title: t('users.new.title'), sub_title: 'Ingrese los datos que se solicitan para invitar al usuario al sistema. Luego, el usuario debe recibir un email y confirmar su participación en el sistema.' } %>
 
 <%= render 'form' %>

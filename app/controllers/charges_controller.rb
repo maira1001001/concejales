@@ -17,7 +17,7 @@ class ChargesController < ApplicationController
 
   def create
     @charge = Charge.new(charge_params)
-    @charge.councilor = Participation.new(person: current_user.person)
+    @charge.build_councilor(person: current_user.person)
     @charge.save
     respond_with @charge
   end
@@ -48,7 +48,7 @@ class ChargesController < ApplicationController
   end
 
   def set_charge
-    @charge = Charge.find(current_user.person_id)
+    @charge = current_user.person.participation.charge
   end
 
   def charge_params

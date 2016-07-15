@@ -1,6 +1,6 @@
 <%= render 'top_bar_public' %>
 
-<div class="row">
+<div class="row user-content">
   <div class="col-md-7 col-md-offset-2">
     <div class="page-header"><%= t 'devise.confirmations.new.title' %></div>
     <p><%= t 'devise.confirmations.new.sub_title' %></p>
@@ -9,7 +9,7 @@
       <%= f.full_error :confirmation_token %>
 
       <div class="form-inputs">
-        <%= f.input :email, required: true, autofocus: true, input_html: { class: 'input-text'  } %>
+        <%= f.input :email, required: true, autofocus: true, input_html: { class: 'input-text'  }, label: false, placeholder: 'Email' %>
       </div>
 
       <div class="form-actions">
