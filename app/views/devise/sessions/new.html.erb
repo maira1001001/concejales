@@ -9,7 +9,6 @@
       </div>
 
       <div class="col-md-6 well">
-        <h2><%#= t 'devise.sessions.new.title' %></h2> 
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-inputs">
             <div class="input-group">
@@ -21,11 +20,15 @@
               <%= f.input :password, required: false, autofocus: true, class: 'form-control', placeholder: 'Contraseña', 'aria-describedby': 'basic-addon1', label: false %>
             </div>
           </div>
-          <div class="form-actions">
-            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-              <%= link_to t('devise.links.forgot_password'), new_password_path(resource_name), class: 'forgot_password' %>
-            <% end -%>
-            <%= f.button :submit, t('devise.sessions.new.submit'), class: 'login-button' %>
+          <div class="row">
+            <div class="col-md-6">
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to t('devise.links.forgot_password'), new_password_path(resource_name), class: 'forgot_password' %>
+              <% end -%>
+            </div>
+            <div class="col-md-6">
+              <%= f.button :submit, t('devise.sessions.new.submit'), class: 'login-button' %>
+            </div>
           </div>
         <% end %>
 
