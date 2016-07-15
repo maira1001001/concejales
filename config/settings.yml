@@ -5,8 +5,8 @@ mailer:
     address: 'smtp.gmail.com'
     port: '587'
     domain: 'gmail.com'
-    user_name: 'red.legislativa@gmail.com'
-    password: 'los_pueblos_insurgen'
+    user_name: 'maira.diaz.73@gmail.com'
+    password: 'patrialibrejustaysoberana'
     authentication: 'plain'
     enable_starttls_auto: true
 
