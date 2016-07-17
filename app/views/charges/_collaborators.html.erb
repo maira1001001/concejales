@@ -30,19 +30,19 @@
 
         <tbody>
           <%= content_tag_for(:tr, collaborators) do |collaborator| %>
-            <td><%= t_enum collaborator, :roles %></td>
-            <td><%= collaborator.full_name %></td>
-            <td><%= collaborator.email %></td>
-            <td><%= collaborator.current_district %></td>
-            <td><%= t_enum user, :status %></td>
+            <td><%= t_enum collaborator, :role %></td>
+            <td><%= collaborator.person %></td>
+            <td><%= collaborator.person.user.email %></td>
+            <td><%= collaborator.person.current_district %></td>
+            <td><%= t_enum collaborator.person.user, :status %></td>
             <td>
-              <%= link_to icon('search'), user,
+              <%= link_to icon('search'), participation_path,
                 title: t('global.actions.show') ,
                 data: { toggle: 'tooltip', placement: 'right' } %>
-              <%= link_to icon('pencil'), edit_user_path(user),
+              <%= link_to icon('pencil'), edit_participation_path(collaborator),
                 title: t('global.actions.edit'),
                 data: { toggle: 'tooltip', placement: 'right' } %>
-              <%= link_to icon('trash'), user_path(user), method: :delete,
+              <%= link_to icon('trash'), participation_path(collaborator), method: :delete,
                 title: t('global.actions.destroy'),
                 data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
             </td>

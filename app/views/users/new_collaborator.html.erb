@@ -1,6 +1,6 @@
 <%= render partial: 'page_header', locals: { title: t('charges.show.collaborators.new.title'), sub_title: t('charges.show.collaborators.new.sub_title') } %>
 
-<%= simple_form_for(@user, url: user_invite_collaborator_path) do |f| %>
+<%= simple_form_for(@user, url: invite_collaborator_path) do |f| %>
 
   <%= f.error_notification %>
   <div class="row">

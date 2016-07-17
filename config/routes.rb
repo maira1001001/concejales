@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 
   devise_scope :user do
-    put 'confirmar-cuenta', to: 'users/confirmations#confirm', as: :confirm
+    put 'confirmar', to: 'users/confirmations#confirm', as: :confirm
     post 'usuarios/reenviar-email', to: 'users/confirmations#resend_confirmation', as: :user_resend_confirmation
-    post 'usuarios/invitar-asesor', to: 'users/confirmations#invite_collaborator', as: :user_invite_collaborator
+    post 'mi-equipo/invitar-asesor', to: 'users/confirmations#invite_collaborator', as: :invite_collaborator
   end
 
   devise_for :users, path: 'usuarios',
@@ -33,5 +33,7 @@ Rails.application.routes.draw do
         post :enable,      path: 'habilitar'
       end
     end
+
+    resource :participation
 
 end

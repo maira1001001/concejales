@@ -3,11 +3,18 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   respond_to :html
 
   def invite_collaborator
-    invite_collaborator_params.merge!(roles: 'simple')
-    @user = User.new(users)
-    @user.save
-    @user.send_confirmation_instructions
-    respond_with @collaborator, location: -> { charge_path  }
+    @user = User.new(user_collaborator_params.merge!(roles: 'simple'))
+    councilor_participation = current_user.person.current_participation
+    charge = councilor_participation.charge
+    if @user.send_confirmation_instructions
+      collaborator_participation = Participation.new(role: 'collaborator', person: @user.person, charge: charge)
+      charge.collaborators << collaborator_participation
+      @user.person.update_attribute(:current_district, current_user.person.current_district)
+      @user.save
+      redirect_to charge_path, notice: 'Usted ha enviado una invitación al asesor'
+    else
+      redirect_to charge_path, notice: 'Algo ha salido mal. No se ha podido invitar al asesor al sistema. Reintente la operación'
+    end
   end
 
   def resend_invitation
@@ -77,8 +84,8 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     User.find_by(confirmation_token: token)
   end
 
-  def invite_collaborator_params
-    params.require(:user).permit(:email, person_attributes: [ :name, :last_name ], :councilor_id)
+  def user_collaborator_params
+    params.require(:user).permit(:email, person_attributes: [ :name, :last_name])
   end
 
 end
