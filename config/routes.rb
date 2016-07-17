@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
-  resources :projects, path: 'proyectos',
+  resource :project, path: 'proyectos',
     path_names: { new: 'nuevo', edit: 'editar' }
 
   get   'mi-equipo/nuevo-asesor',   to: 'users#new_collaborator',  as: :new_collaborator

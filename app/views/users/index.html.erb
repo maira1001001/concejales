@@ -21,7 +21,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @users) do |user| %>
-        <td><%= t_enum user, :roles %></td>
+        <td><%= t_enum user, :role %></td>
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
         <td><%= t_enum user, :status %></td>

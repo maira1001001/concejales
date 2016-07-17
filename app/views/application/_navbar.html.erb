@@ -34,18 +34,26 @@
             <%= link_to 'Ultimos proyectos',root_path, class: 'item-name' %>
           </li>
           <li class="menu-item">
-            <%= link_to 'Mis proyectos', projects_path, class: 'item-name' %>
+            <%= link_to 'Mis proyectos', project_path, class: 'item-name' %>
           </li>
           <li class="menu-item">
-            <%= link_to 'Asesores', projects_path, class: 'item-name' %>
+            <%= link_to 'Asesores', project_path, class: 'item-name' %>
           </li>
           <li class="dropdown menu-item">
             <a href="#" class="dropdown-toggle item-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nuevo Proyecto<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Nueva Ordenanza", new_project_path(type: :ordinance) %></li>
-              <li><%= link_to "Nuevo Decreto", new_project_path(type: :decree) %></li>
-              <li><%= link_to "Nueva Resolución", new_project_path(type: :resolution) %></li>
-              <li><%= link_to "Nueva Comunicación", new_project_path(type: :communication) %></li>
+              <li><%= link_to "Nueva Ordenanza", new_project_path(project_type: :ordinance) %></li>
+              <li><%= link_to "Nuevo Decreto", new_project_path(project_type: :decree) %></li>
+              <li><%= link_to "Nueva Resolución", new_project_path(project_type: :resolution) %></li>
+              <li><%= link_to "Nueva Comunicación", new_project_path(project_type: :communication) %></li>
+            </ul>
+          </li>
+
+          <li class="dropdown menu-item">
+            <a href="#" class="dropdown-toggle item-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Crear Usuarios", new_user_path %></li>
+              <li><%= link_to "Ver lista de Usuario",  users_path %></li>
             </ul>
           </li>
         </ul>

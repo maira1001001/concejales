@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
-    respond_with @project, location: -> { my_projects_path  }
+    respond_with @project, location: -> { project_path  }
   end
 
   def update
