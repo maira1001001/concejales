@@ -17,6 +17,9 @@ es:
       send_instructions: "Usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en pocos minutos."
       send_paranoid_instructions: "Si existe su dirección de correo electrónico en nuestra base de datos, usted recibirá un correo electrónico con instrucciones sobre cómo confirmar su dirección de correo electrónico en pocos minutos."
       resend_instructions: "Reenviar instrucciones de confirmación"
+      resend_invitation:
+        notice: "Se reenvio invitación a %{email}"
+        email_not_found:  "Email no encontrado. No fue posible enviar el email."
     failure:
       already_authenticated: "Ya se se ha identificado."
       inactive: "Su cuenta aún no está habilitada. Por favor comuniquese con un administrador para que la habilite."

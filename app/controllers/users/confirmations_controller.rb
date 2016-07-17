@@ -2,6 +2,27 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   respond_to :html
 
+  def send_invitation_to_collaborator
+    collaborator_params.merge!(roles: 'simple')
+    @user = User.new()
+    raise 4
+    @user.save
+    @user.send_confirmation_instructions
+    respond_with @collaborator, location: -> { charge_path  }
+  end
+
+  def resend_invitation
+    @user = User.find_by(id: params[:id])
+    if @user.present?
+      @user.update_attribute(:confirmation_token, params[:authenticity_token])
+      @user.send_confirmation_instructions
+      notice = t('devise.confirmation.resend_invitation.notice', email: @user.email)
+    else
+      notice = t('devise.confimation.resend_invitation.email_not_found')
+    end
+    redirect_to users_path, notice: notice
+  end
+
   def show
     @original_token = params[:confirmation_token]
     sign_out(@user) if current_user

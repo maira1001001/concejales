@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   scope :all_without_current, -> (current_user) { where.not(id: current_user ) }
 
-  validates_with PasswordValidator, on: :update
+  validates_with PasswordValidator, on: :update #, unless: Proc.new { current_user.admin? }
 
   def full_name
     person

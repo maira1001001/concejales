@@ -32,6 +32,7 @@ es:
     actions:
       new: "Nuevo projecto"
       confirm_destroy: "¿Desea eliminar el projecto seleccionado?"
+      resend_invitation: "¿Desee reenviar la invitación a %{email}?"
   users:
     index:
       title: "Usuarios"

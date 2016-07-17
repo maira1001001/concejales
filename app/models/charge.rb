@@ -9,5 +9,4 @@ class Charge < ActiveRecord::Base
   validates :district_id, :political_party_id, :start_date, presence: true
   validates_with RangeDateValidator
 
-
 end

@@ -32,15 +32,6 @@ class ChargesController < ApplicationController
     respond_with @charge
   end
 
-  def new_collaborator
-    ##TODO : ver si se puede reutilizar users/form
-    @user = User.new(roles: 'simple')
-  end
-
-  def invite_collaborator
-    collaborator_params.merge(roles: 'simple')
-  end
-
   private
 
   def has_charge?
@@ -48,7 +39,7 @@ class ChargesController < ApplicationController
   end
 
   def set_charge
-    @charge = current_user.person.participation.charge
+    @charge = current_user.person.current_participation.charge
   end
 
   def charge_params

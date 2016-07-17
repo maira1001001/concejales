@@ -10,12 +10,12 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
-    @person.build_participation
+    @person.participations.build
     respond_with(@person)
   end
 
   def edit
-    @person.build_participation
+    @person.participations.build
   end
 
   def create

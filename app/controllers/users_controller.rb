@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     respond_with @user, location: users_path
   end
 
+  def new_collaborator
+    @user = User.new
+  end
+
   private
 
   def set_user
