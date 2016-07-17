@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     put 'confirmar-cuenta', to: 'users/confirmations#confirm', as: :confirm
-    post 'usuarios/reenviar-email/:id', to: 'users/confirmations#resend_confirmation', as: :user_resend_confirmation
-    post 'usuarios/invitar-asesor/:id', to: 'users/confirmations#send_invitation_to_collaborator', as: :send_invitation_to_collaborator
+    post 'usuarios/reenviar-email', to: 'users/confirmations#resend_confirmation', as: :user_resend_confirmation
+    post 'usuarios/invitar-asesor', to: 'users/confirmations#invite_collaborator', as: :user_invite_collaborator
   end
 
   devise_for :users, path: 'usuarios',

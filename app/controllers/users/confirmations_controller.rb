@@ -2,10 +2,9 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   respond_to :html
 
-  def send_invitation_to_collaborator
-    collaborator_params.merge!(roles: 'simple')
-    @user = User.new()
-    raise 4
+  def invite_collaborator
+    invite_collaborator_params.merge!(roles: 'simple')
+    @user = User.new(users)
     @user.save
     @user.send_confirmation_instructions
     respond_with @collaborator, location: -> { charge_path  }
@@ -76,6 +75,10 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   def find_user_by_token(token)
     User.find_by(confirmation_token: token)
+  end
+
+  def invite_collaborator_params
+    params.require(:user).permit(:email, person_attributes: [ :name, :last_name ], :councilor_id)
   end
 
 end
