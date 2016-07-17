@@ -27,6 +27,7 @@ es:
       resolution:     "Nueva Resolución"
       communication:  "Nueva Comunicación"
       document:       "Nuevo Documento"
+      sub_title:      "Usted podrá crear proyectos desde aquí."
     form:
       dossier_legend: "El n° de expediente es para corroborar que el proyecto existe y fue presentado en el Concejo Deliberante. No es obligatorio completarlo. Para más detalles ... (continuar idea)"
     actions:
@@ -65,9 +66,9 @@ es:
       form:
         help:
           gravatar:  Puede cambiar su foto a través de <a href="http://gravatar.com">gravatar.com</a>
-  charges:
+  participations:
     new:
-      title: "Nuevo Cargo"
+      title: "Nuevo período de actividad"
     show:
       title:     "Mi equipo"
       sub_title:  "Aquí encontrará la lista de sus asesores y de los proyectos que ha publicado."

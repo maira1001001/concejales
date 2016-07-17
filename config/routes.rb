@@ -5,11 +5,7 @@ Rails.application.routes.draw do
   resources :projects, path: 'proyectos',
     path_names: { new: 'nuevo', edit: 'editar' }
 
-  resources :people, path: 'personas'
-
-  get   'mi-equipo/nuevo-asesor',   to: 'users#new_collaborator',           as: :new_collaborator
-
-  resource :charge, path: 'mi-equipo'
+  get   'mi-equipo/nuevo-asesor',   to: 'users#new_collaborator',  as: :new_collaborator
 
   get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
 
@@ -34,6 +30,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :participation
+    resource :participation, path: 'periodo-actividad'
 
 end

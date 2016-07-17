@@ -1,10 +1,11 @@
 class Participation < ActiveRecord::Base
-  belongs_to :person
-  belongs_to :charge
+  belongs_to :councilor, -> { councilor }, class_name: 'User', foreign_key: 'councilor_id'
+  belongs_to :district
+  belongs_to :political_party
+  has_many   :projects
+  has_many   :collaborators, -> { collaborator }, class_name: 'User', foreign_key: 'collaborator_id'
 
-  enum role: %i(councilor collaborator)
-  enum status: %i(enable disable)
-
-  validates :role, presence: true
+  validates :start_date, :in_function, :district_id, :political_party_id, presence: true
+  validates_with RangeDateValidator
 
 end

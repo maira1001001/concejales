@@ -2,49 +2,54 @@
   <div class="navbar navbar-deluxe data-no-turbolink">
 
     <!--- if Settings.debug_mode -->
-      <!--div class="trivial-version">
-        <i><span class="glyphicon glyphicon-exclamation-sign pull-right"></span></i>
-        ¡Versión de prueba!
+    <!--div class="trivial-version">
+      <i><span class="glyphicon glyphicon-exclamation-sign pull-right"></span></i>
+      ¡Versión de prueba!
       </div--!>
-    <!-- end -->
+      <!-- end -->
 
-    <div class="row">
-      <%= link_to root_path do %>
-        <%= image_tag asset_path('red-legislativa-logo.png'), alt: 'Logo Red Legislativa', width: '420', height: '150' %>
-      <% end %>
-      <ul class="pull-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <%= gravatar_tag current_user.email, size: '50' -%>
-            <%= current_user.full_name %> <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to t('views.navbar.profile'), edit_person_path(current_user.person) %></li>
-            <li class="divider"></li>
-            <li><%= link_to t('views.navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+      <div class="row">
+        <%= link_to root_path do %>
+          <%= image_tag asset_path('red-legislativa-logo.png'), alt: 'Logo Red Legislativa', width: '420', height: '150' %>
+        <% end %>
+        <ul class="pull-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= gravatar_tag current_user.email, size: '50' -%>
+              <%= current_user.full_name %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to t('views.navbar.profile'), edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to t('views.navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
 
-    <div class="row">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <ul class="nav nav-pills nav-justified menu">
-        <li class="menu-item">
-          <%= link_to 'Mis proyectos',root_path, class: 'item-name' %>
-        </li>
-        <li class="dropdown menu-item">
-          <a href="#" class="dropdown-toggle item-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Crear Usuarios", new_user_path %></li>
-            <li><%= link_to "Ver lista de Usuario",  users_path %></li>
-          </ul>
-        </li>
-        <li class="menu-item">
-          <%= link_to 'Mi Equipo', charge_path, class: 'item-name' %>
-        </li>
-      </ul>
-    </div><!-- /.container-fluid -->
-  </div>
-<% end %>
+      <div class="row">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <ul class="nav nav-pills nav-justified menu">
+          <li class="menu-item">
+            <%= link_to 'Ultimos proyectos',root_path, class: 'item-name' %>
+          </li>
+          <li class="menu-item">
+            <%= link_to 'Mis proyectos', projects_path, class: 'item-name' %>
+          </li>
+          <li class="menu-item">
+            <%= link_to 'Asesores', projects_path, class: 'item-name' %>
+          </li>
+          <li class="dropdown menu-item">
+            <a href="#" class="dropdown-toggle item-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nuevo Proyecto<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Nueva Ordenanza", new_project_path(type: :ordinance) %></li>
+              <li><%= link_to "Nuevo Decreto", new_project_path(type: :decree) %></li>
+              <li><%= link_to "Nueva Resolución", new_project_path(type: :resolution) %></li>
+              <li><%= link_to "Nueva Comunicación", new_project_path(type: :communication) %></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.container-fluid -->
+      </div>
+    <% end %>
 

@@ -11,21 +11,19 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th><%= t 'activerecord.attributes.user.roles' %></th>
-        <th><%= t 'activerecord.attributes.person.full_name' %></th>
+        <th><%= t 'activerecord.attributes.user.role' %></th>
+        <th><%= t 'activerecord.attributes.user.full_name' %></th>
         <th><%= t 'activerecord.attributes.user.email' %></th>
-        <th><%= t 'activerecord.attributes.person.current_district_id' %></th>
         <th><%= t 'activerecord.attributes.user.status' %></th>
-        <th><%= t 'global.index.actions'  %></th>
+        <th><%= t 'global.index.actions' %></th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @users) do |user| %>
         <td><%= t_enum user, :roles %></td>
-        <td><%= user.person %></td>
+        <td><%= user.full_name %></td>
         <td><%= user.email %></td>
-        <td><%= user.person.current_district %></td>
         <td><%= t_enum user, :status %></td>
         <td>
           <%= render 'enabling_disabling', user: user -%>

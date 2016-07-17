@@ -7,7 +7,7 @@ es:
       project_files:      "Archivos"
       person:             "Person"
       district:           "Distrito"
-      charge:             "Cargo Público"
+      participation:      "Periodo de actividad"
     ## ATTRIBUTES
     attributes:
       project:
@@ -36,7 +36,7 @@ es:
         current_district_id:    "Distrito"
       district:
         name:               "Nombre del distrito"
-      charge:
+      participation:
         start_date:         "Inicio Cargo Público"
         end_date:           "Fin Cargo Público"
         in_function:        "En función"

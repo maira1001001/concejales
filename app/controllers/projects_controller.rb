@@ -7,14 +7,6 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def my_projects
-    @q = Project.my_projects(current_user.person)
-    @projects = @q.results.page(page_params)
-    @title = t('projects.my_projects.title')
-    @url = my_project_path
-    render 'index'
-  end
-
   def new
     @project = Project.new(project_type: params[:project_type])
     @project.project_files.build
@@ -47,11 +39,8 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:title,
-                                    :description,
-                                    :category,
-                                    :project_type,
-                                    project_files_attributes: [ :id, :name, :attachment, :_destroy ] )
+    params.require(:project).permit(:title, :description, :category, :project_type, :dossier, :dossier_url,
+                                    project_files_attributes: [ :id, :name, :attachment, :_destroy ])
   end
 
 end

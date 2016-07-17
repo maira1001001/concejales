@@ -12,7 +12,6 @@ class ParticipationsController < ApplicationController
 
   def new
     @participation = Participation.new
-    @participation.build_charge
   end
 
   def edit
@@ -20,9 +19,9 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation = Person.new(participation_params)
-    @participation.save
-    respond_with(@participation)
+    @participation = Participation.new(participation_params.merge(councilor: current_user))
+    flash[:notice] = 'Datos cargados correctamente. Ya puede publicar proyectos.' if @participation.save
+    respond_with @participation, location: root_path
   end
 
   def update
@@ -37,10 +36,10 @@ class ParticipationsController < ApplicationController
 
   private
     def set_participation
-      @pariticipation = Person.find(params[:id])
+      @pariticipation = Participation.find_by(councilor: current_user)
     end
 
     def participation_params
-      params.require(:participation).permit(:start_date, :end_date)
+      params.require(:participation).permit(:start_date, :end_date, :in_function, :district_id, :political_party_id)
     end
 end

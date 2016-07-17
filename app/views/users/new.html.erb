@@ -1,3 +1,19 @@
 <%= render partial: 'page_header', locals: { title: t('users.new.title'), sub_title: 'Ingrese los datos que se solicitan para invitar al usuario al sistema. Luego, el usuario debe recibir un email y confirmar su participación en el sistema.' } %>
 
-<%= render 'form' %>
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
+    <%= f.input :roles, as: :enum, wrapper_html: { class:' col-md-6' }%>
+  </div>
+  <div class="row">
+    <%= p.input :name, wrapper_html: { class: 'col-md-6' }  %>
+    <%= p.input :last_name, wrapper_html: { class: 'col-md-6' } %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success',
+      value: t('.submit', default: t('global.form.actions.submit')) %>
+  </div>
+
+<% end %>
+

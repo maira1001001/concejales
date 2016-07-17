@@ -1,0 +1,27 @@
+<%= simple_form_for(@participation, url: participation_path, html: { class: 'charge-form' }) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <%= f.input :district_id, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-6'  }  %>
+    <%= f.input :political_party_id, as: :select2, collection: PoliticalParty.all, wrapper_html: { class:' col-md-6' }%> 
+  </div>
+
+  <div class="row"> 
+    <%= f.input :start_date, as: :date_picker, wrapper_html: { class: 'col-md-2'  } %>
+    <% if f.object.in_function %>
+      <%= f.input :end_date, as: :date_picker, wrapper_html: { class: 'col-md-2'  },
+        input_html: { disabled: true, class: 'input-end-date'  } %>
+    <% else %>
+      <%= f.input :end_date, as: :date_picker, wrapper_html: { class: 'col-md-2'  },
+        input_html: { disabled: false, class: 'input-end-date'  } %>
+    <% end %>
+    <%= f.input :in_function, input_html: { class: 'check-end-date'  } %>  
+    <small><%= t('participations.form.in_function') %></small>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success',
+      value: t('.submit', default: t('global.form.actions.submit')) %>
+</div>
+
+<% end %>
+

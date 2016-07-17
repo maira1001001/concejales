@@ -1,9 +1,4 @@
-<div class="page-header">
-  <%= link_to projects_path, class: 'btn btn-default' do %>
-    <%= icon 'list-alt' %>
-    <%= t 'global.actions.back' %>
-  <% end %>
-  <h1><%= t "projects.new.#{@project.project_type}"  %></h1>
-</div>
 
+<%= render partial: 'page_header', locals: { title: t("projects.new.#{params[:type]}"), sub_title: t('.sub_title')  } %>
+<!-- render partial: 'page_header', locals: { title: t("projects.new.#{@project.project_type}"), sub_title: t('.sub_title') } -->
 <%= render 'form' %>
