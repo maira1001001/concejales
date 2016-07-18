@@ -1,16 +1,14 @@
 <%= render partial: 'page_header', locals: { title: t('participations.collaborators.new.title'), sub_title: t('participations.collaborators.new.sub_title') } %>
 
-<%= simple_form_for(@collaborator, url: invite_collaborator_path) do |f| %>
+<%= simple_form_for(@user, url: invite_collaborator_path) do |f| %>
 
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
   </div>
   <div class="row">
-    <%= f.simple_fields_for :person do |p| %>
-      <%= p.input :name, wrapper_html: { class: 'col-md-4' }  %>
-      <%= p.input :last_name, wrapper_html: { class: 'col-md-4' } %>
-    <% end %>
+    <%= f.input :name, wrapper_html: { class: 'col-md-4' }  %>
+    <%= f.input :last_name, wrapper_html: { class: 'col-md-4' } %>
   </div>
 
 <div class="form-actions">

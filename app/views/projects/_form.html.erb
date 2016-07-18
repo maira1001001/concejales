@@ -1,5 +1,5 @@
 <div class="row">
-  <%= simple_nested_form_for(@project, url: project_path) do |f| %>
+  <%= simple_nested_form_for(@project) do |f| %>
     <%= f.error_notification %>
 
     <%= f.input :project_type, as: :hidden %>

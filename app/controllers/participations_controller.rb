@@ -1,11 +1,7 @@
 class ParticipationsController < ApplicationController
-  before_action :set_participation, only: [:show, :edit, :update, :destroy, :new_collaborator]
+  before_action :set_participation, only: [:show, :edit, :update, :destroy, :new_collaborator, :my_collaborators]
 
   respond_to :html
-
-  def index
-    @participations = Participations.all
-  end
 
   def show
   end
@@ -15,7 +11,6 @@ class ParticipationsController < ApplicationController
   end
 
   def edit
-    @participation.build_charge
   end
 
   def create
@@ -30,18 +25,24 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-    @pariticipation.destroy
+    @participation.destroy
     respond_with(@participation)
   end
 
   def new_collaborator
-    @collaborator = Participation.find_by(councilor: current_user).collaborators.build
+    @user = @participation.collaborators.build
+    respond_with @user
+  end
+
+  def my_collaborators
+    @collaborators = @participation.collaborators
+    respond_with @collaborators
   end
 
   private
 
   def set_participation
-    @pariticipation = Participation.find_by(councilor: current_user)
+    @participation = Participation.find_by(councilor: current_user)
   end
 
   def participation_params

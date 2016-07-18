@@ -1,3 +1,12 @@
-<%= render partial: 'page_header', locals: { title: t('users.edit.title'), sub_title: 'Desde aquí usted podrá editar los datos de su perfil.' } %>
+<div class="page-header">
+  <%= link_to users_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <h1><%= t '.title' %></h1>
+
+</div>
 
 <%= render 'form' %>
+
+

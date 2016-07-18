@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :disable, :enable]
+  before_action :set_current_user, only: [:my_profile, :update_my_profile]
 
   respond_to  :html
 
   def index
-    @q = User.all_without_current(current_user).page(params[:page]).ransack(params[:q])
+    @q = User.admin_user_list(current_user).page(params[:page]).ransack(params[:q])
     @users = @q.result(distinct: true)
   end
 
@@ -48,8 +49,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def profile
-    @user = current_user
+  def my_profile
+  end
+
+  def update_my_profile
+    @user.update_my_profile(my_profile_params)
+    respond_with @user, location: my_projects_path
   end
 
   private
@@ -58,13 +63,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  def set_current_user
+    @user = current_user
+  end
+
   def user_params
     params.require(:user).permit(:email, :role, :name, :last_name)
   end
 
-  def profile_params
-    params.require(:user).permite(:email, :name, :password, :password_confirmation)
+  def my_profile_params
+    params.require(:user).permit(:email, :name, :password, :confirm_password)
   end
 
 end

@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
   validates :email, :role, :name, :last_name, presence: true
   validates :email, uniqueness: true
 
-  scope :all_without_current, -> (current_user) { where.not(id: current_user ) }
+  scope :admin_user_list, -> (current_user) { where.not(id: current_user, role: 2) }
 
-  validates_with PasswordValidator, on: :update #, unless: Proc.new { current_user.admin? }
+  validates_with PasswordValidator, on: :update_my_profile
 
   def full_name
     "#{last_name}, #{name}"
@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
 
   def current_participation
     Participation.find_by(councilor: self, in_function: true)
+  end
+
+  def update_my_profile
+    raise 3
   end
 
   private

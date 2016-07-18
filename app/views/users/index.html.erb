@@ -7,40 +7,4 @@
   </div>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th><%= t 'activerecord.attributes.user.role' %></th>
-        <th><%= t 'activerecord.attributes.user.full_name' %></th>
-        <th><%= t 'activerecord.attributes.user.email' %></th>
-        <th><%= t 'activerecord.attributes.user.status' %></th>
-        <th><%= t 'global.index.actions' %></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <%= content_tag_for(:tr, @users) do |user| %>
-        <td><%= t_enum user, :role %></td>
-        <td><%= user.full_name %></td>
-        <td><%= user.email %></td>
-        <td><%= t_enum user, :status %></td>
-        <td>
-          <%= render 'enabling_disabling', user: user -%>
-          <%= link_to icon('pencil'), edit_user_path(user),
-            title: t('global.actions.edit'),
-            data: { toggle: 'tooltip', placement: 'right' } %>
-          <%= link_to icon('trash'), user_path(user), method: :delete,
-            title: t('global.actions.destroy'),
-            data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
-          <% if user.pending_invitation? %>
-            <%= link_to icon('share-alt'), user_resend_confirmation_path, method: :post,
-              title: t('users.index.tooltip.resend_invitation') ,
-              data: { toggle: 'tooltip', placement: 'right' },
-              confirm: t('projects.actions.resend_invitation', email: user.email) %>
-          <% end %>
-      </td>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+<%= render 'users' %>

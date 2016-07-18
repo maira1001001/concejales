@@ -62,7 +62,7 @@ es:
     actions:
       new: "Nuevo Usuario"
     profile:
-      title: "Perfil del usuario"
+      title: "Perfil del %{role}"
       sub_title: "Aquí encontrará y podrá editar todos sus datos personales."
       submit: "Actualizar perfil"
   people:
@@ -100,6 +100,9 @@ es:
       new:
         title: "Nuevo asesor"
         sub_title: "Completando el formulario, usted podrá invitar a sus asesores a participar del sistema."
+      index:
+        title: "Lista de los asesores"
+        sub_title: "Desde aquí podrá habilitar, deshabiltiar, editar a los asesores que lo ayudarán a publicar los proyectos en el sistema."
 
 
  
