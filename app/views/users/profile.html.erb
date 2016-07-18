@@ -1,4 +1,12 @@
-<%= render partial: 'page_header', locals: { title: t('users.profile.title'), sub_title: t('users.profile.sub_title') } %>
+
+<div class="page-header">
+  <%= link_to my_projects_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.back' %>
+  <% end %>
+  <h1><%= t 'users.profile.title' %></h1>
+  <h2><%= t 'users.profile.sub_title' %></h2>
+</div>
 
 <%= simple_form_for(current_user) do |f| %>
   <%= f.error_notification %>
@@ -14,6 +22,10 @@
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success',
       value: t('users.profile.submit', default: t('global.form.actions.submit')) %>
+  <%= link_to my_projects_path, class: 'btn btn-default' do %>
+    <%= icon 'list-alt' %>
+    <%= t 'global.actions.cancel' %>
+  <% end %>
 </div>
 
 <% end %>

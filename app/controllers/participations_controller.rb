@@ -41,10 +41,10 @@ class ParticipationsController < ApplicationController
   private
 
   def set_participation
-      @pariticipation = Participation.find_by(councilor: current_user)
-    end
+    @pariticipation = Participation.find_by(councilor: current_user)
+  end
 
-    def participation_params
-      params.require(:participation).permit(:start_date, :end_date, :in_function, :district_id, :political_party_id)
-    end
+  def participation_params
+    params.require(:participation).permit(:start_date, :end_date, :in_function, :district_id, :political_party_id)
+  end
 end
