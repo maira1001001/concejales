@@ -52,14 +52,15 @@ ActiveRecord::Schema.define(version: 20160627202435) do
   add_index "project_files", ["project_id"], name: "index_project_files_on_project_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "title",              limit: 255
+    t.string   "title",              limit: 255,                  null: false
     t.text     "description",        limit: 65535
-    t.integer  "category",           limit: 4
-    t.integer  "project_type",       limit: 4
+    t.integer  "category",           limit: 4,                    null: false
+    t.integer  "project_type",       limit: 4,                    null: false
     t.string   "dossier",            limit: 255
     t.string   "dossier_url",        limit: 255
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.boolean  "is_visible",                       default: true
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.integer  "participation_id",   limit: 4
     t.integer  "district_id",        limit: 4
     t.integer  "political_party_id", limit: 4
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160627202435) do
     t.integer  "status",                 limit: 4,   default: 0
     t.string   "name",                   limit: 255
     t.string   "last_name",              limit: 255
+    t.string   "dni",                    limit: 255
     t.boolean  "force_password_change",              default: true
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false

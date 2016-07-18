@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'projects#index'
+  root 'users#index'
 
-  resource :project, path: 'proyectos',
-    path_names: { new: 'nuevo', edit: 'editar' }
+  resource :project, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
+    member do
+      post :not_visible,  path: 'no-visible'
+      post :visible,      path: 'visible'
+    end
+  end
 
   get   'mi-equipo/nuevo-asesor',   to: 'users#new_collaborator',  as: :new_collaborator
 
@@ -28,8 +32,14 @@ Rails.application.routes.draw do
         post :disable,     path: 'deshabilitar'
         post :enable,      path: 'habilitar'
       end
+      resource :participation, path: 'periodo-actividad' do
+        resources :projects, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
+          member do
+            post :not_visible, path: 'no-visible'
+            post :visible,     path: 'visible'
+          end
+        end
+      end
     end
-
-    resource :participation, path: 'periodo-actividad'
 
 end

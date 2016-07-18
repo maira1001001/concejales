@@ -1,3 +1,9 @@
 <%= render partial: 'page_header', locals: { title: t('projects.index.title'), sub_title: t('projects.index.sub_title')  }%>
 
-<%= render 'projects',  projects: @projects %>
+<% if @projects.any? %>
+  <%= render 'projects',  projects: @projects %>
+<% else %>
+  <div class="alert alert-info">
+    <%= t('projects.index.list_empty') %>
+  </div>
+<% end %>

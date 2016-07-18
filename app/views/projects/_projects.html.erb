@@ -23,9 +23,7 @@
           <% end %>
         </td>
         <td>
-          <%= link_to icon('search'), project,
-            title: t('global.actions.show') ,
-            data: { toggle: 'tooltip', placement: 'right' } %>
+          <%= render 'toggle_visibility', project: project -%>
           <%= link_to icon('pencil'), edit_project_path(project),
             title: t('global.actions.edit'),
             data: { toggle: 'tooltip', placement: 'right' } %>

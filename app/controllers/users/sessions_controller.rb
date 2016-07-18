@@ -20,7 +20,7 @@ class Users::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource)
     if current_user.councilor? && !current_user.has_participation?
-      new_participation_path
+      new_user_participation_path(current_user)
     else
       root_path
     end

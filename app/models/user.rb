@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     :timeoutable, :confirmable, :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
   belongs_to :collaborator, class_name: 'Participation', foreign_key: 'collaborator_id'
+  has_one    :participation, class_name: 'Participation', foreign_key: 'councilor_id'
 
   enum status: %i(pending_invitation enabled disabled)
   enum role: %i(admin councilor collaborator guest)
@@ -42,6 +43,10 @@ class User < ActiveRecord::Base
     Participation.find_by(councilor: self)
   end
 
+  def current_participation
+    Participation.find_by(councilor: self, in_function: true)
+  end
+
   private
 
   def set_password
@@ -49,5 +54,3 @@ class User < ActiveRecord::Base
   end
 
 end
-
-

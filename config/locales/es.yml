@@ -16,6 +16,13 @@ es:
     index:
       title: "Mis proyectos"
       sub_title: "Proyectos publicados"
+      list_empty: "Aún no ha publicado ningún proyecto."
+      tooltip:
+        is_not_visible: "No es visible (presiona para hacerlo visible)"
+        is_visible:  "Es visible (presione para hacer no visible)"
+      confirm:
+        will_not_be_visible: "El proyecto %{project_title} no será visible para los demás concejales ¿Está seguro que desea que sea no visible?"
+        will_be_visible: "El proyecto %{project_title} lo podrán visualizar los demás concejales. ¿Desea que sea visible a todos?"
     edit:
       title: "Editar proyecto"
     show:

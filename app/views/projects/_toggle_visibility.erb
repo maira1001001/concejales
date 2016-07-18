@@ -1,0 +1,19 @@
+<% if project.is_visible? -%>
+  <%= link_to(icon('ok-circle'), not_visible_project_path(project),
+              method: :post,
+              title: t('projects.index.tooltip.is_visible'),
+              data: {
+                confirm: t('projects.index.confirm.will_not_be_visible', project_title: project.title),
+                toggle: 'tooltip',
+                placement: 'left'
+              }) %>
+<%- else -%>
+  <%= link_to(icon('ban-circle'), visible_user_path(project),
+              method: :post,
+              title: t('projects.index.tooltip.is_not_visible'),
+              data: {
+                confirm: t('projects.index.confirm.will_be_visible', project_title: project.title),
+                toggle: 'tooltip',
+                placement: 'left'
+              }) %>
+<%- end -%>
