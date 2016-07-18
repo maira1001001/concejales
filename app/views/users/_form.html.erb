@@ -2,11 +2,11 @@
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
-    <%= f.input :roles, as: :enum, wrapper_html: { class:' col-md-6' }%>
+    <%= f.input :role, as: :enum, wrapper_html: { class:' col-md-6' }%>
   </div>
   <div class="row">
-    <%= p.input :name, wrapper_html: { class: 'col-md-6' }  %>
-    <%= p.input :last_name, wrapper_html: { class: 'col-md-6' } %>
+    <%= f.input :name, wrapper_html: { class: 'col-md-6' }  %>
+    <%= f.input :last_name, wrapper_html: { class: 'col-md-6' } %>
   </div>
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success',

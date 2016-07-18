@@ -18,6 +18,7 @@ es:
         category:         "Categoria"
         project_type:     "Tipo de proyecto"
         project_files:    "Archivos"
+        is_visible:       "Visibilidad"
       user:
         email:                  "E-mail"
         password:               "Contraseña"

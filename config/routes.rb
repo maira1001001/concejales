@@ -2,16 +2,9 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  resource :project, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
-    member do
-      post :not_visible,  path: 'no-visible'
-      post :visible,      path: 'visible'
-    end
-  end
-
-  get   'mi-equipo/nuevo-asesor',   to: 'users#new_collaborator',  as: :new_collaborator
-
-  get 'mis-proyectos', to: 'projects#my_projects', as: :my_projects
+  get 'nuevo-asesor',   to: 'participations#new_collaborator',  as: :new_collaborator
+  get 'mis-proyectos',  to: 'projects#my_projects',             as: :my_projects
+  get 'perfil',         to: 'users#profile',                    as: :profile
 
   devise_scope :user do
     put 'confirmar', to: 'users/confirmations#confirm', as: :confirm
@@ -27,19 +20,20 @@ Rails.application.routes.draw do
                    omniauth_callbacks: "users/omniauth_callbacks",
                    passwords: "users/passwords" }
 
-    resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar' } do
-      member do
-        post :disable,     path: 'deshabilitar'
-        post :enable,      path: 'habilitar'
-      end
-      resource :participation, path: 'periodo-actividad' do
-        resources :projects, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
-          member do
-            post :not_visible, path: 'no-visible'
-            post :visible,     path: 'visible'
-          end
-        end
-      end
+  resources :users, path: 'usuarios', path_names: {new: 'nuevo', edit: 'modificar' } do
+    member do
+      post :disable,     path: 'deshabilitar'
+      post :enable,      path: 'habilitar'
     end
+  end
+
+  resource :participation, path: 'periodo-actividad'
+
+  resources :projects, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
+    member do
+      post :not_visible, path: 'no-visible'
+      post :visible,     path: 'visible'
+    end
+  end
 
 end

@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-  before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  before_action :set_participation, only: [:show, :edit, :update, :destroy, :new_collaborator]
 
   respond_to :html
 
@@ -34,8 +34,13 @@ class ParticipationsController < ApplicationController
     respond_with(@participation)
   end
 
+  def new_collaborator
+    @collaborator = @participation.collaborators.build
+  end
+
   private
-    def set_participation
+
+  def set_participation
       @pariticipation = Participation.find_by(councilor: current_user)
     end
 

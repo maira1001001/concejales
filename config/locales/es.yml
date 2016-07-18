@@ -21,7 +21,7 @@ es:
         is_not_visible: "No es visible (presiona para hacerlo visible)"
         is_visible:  "Es visible (presione para hacer no visible)"
       confirm:
-        will_not_be_visible: "El proyecto %{project_title} no será visible para los demás concejales ¿Está seguro que desea que sea no visible?"
+        will_not_be_visible: "El proyecto %{project_title} no será visible para los demás concejales ¿Está seguro que desea que no sea visible?"
         will_be_visible: "El proyecto %{project_title} lo podrán visualizar los demás concejales. ¿Desea que sea visible a todos?"
     edit:
       title: "Editar proyecto"
@@ -61,6 +61,10 @@ es:
       title: "Detalles del usuario"
     actions:
       new: "Nuevo Usuario"
+    profile:
+      title: "Perfil del usuario"
+      sub_title: "Aquí encontrará y podrá editar todos sus datos personales."
+      submit: "Actualizar perfil"
   people:
       index:
         title: "Personas"

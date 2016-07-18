@@ -1,0 +1,22 @@
+<%= render partial: 'page_header', locals: { title: t('charges.show.collaborators.new.title'), sub_title: t('charges.show.collaborators.new.sub_title') } %>
+
+<%= simple_form_for(@collaborator, url: invite_collaborator_path) do |f| %>
+
+  <%= f.error_notification %>
+  <div class="row">
+    <%= f.input :email, wrapper_html: { class: 'col-md-6'  }  %>
+  </div>
+  <div class="row">
+    <%= f.simple_fields_for :person do |p| %>
+      <%= p.input :name, wrapper_html: { class: 'col-md-4' }  %>
+      <%= p.input :last_name, wrapper_html: { class: 'col-md-4' } %>
+    <% end %>
+  </div>
+
+<div class="form-actions">
+  <%= f.button :submit, class: 'btn btn-success',
+    value: t('.submit', default: t('global.form.actions.submit')) %>
+  </div>
+
+<% end %>
+

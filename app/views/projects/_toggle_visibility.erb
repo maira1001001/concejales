@@ -8,7 +8,7 @@
                 placement: 'left'
               }) %>
 <%- else -%>
-  <%= link_to(icon('ban-circle'), visible_user_path(project),
+  <%= link_to(icon('ban-circle'), visible_project_path(project),
               method: :post,
               title: t('projects.index.tooltip.is_not_visible'),
               data: {

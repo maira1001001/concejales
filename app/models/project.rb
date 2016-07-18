@@ -14,6 +14,8 @@ class Project < ActiveRecord::Base
 #  validates_associated :project_files
   accepts_nested_attributes_for :project_files, allow_destroy: true
 
+  scope :all_from_current_participation, lambda { |participation| Participation.find(participation).projects }
+
   def to_s
     title
   end

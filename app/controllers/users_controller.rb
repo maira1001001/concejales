@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def enable
-    @user.enable
+    @user.enable ##TODO si es councilor, dejarle habilitar sus colaboradores (no cualquier usuario)
     respond_with @user, location: users_path
   end
 
@@ -48,6 +48,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def profile
+    @user = current_user
+  end
+
   private
 
   def set_user
@@ -57,6 +61,10 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:email, :role, :name, :last_name)
+  end
+
+  def profile_params
+    params.require(:user).permite(:email, :name, :password, :password_confirmation)
   end
 
 end
