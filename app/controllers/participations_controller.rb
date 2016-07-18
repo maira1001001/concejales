@@ -35,7 +35,7 @@ class ParticipationsController < ApplicationController
   end
 
   def new_collaborator
-    @collaborator = @participation.collaborators.build
+    @collaborator = Participation.find_by(councilor: current_user).collaborators.build
   end
 
   private

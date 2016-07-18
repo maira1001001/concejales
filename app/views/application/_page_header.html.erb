@@ -1,6 +1,6 @@
 <div class="page-header">
   <div class="row">
-    <div class="page-header col-md-8">
+    <div class="page-header">
       <%- if defined? alt_title -%>
         <%= title %>
         <%- content_for(:title, alt_title) -%>
@@ -10,11 +10,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <%- if defined? sub_title -%>
-        <p><%= sub_title %></p>
-      <%- end -%>
-    </div>
+    <%- if defined? sub_title -%>
+      <p><%= sub_title %></p>
+    <%- end -%>
   </div>
   <div class="col-md-4 text-right">
     <%= yield :filter_form %>

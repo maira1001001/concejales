@@ -96,6 +96,10 @@ es:
         empty_list: "Aún no ha publicado ningún proyecto."
     form:
       in_function: "Ejerce el cargo actualmente"
+    collaborators:
+      new:
+        title: "Nuevo asesor"
+        sub_title: "Completando el formulario, usted podrá invitar a sus asesores a participar del sistema."
 
 
  
