@@ -3,9 +3,13 @@ class ProjectsController < ApplicationController
 
   respond_to  :html
 
+  def index
+    @projects = Project.visible.page(page_params)
+    respond_with(@projects)
+  end
+
   def my_projects
-    @projects = Project.all_from_current_participation(current_user.participation)
-    render 'index'
+    @projects = Project.all_from_current_participation(current_user.participation).page(page_params)
   end
 
   def new

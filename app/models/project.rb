@@ -16,6 +16,8 @@ class Project < ActiveRecord::Base
 
   scope :all_from_current_participation, lambda { |participation| Participation.find(participation).projects }
 
+  scope :visible, -> { where(is_visible: true)  }
+
   def to_s
     title
   end

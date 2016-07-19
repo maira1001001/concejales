@@ -7,3 +7,6 @@
     <%= t('projects.index.list_empty') %>
   </div>
 <% end %>
+
+
+<%= render partial: 'pager', locals: { model: @projects } %>

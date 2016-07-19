@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   # User authentication
   before_action :authenticate_user!
 
+  def page_params
+    params[:page] || 1
+  end
+
 end

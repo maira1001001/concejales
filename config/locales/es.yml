@@ -2,6 +2,12 @@ es:
   views:
     application:
       title: "Red Legislativa"
+    pagination:
+      next: "Siguiente"
+      last: "Último"
+      previous: "Anterior"
+      first: "Primero"
+      truncate: "..."
     navbar:
       new_project:      "Nuevo projecto"
       project_types: 
