@@ -42,6 +42,7 @@ class ParticipationsController < ApplicationController
   private
 
   def set_participation
+    raise 3
     @participation = Participation.find_by(councilor: current_user)
   end
 
