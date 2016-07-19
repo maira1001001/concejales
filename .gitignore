@@ -20,6 +20,7 @@
 
 # Uploads
 /public/uploads/*
+/private/uploads/*
 
 # Test files
 /spec/views/*
