@@ -8,6 +8,7 @@ es:
       edit:      "Modificar"
       destroy:   "Borrar"
       back:      "Volver"
+      cancel:    "Cancelar"
     form:
       actions:
         submit: "Guardar cambios"

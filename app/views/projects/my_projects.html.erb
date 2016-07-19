@@ -1,0 +1,13 @@
+<%= render partial: 'page_header', locals: { title: t('projects.index.title'), sub_title: t('projects.index.sub_title')  }%>
+
+<% if @projects.any? %>
+  <%= render 'projects',  projects: @projects %>
+<% else %>
+  <div class="alert alert-info">
+    <%= t('projects.index.list_empty') %>
+  </div>
+<% end %>
+
+
+<%= render partial: 'pager', locals: { model: @projects } %>
+

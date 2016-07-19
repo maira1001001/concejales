@@ -7,7 +7,7 @@ es:
       project_files:      "Archivos"
       person:             "Person"
       district:           "Distrito"
-      charge:             "Cargo Público"
+      participation:      "Periodo de actividad"
     ## ATTRIBUTES
     attributes:
       project:
@@ -18,11 +18,16 @@ es:
         category:         "Categoria"
         project_type:     "Tipo de proyecto"
         project_files:    "Archivos"
+        is_visible:       "Visibilidad"
       user:
         email:                  "E-mail"
         password:               "Contraseña"
         password_confirmation:  "Confirmacion de contraseña"
-        roles:                  "Tipo de usuario"
+        confirm_password:       "Confirmar contraseña"
+        name:                   "Nombre"
+        last_name:              "Apellido"
+        full_name:              "Nombre y apellido"
+        role:                  "Tipo de usuario"
         last_sign_in_at:        "Último inicio de sesión"
         status:                 "Estado"
       project_file:
@@ -36,7 +41,7 @@ es:
         current_district_id:    "Distrito"
       district:
         name:               "Nombre del distrito"
-      charge:
+      participation:
         start_date:         "Inicio Cargo Público"
         end_date:           "Fin Cargo Público"
         in_function:        "En función"

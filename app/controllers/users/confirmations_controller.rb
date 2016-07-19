@@ -3,17 +3,19 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   respond_to :html
 
   def invite_collaborator
-    @user = User.new(user_collaborator_params.merge!(roles: 'simple'))
-    councilor_participation = current_user.person.current_participation
-    charge = councilor_participation.charge
-    if @user.send_confirmation_instructions
-      collaborator_participation = Participation.new(role: 'collaborator', person: @user.person, charge: charge)
-      charge.collaborators << collaborator_participation
-      @user.person.update_attribute(:current_district, current_user.person.current_district)
-      @user.save
-      redirect_to charge_path, notice: 'Usted ha enviado una invitación al asesor'
+    @user= User.new(user_collaborator_params)
+    @user.role = "collaborator"
+    @user.collaborator = current_user.participation #le seteo la misma participación que current_user
+    @user.save
+    if @user.valid?
+      @user.send_confirmation_instructions
+      current_user.participation.collaborators << @user
+      redirect_to my_collaborators_path, notice: 'Se ha enviado una invitación al asesor'
+    elsif !@user.valid?
+      #TODO: redireccionar correctamente!!!!!!!
+      respond_with @user, location: -> { my_collaborators_path }, action: new_collaborator_path
     else
-      redirect_to charge_path, notice: 'Algo ha salido mal. No se ha podido invitar al asesor al sistema. Reintente la operación'
+      redirect_to my_collaborators_path, notice: 'Algo ha salido mal. No se ha podido invitar al asesor al sistema. Reintente la operación'
     end
   end
 
@@ -22,9 +24,9 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     if @user.present?
       @user.update_attribute(:confirmation_token, params[:authenticity_token])
       @user.send_confirmation_instructions
-      notice = t('devise.confirmation.resend_invitation.notice', email: @user.email)
+      notice = t('devise.confirmations.resend_invitation.notice', email: @user.email)
     else
-      notice = t('devise.confimation.resend_invitation.email_not_found')
+      notice = t('devise.confimations.resend_invitation.email_not_found')
     end
     redirect_to users_path, notice: notice
   end
@@ -85,7 +87,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def user_collaborator_params
-    params.require(:user).permit(:email, person_attributes: [ :name, :last_name])
+    params.require(:user).permit(:email, :name, :last_name)
   end
 
 end

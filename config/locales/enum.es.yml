@@ -11,9 +11,11 @@ es:
         communication: "Comunicación"
         document:       "Documento"
     user:
-      roles:
+      role:
         admin:    "Administrador"
-        manager:  "Concejal"  ##esta traducción es para safar del momento
+        councilor:  "Concejal"  ##esta traducción es para safar del momento
+        collaborator: "Asesor"
+        guest:        "Visitante"
 #        simple:   "Simple"
 #        visitor:  "Visitante"
       status:

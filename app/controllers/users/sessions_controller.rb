@@ -19,10 +19,10 @@ class Users::SessionsController < Devise::SessionsController
   # Overwriting the sign_out redirect path method
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource)
-    if current_user.personal_data_completed?
-      root_path
+    if current_user.councilor? && !current_user.has_participation?
+      new_participation_path
     else
-      edit_person_path(resource.person)
+      root_path
     end
   end
 

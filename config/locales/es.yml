@@ -2,6 +2,12 @@ es:
   views:
     application:
       title: "Red Legislativa"
+    pagination:
+      next: "Siguiente"
+      last: "Último"
+      previous: "Anterior"
+      first: "Primero"
+      truncate: "..."
     navbar:
       new_project:      "Nuevo projecto"
       project_types: 
@@ -16,6 +22,13 @@ es:
     index:
       title: "Mis proyectos"
       sub_title: "Proyectos publicados"
+      list_empty: "Aún no ha publicado ningún proyecto."
+      tooltip:
+        is_not_visible: "No es visible (presiona para hacerlo visible)"
+        is_visible:  "Es visible (presione para hacer no visible)"
+      confirm:
+        will_not_be_visible: "El proyecto %{project_title} no será visible para los demás concejales ¿Está seguro que desea que no sea visible?"
+        will_be_visible: "El proyecto %{project_title} lo podrán visualizar los demás concejales. ¿Desea que sea visible a todos?"
     edit:
       title: "Editar proyecto"
     show:
@@ -27,6 +40,7 @@ es:
       resolution:     "Nueva Resolución"
       communication:  "Nueva Comunicación"
       document:       "Nuevo Documento"
+      sub_title:      "Usted podrá crear proyectos desde aquí."
     form:
       dossier_legend: "El n° de expediente es para corroborar que el proyecto existe y fue presentado en el Concejo Deliberante. No es obligatorio completarlo. Para más detalles ... (continuar idea)"
     actions:
@@ -53,6 +67,10 @@ es:
       title: "Detalles del usuario"
     actions:
       new: "Nuevo Usuario"
+    profile:
+      title: "Perfil del %{role}"
+      sub_title: "Aquí encontrará y podrá editar todos sus datos personales."
+      submit: "Actualizar perfil"
   people:
       index:
         title: "Personas"
@@ -65,9 +83,9 @@ es:
       form:
         help:
           gravatar:  Puede cambiar su foto a través de <a href="http://gravatar.com">gravatar.com</a>
-  charges:
+  participations:
     new:
-      title: "Nuevo Cargo"
+      title: "Nuevo período de actividad"
     show:
       title:     "Mi equipo"
       sub_title:  "Aquí encontrará la lista de sus asesores y de los proyectos que ha publicado."
@@ -84,6 +102,13 @@ es:
         empty_list: "Aún no ha publicado ningún proyecto."
     form:
       in_function: "Ejerce el cargo actualmente"
+    collaborators:
+      new:
+        title: "Nuevo asesor"
+        sub_title: "Completando el formulario, usted podrá invitar a sus asesores a participar del sistema."
+      index:
+        title: "Lista de los asesores"
+        sub_title: "Desde aquí podrá habilitar, deshabiltiar, editar a los asesores que lo ayudarán a publicar los proyectos en el sistema."
 
 
  

@@ -1,18 +1,15 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy, :not_visible, :visible]
 
   respond_to  :html
 
   def index
-    @projects = Project.all
+    @projects = Project.visible.page(page_params)
+    respond_with(@projects)
   end
 
   def my_projects
-    @q = Project.my_projects(current_user.person)
-    @projects = @q.results.page(page_params)
-    @title = t('projects.my_projects.title')
-    @url = my_project_path
-    render 'index'
+    @projects = Project.all_from_current_participation(current_user.participation).page(page_params)
   end
 
   def new
@@ -24,19 +21,29 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(project_params.merge(participation: current_user.participation))
     @project.save
     respond_with @project, location: -> { my_projects_path  }
   end
 
   def update
     @project.update(project_params)
-    respond_with @project
+    respond_with @project, location: -> { my_projects_path }
   end
 
   def destroy
     @project.destroy
     respond_with @project
+  end
+
+  def not_visible
+    @project.not_visible
+    respond_with @project, location: my_projects_path
+  end
+
+  def visible
+    @project.visible
+    respond_with @project, location: my_projects_path
   end
 
   private
@@ -47,11 +54,8 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:title,
-                                    :description,
-                                    :category,
-                                    :project_type,
-                                    project_files_attributes: [ :id, :name, :attachment, :_destroy ] )
+    params.require(:project).permit(:title, :description, :category, :project_type, :dossier, :dossier_url,
+                                    project_files_attributes: [ :id, :name, :attachment, :_destroy ])
   end
 
 end

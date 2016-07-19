@@ -1,28 +1,22 @@
 class ParticipationsController < ApplicationController
-  before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  before_action :set_participation, only: [:show, :edit, :update, :destroy, :new_collaborator, :my_collaborators]
 
   respond_to :html
-
-  def index
-    @participations = Participations.all
-  end
 
   def show
   end
 
   def new
     @participation = Participation.new
-    @participation.build_charge
   end
 
   def edit
-    @participation.build_charge
   end
 
   def create
-    @participation = Person.new(participation_params)
-    @participation.save
-    respond_with(@participation)
+    @participation = Participation.new(participation_params.merge(councilor: current_user))
+    flash[:notice] = 'Datos cargados correctamente. Ya puede publicar proyectos.' if @participation.save
+    respond_with @participation, location: root_path
   end
 
   def update
@@ -31,16 +25,27 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-    @pariticipation.destroy
+    @participation.destroy
     respond_with(@participation)
   end
 
-  private
-    def set_participation
-      @pariticipation = Person.find(params[:id])
-    end
+  def new_collaborator
+    @user = @participation.collaborators.build
+    respond_with @user
+  end
 
-    def participation_params
-      params.require(:participation).permit(:start_date, :end_date)
-    end
+  def my_collaborators
+    @collaborators = @participation.collaborators
+    respond_with @collaborators
+  end
+
+  private
+
+  def set_participation
+    @participation = Participation.find_by(councilor: current_user)
+  end
+
+  def participation_params
+    params.require(:participation).permit(:start_date, :end_date, :in_function, :district_id, :political_party_id)
+  end
 end
