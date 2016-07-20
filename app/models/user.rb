@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
 
   scope :admin_user_list, -> (current_user) { where.not(id: current_user, role: 2) }
 
-  validates_with PasswordValidator, on: :update_password
+  #validates :password, :password_confirmation, presence: true
+#  validates_with PasswordValidator
 
   def to_s
     full_name
@@ -51,6 +52,11 @@ class User < ActiveRecord::Base
 
   def current_participation
     Participation.find_by(councilor: self, in_function: true)
+  end
+
+  def update_password
+   return  record.errors.add(:password, :blank) if record.password.blank?
+   return  record.errors.add(:password_confirmation, :confirmation) unless record.password == record.password_confirmation
   end
 
   private

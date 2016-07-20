@@ -17,6 +17,7 @@ es:
         communication:  "Comunicación"
         document:       "Document"
       profile: "Perfil"
+      password: "Cambiar contraseña"
       sign_out: "Cerrar Sesión"
   projects:
     index:

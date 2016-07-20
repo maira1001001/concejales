@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :disable, :enable]
-  before_action :set_current_user, only: [:my_profile, :update_my_profile]
+  before_action :set_current_user, only: [:my_profile, :update_profile_collaborator, 
+                                          :update_profile_councilor, :change_password, :update_password]
 
   respond_to  :html
 
@@ -54,10 +55,22 @@ class UsersController < ApplicationController
     render 'profile_councilor'    if @user.councilor?
   end
 
-  def update_my_profile
-    profile_params = @user.councilor? ? profile_councilor_params : profile_collaborator_params
-    @user.update(profile_params)
-    respond_with @user, location: my_projects_path, actions: -> { my_profile_path }
+  def update_profile_councilor
+    @user.update(profile_councilor_params)
+    respond_with @user, location: my_projects_path, action:  :profile_councilor
+  end
+
+  def update_profile_collaborator
+    @user.update(profile_collaborator_params)
+    respond_with @user, location: my_projects_path, action:  :profile_collaborator
+  end
+
+  def change_password
+  end
+
+  def update_password
+    @user.update_password(password_params[:password], password_params[:password_confirmation])
+    respond_with @user, location: my_projects_path, action: change_password_path
   end
 
   private
@@ -81,6 +94,10 @@ class UsersController < ApplicationController
   def profile_councilor_params
     params.require(:user).permit(:email, :name, :last_name, 
       participation_attributes: [:district_id, :political_party_id, :start_date, :end_date, :in_function])
+  end
+
+  def password_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
   end
 
 end

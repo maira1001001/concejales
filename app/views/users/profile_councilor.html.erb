@@ -7,7 +7,7 @@
   Si modifica el <b>Distrito</b> y el <b>Partido Político</b>, se verán afectados los proyectos que ya publicado y los proyectos que publicará.
 </div>
 
-<%= simple_form_for(current_user, url: update_my_profile_path, method: :put, html: { class: 'charge-form' } ) do |f| %>
+<%= simple_form_for(current_user, url: update_profile_councilor_path, method: :put, html: { class: 'charge-form' } ) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>

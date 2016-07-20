@@ -24,6 +24,7 @@ es:
         password:               "Contraseña"
         password_confirmation:  "Confirmacion de contraseña"
         confirm_password:       "Confirmar contraseña"
+        current_password:       "Contraseña actual"
         name:                   "Nombre"
         last_name:              "Apellido"
         full_name:              "Nombre y apellido"

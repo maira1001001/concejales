@@ -2,12 +2,14 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
-  get 'nuevo-asesor',       to: 'participations#new_collaborator',  as: :new_collaborator
-  get 'asesores',           to: 'participations#my_collaborators',  as: :my_collaborators
-  get 'mis-proyectos',      to: 'projects#my_projects',             as: :my_projects
-  get 'perfil',             to: 'users#my_profile',                 as: :my_profile
-  put 'actualizar-perfil',  to: 'users#update_my_profile',          as: :update_my_profile
-  put 'contraseña',         to: 'users#change_password',            as: :change_password
+  get 'nuevo-asesor',           to: 'participations#new_collaborator',  as: :new_collaborator
+  get 'asesores',               to: 'participations#my_collaborators',  as: :my_collaborators
+  get 'mis-proyectos',          to: 'projects#my_projects',             as: :my_projects
+  get 'perfil',                 to: 'users#my_profile',                 as: :my_profile
+  put 'actualizar-perfil-asesor',to: 'users#update_profile_collaborator', as: :update_profile_collaborator
+  put 'actualizar-perfil-concejal',to: 'users#update_profile_councilor',as: :update_profile_councilor
+  get 'password',               to: 'users#change_password',            as: :change_password
+  put 'actualizar-password',    to: 'users#update_password',            as: :update_password
 
   devise_scope :user do
     put 'confirmar', to: 'users/confirmations#confirm', as: :confirm

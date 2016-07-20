@@ -5,7 +5,7 @@
 
 <div>Usted es asesor del concejal <%= current_user.collaborator.councilor %>, del distrito <%= current_user.collaborator.district %>, del partido político <%= current_user.councilor.political_party %></div>
 
-<%= simple_form_for(current_user, url: update_my_profile_path) do |f| %>
+<%= simple_form_for(current_user, url: update_profile_collaborator_path) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>
