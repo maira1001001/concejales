@@ -23,10 +23,11 @@ es:
     index:
       title: "Últimos proyectos publicados"
       sub_title: "Aquí encontrará los últimos proyectos que se publicaron."
+      empty_list: "No hay proyectos publicados por ningún concejal."
     my_projects:
-      title: "Mis proyectos"
+      title: "Projectos publicados por el concejal %{councilor}"
       sub_title: "Proyectos publicados"
-      list_empty: "Aún no ha publicado ningún proyecto."
+      empty_list: "Aún no ha publicado ningún proyecto."
       tooltip:
         is_not_visible: "No es visible (presiona para hacerlo visible)"
         is_visible:  "Es visible (presione para hacer no visible)"
@@ -119,5 +120,8 @@ es:
         title: "Lista de los asesores"
         sub_title: "Desde aquí podrá habilitar, deshabiltiar, editar a los asesores que lo ayudarán a publicar los proyectos en el sistema."
 
+#ERRORS
 
- 
+  errors:
+    messages:
+      extension_white_list_error: "El archivo seleccionado no es del tipo esperado. Sólo se permiten archivos %{allowed_types}."

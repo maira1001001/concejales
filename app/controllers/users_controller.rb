@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 
   def update_password
     @user.update_password(password_params[:password], password_params[:password_confirmation])
-    respond_with @user, location: my_projects_path, action: change_password_path
+    respond_with @user, location: my_projects_path, action: :change_password
   end
 
   private

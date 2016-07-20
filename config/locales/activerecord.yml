@@ -48,6 +48,7 @@ es:
         in_function:        "En función"
         district_id:        "Distrito"
         political_party_id: "Partido Político"
+        councilor:       "Concejal"
       political_party:
         name:               "Partido Político"
     errors:

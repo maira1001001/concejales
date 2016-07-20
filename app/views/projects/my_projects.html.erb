@@ -1,10 +1,12 @@
-<%= render partial: 'page_header', locals: { title: t('projects.index.title'), sub_title: t('projects.index.sub_title')  }%>
+<%= render partial: 'page_header', 
+  locals: { title: t('projects.my_projects.title', councilor: @councilor ),
+            sub_title: t('projects.my_projects.sub_title')  }%>
 
 <% if @projects.any? %>
   <%= render 'projects',  projects: @projects %>
 <% else %>
   <div class="alert alert-info">
-    <%= t('projects.index.list_empty') %>
+    <%= t('projects.my_projects.empty_list') %>
   </div>
 <% end %>
 

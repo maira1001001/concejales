@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   belongs_to :collaborator, class_name: 'Participation', foreign_key: 'collaborator_id'
   has_one    :participation, class_name: 'Participation', foreign_key: 'councilor_id'
+#  has_many :projects, through: :adherences
 
   enum status: %i(pending_invitation enabled disabled)
   enum role: %i(admin councilor collaborator guest)
@@ -15,8 +16,7 @@ class User < ActiveRecord::Base
 
   scope :admin_user_list, -> (current_user) { where.not(id: current_user, role: 2) }
 
-  #validates :password, :password_confirmation, presence: true
-#  validates_with PasswordValidator
+#  validates_with PasswordValidator, on: :update
 
   def to_s
     full_name
@@ -54,9 +54,10 @@ class User < ActiveRecord::Base
     Participation.find_by(councilor: self, in_function: true)
   end
 
-  def update_password
-   return  record.errors.add(:password, :blank) if record.password.blank?
-   return  record.errors.add(:password_confirmation, :confirmation) unless record.password == record.password_confirmation
+  def update_password(new_password, new_confirmation_password)
+    return  self.errors.add(:password, :blank) if new_password.blank?
+    return  self.errors.add(:password_confirmation, :confirmation) unless new_password == new_confirmation_password
+    update_attribute(:password, new_password)
   end
 
   private

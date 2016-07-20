@@ -13,13 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20160720002223) do
 
-  create_table "adhereces", id: false, force: :cascade do |t|
+  create_table "adherences", id: false, force: :cascade do |t|
     t.integer "user_id",    limit: 4
     t.integer "project_id", limit: 4
   end
 
-  add_index "adhereces", ["project_id"], name: "index_adhereces_on_project_id", using: :btree
-  add_index "adhereces", ["user_id"], name: "index_adhereces_on_user_id", using: :btree
+  add_index "adherences", ["project_id"], name: "index_adherences_on_project_id", using: :btree
+  add_index "adherences", ["user_id"], name: "index_adherences_on_user_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -105,11 +105,15 @@ ActiveRecord::Schema.define(version: 20160720002223) do
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.integer  "collaborator_id",        limit: 4
+    t.integer  "district_id",            limit: 4
+    t.integer  "political_party_id",     limit: 4
   end
 
   add_index "users", ["collaborator_id"], name: "index_users_on_collaborator_id", using: :btree
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["district_id"], name: "index_users_on_district_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["political_party_id"], name: "index_users_on_political_party_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 

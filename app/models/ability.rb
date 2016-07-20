@@ -6,9 +6,17 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
+   if user.guest?
+     can :read, Project
+   end
+
     if user.admin?
       can :read, Project
       can :manage, User, role: ["admin", "councilor", "guest"]
+    end
+
+    if user.collaborator?
+#      can 
     end
     #   if user.admin?
     #     can :manage, :all

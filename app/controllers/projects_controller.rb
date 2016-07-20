@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy, :not_visible, :visible]
-
+  before_action :set_participation_from_current_user, only: [:my_projects, :create]
+  
   respond_to  :html
 
   def index
@@ -9,7 +10,8 @@ class ProjectsController < ApplicationController
   end
 
   def my_projects
-    @projects = Project.all_from_current_participation(current_user.participation).page(page_params)
+    @councilor = @participation.councilor
+    @projects = Project.all_from_current_participation(@participation).page(page_params)
   end
 
   def new
@@ -21,7 +23,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params.merge(participation: current_user.participation))
+    @project = Project.new(project_params.merge(participation: @participation))
     @project.save
     respond_with @project, location: -> { my_projects_path  }
   end
@@ -33,7 +35,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    respond_with @project
+    respond_with @project, location: -> { my_projects_path }
   end
 
   def not_visible
@@ -50,6 +52,14 @@ class ProjectsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def set_participation_from_current_user
+    @participation = if current_user.councilor?
+                      current_user.participation
+                    elsif current_user.collaborator?
+                      current_user.collaborator
+                    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

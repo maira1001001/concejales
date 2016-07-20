@@ -3,16 +3,18 @@
   <h2><%= t 'users.profile..sub_title' %></h2>
 </div>
 
-<div>Usted es asesor del concejal <%= current_user.collaborator.councilor %>, del distrito <%= current_user.collaborator.district %>, del partido político <%= current_user.councilor.political_party %></div>
+<div class="alert alert-info">
+  Usted es asesor del concejal <b><%= current_user.collaborator.councilor %></b>, del distrito <b><%= current_user.collaborator.district %></b>,
+  del partido político <b><%= current_user.collaborator.political_party %></b>
+</div>
 
-<%= simple_form_for(current_user, url: update_profile_collaborator_path) do |f| %>
+<%= simple_form_for(current_user, url: update_profile_collaborator_path, method: :put) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>
     <%= f.input :name, wrapper_html: { class: 'col-md-4' }  %>
     <%= f.input :last_name, wrapper_html: { class: 'col-md-4' } %>
   </div>
-  <% end %>
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success',
       value: t('users.profile.submit', default: t('global.form.actions.submit')) %>

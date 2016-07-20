@@ -8,12 +8,12 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     @user.collaborator = current_user.participation #le seteo la misma participación que current_user
     @user.save
     if @user.valid?
-      @user.send_confirmation_instructions
+      #      @user.send_confirmation_instructions (sin hacer este llamado, envia el email :-O)
       current_user.participation.collaborators << @user
       redirect_to my_collaborators_path, notice: 'Se ha enviado una invitación al asesor'
     elsif !@user.valid?
       #TODO: redireccionar correctamente!!!!!!!
-      respond_with @user, location: -> { my_collaborators_path }, action: new_collaborator_path
+      respond_with @user, location: -> { my_collaborators_path }, action: :new_collaborator
     else
       redirect_to my_collaborators_path, notice: 'Algo ha salido mal. No se ha podido invitar al asesor al sistema. Reintente la operación'
     end
@@ -57,7 +57,8 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       if @user.confirmed?
         redirect_to new_user_session_path, notice: 'Su cuenta ya ha sido confirmada.'
       else
-        if @user.update(user_confirmation_params)
+        if user_password_valid?
+          @user.update_attribute(:password, user_confirmation_params[:password])
           @user.confirm!
           @user.update(status: 'enabled')
           redirect_to new_user_session_path, notice: 'Su cuenta fue activada.'
@@ -72,7 +73,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   end
 
   private
-
 
   def user_confirmation_params
     params.require(:user).permit(:confirmation_token, :password, :password_confirmation)
@@ -90,5 +90,27 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     params.require(:user).permit(:email, :name, :last_name)
   end
 
+  def user_password_valid?
+    if user_confirmation_params[:password].blank?
+      @user.errors.add(:password, :blank)
+    elsif user_confirmation_params[:password] != user_confirmation_params[:password_confirmation]
+      @user.errors.add(:password_confirmation, :confirmation)
+    end
+    @user.errors.blank?
+  end
+
+  def update_user_pasword
+    @user
+  end
+
 end
+
+
+
+
+
+
+
+
+
 

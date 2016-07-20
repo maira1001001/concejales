@@ -9,5 +9,5 @@ class Participation < ActiveRecord::Base
   validates_with RangeDateValidator
 
   accepts_nested_attributes_for :councilor
-#  validates_associated :councilor
+
 end

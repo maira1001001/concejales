@@ -8,41 +8,41 @@
         <th><%= t 'activerecord.attributes.project.description' %></th>
         <th><%= t 'activerecord.attributes.project.project_type' %></th>
         <th><%= t 'activerecord.attributes.project.dossier' %></th>
-        <th><%= t 'activerecord.attributes.participation.political_party' %></th>
-        <th><%= t 'activerecord.attributes.participation.district' %></th>
+        <th><%= t 'activerecord.attributes.participation.political_party_id' %></th>
+        <th><%= t 'activerecord.attributes.participation.district_id' %></th>
         <th><%= t 'activerecord.attributes.project.project_files' %></th>
-        <th><%= t 'activerecord.attributes.project.is_visible' %></th>
         <th><%= t 'global.index.actions'  %></th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, projects) do |project| %>
-        <td><%= participation.councilor %></td>
+        <td><%= project.participation.councilor %></td>
         <td>
-         <%= content_tag_for :ul, participation.adherents do |adherents| %>
-            <li><%= adherent %></li>
-          <% end %>
+         <!-- content_tag_for :ul, project.adherents do |adherents| -->
+            <li><!-- adherent --></li>
+          <!-- end -->
         </td>
         <td><%= project.title %></td>
         <td><%= project.description %></td>
         <td><%= t_enum project, :project_type %></td>
         <td><%= project.dossier %></td>
-        <td><%= participation.political_party %></td>
-        <td><%= participation.district %></td>
+        <td><%= project.participation.political_party %></td>
+        <td><%= project.participation.district %></td>
         <td>
           <%= content_tag_for :ul, project.project_files do |file| %>
             <li><%= file.name %></li>
           <% end %>
         </td>
-        <td><%= boolean project.is_visible %></td>
         <td>
-          <%= render 'toggle_visibility', project: project -%>
-          <%= link_to icon('pencil'), edit_project_path(project),
-            title: t('global.actions.edit'),
+          <%= link_to icon('arrow-down'), download_project_path(project),
+            title: "Descargar #{t_enum project, :project_type}",
             data: { toggle: 'tooltip', placement: 'right' } %>
-          <%= link_to icon('trash'), project_path(project), method: :delete,
-            title: t('global.actions.destroy'),
+          <%= link_to icon('eye-open'), project_path(project),
+            title: "Ver detalles",
+            data: { toggle: 'tooltip', placement: 'right' } %>
+          <%= link_to icon('envelope'), project_path(project),
+            title: "Contactar a #{project.author}",
             data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
       </td>
     <% end %>
