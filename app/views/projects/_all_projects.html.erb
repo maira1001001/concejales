@@ -19,8 +19,8 @@
       <%= content_tag_for(:tr, projects) do |project| %>
         <td><%= project.participation.councilor %></td>
         <td>
-         <!-- content_tag_for :ul, project.adherents do |adherents| -->
-            <li><!-- adherent --></li>
+          <!-- content_tag_for :ul, project.adherents do |adherents| -->
+          <li><!-- adherent --></li>
           <!-- end -->
         </td>
         <td><%= project.title %></td>
@@ -35,15 +35,15 @@
           <% end %>
         </td>
         <td>
-          <%= link_to icon('arrow-down'), download_project_path(project),
+          <%= link_to icon('download'), download_project_path(project),
             title: "Descargar #{t_enum project, :project_type}",
             data: { toggle: 'tooltip', placement: 'right' } %>
           <%= link_to icon('eye-open'), project_path(project),
             title: "Ver detalles",
             data: { toggle: 'tooltip', placement: 'right' } %>
-          <%= link_to icon('envelope'), project_path(project),
-            title: "Contactar a #{project.author}",
-            data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
+            <a data-container="body" data-toggle="popover" data-placement="top" data-content=<%=project.author.email %> title="E-mail">
+              <%= icon 'envelope' %>
+            </a>
       </td>
     <% end %>
     </tbody>

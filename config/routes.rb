@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     member do
       post :not_visible, path: 'no-visible'
       post :visible,     path: 'visible'
-      post :download,    path: 'descargar'
+      get :download,    path: 'descargar'
     end
   end
 
