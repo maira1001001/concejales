@@ -4,8 +4,8 @@ class ProjectsController < ApplicationController
   respond_to  :html
 
   def index
-    @projects = Project.visible.page(page_params)
-    respond_with(@projects)
+    @all_visible_projects = Project.visible.page(page_params)
+    respond_with(@all_visible_projects)
   end
 
   def my_projects

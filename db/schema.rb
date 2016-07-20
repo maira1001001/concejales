@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627202435) do
+ActiveRecord::Schema.define(version: 20160720002223) do
+
+  create_table "adhereces", id: false, force: :cascade do |t|
+    t.integer "user_id",    limit: 4
+    t.integer "project_id", limit: 4
+  end
+
+  add_index "adhereces", ["project_id"], name: "index_adhereces_on_project_id", using: :btree
+  add_index "adhereces", ["user_id"], name: "index_adhereces_on_user_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false

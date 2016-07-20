@@ -1,29 +1,22 @@
-
 <div class="page-header">
-  <%= link_to my_projects_path, class: 'btn btn-default' do %>
-    <%= icon 'list-alt' %>
-    <%= t 'global.actions.back' %>
-  <% end %>
-  <h1><%= t 'users.profile.title', role: t_enum(@user, :role) %></h1>
-  <h2><%= t 'users.profile.sub_title' %></h2>
+  <h1><%= t 'users.profile.collaborator.title' %></h1>
+  <h2><%= t 'users.profile..sub_title' %></h2>
 </div>
 
-<%= simple_form_for(@user, url: update_my_profile_path) do |f| %>
+<div>Usted es asesor del concejal <%= current_user.collaborator.councilor %>, del distrito <%= current_user.collaborator.district %>, del partido político <%= current_user.councilor.political_party %></div>
+
+<%= simple_form_for(current_user, url: update_my_profile_path) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>
     <%= f.input :name, wrapper_html: { class: 'col-md-4' }  %>
     <%= f.input :last_name, wrapper_html: { class: 'col-md-4' } %>
   </div>
-  <div class="row">
-    <%= f.input :password, wrapper_html: { class: 'col-md-6' }%>
-    <%= f.input :confirm_password, wrapper_html: { class: 'col-md-6' }%>
-  </div>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, class: 'btn btn-success',
       value: t('users.profile.submit', default: t('global.form.actions.submit')) %>
     <%= link_to t('global.actions.cancel'), my_projects_path, class: 'btn btn-default' %>
-</div>
-
+  </div>
 <% end %>
 

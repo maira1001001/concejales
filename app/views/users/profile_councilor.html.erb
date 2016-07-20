@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1><%= t 'users.profile.councilor.title' %></h1>
+  <h2><%= t 'users.profile.sub_title' %></h2>
+</div>
+
+<div class="alert alert-warning">
+  Si modifica el <b>Distrito</b> y el <b>Partido Político</b>, se verán afectados los proyectos que ya publicado y los proyectos que publicará.
+</div>
+
+<%= simple_form_for(current_user, url: update_my_profile_path, method: :put, html: { class: 'charge-form' } ) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>
+    <%= f.input :name, wrapper_html: { class: 'col-md-4' }  %>
+    <%= f.input :last_name, wrapper_html: { class: 'col-md-4' } %>
+  </div>
+  <%= f.simple_fields_for :participation do |b| %>
+    <div class="row">
+      <%= b.input :district_id, as: :select2, collection: District.all, wrapper_html: { class: 'col-md-3' } %>
+      <%= b.input :political_party_id, as: :select2, collection: PoliticalParty.all, wrapper_html: { class: 'col-md-3' } %>
+      <%= b.input :start_date, as: :date_picker, wrapper_html: { class: 'col-md-2'  } %>
+      <% if b.object.in_function %>
+        <%= b.input :end_date, as: :date_picker, wrapper_html: { class: 'col-md-2'  },
+          input_html: { disabled: true, class: 'input-end-date'  } %>
+      <% else %>
+        <%= b.input :end_date, as: :date_picker, wrapper_html: { class: 'col-md-2'  },
+          input_html: { disabled: false, class: 'input-end-date'  } %>
+      <% end %>
+      <%= b.input :in_function, input_html: { class: 'check-end-date'  } %>  
+    <small><%= t('participations.form.in_function') %></small>
+    </div>
+  <% end %>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success',
+      value: t('users.profile.submit', default: t('global.form.actions.submit')) %>
+    <%= link_to t('global.actions.cancel'), my_projects_path, class: 'btn btn-default' %>
+  </div>
+<% end %>
+

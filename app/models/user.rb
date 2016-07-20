@@ -8,12 +8,18 @@ class User < ActiveRecord::Base
   enum status: %i(pending_invitation enabled disabled)
   enum role: %i(admin councilor collaborator guest)
 
+  accepts_nested_attributes_for :participation
+
   validates :email, :role, :name, :last_name, presence: true
   validates :email, uniqueness: true
 
   scope :admin_user_list, -> (current_user) { where.not(id: current_user, role: 2) }
 
-  validates_with PasswordValidator, on: :update_my_profile
+  validates_with PasswordValidator, on: :update_password
+
+  def to_s
+    full_name
+  end
 
   def full_name
     "#{last_name}, #{name}"
@@ -45,10 +51,6 @@ class User < ActiveRecord::Base
 
   def current_participation
     Participation.find_by(councilor: self, in_function: true)
-  end
-
-  def update_my_profile
-    raise 3
   end
 
   private

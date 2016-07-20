@@ -50,11 +50,14 @@ class UsersController < ApplicationController
   end
 
   def my_profile
+    render 'profile_collaborator' if @user.collaborator?
+    render 'profile_councilor'    if @user.councilor?
   end
 
   def update_my_profile
-    @user.update_my_profile(my_profile_params)
-    respond_with @user, location: my_projects_path
+    profile_params = @user.councilor? ? profile_councilor_params : profile_collaborator_params
+    @user.update(profile_params)
+    respond_with @user, location: my_projects_path, actions: -> { my_profile_path }
   end
 
   private
@@ -71,8 +74,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :role, :name, :last_name)
   end
 
-  def my_profile_params
-    params.require(:user).permit(:email, :name, :password, :confirm_password)
+  def profile_collaborator_params
+    params.require(:user).permit(:email, :name, :last_name)
+  end
+
+  def profile_councilor_params
+    params.require(:user).permit(:email, :name, :last_name, 
+      participation_attributes: [:district_id, :political_party_id, :start_date, :end_date, :in_function])
   end
 
 end

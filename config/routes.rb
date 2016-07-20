@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'asesores',           to: 'participations#my_collaborators',  as: :my_collaborators
   get 'mis-proyectos',      to: 'projects#my_projects',             as: :my_projects
   get 'perfil',             to: 'users#my_profile',                 as: :my_profile
-  put 'actualizar-perfil', to: 'users#update_my_profile',           as: :update_my_profile
+  put 'actualizar-perfil',  to: 'users#update_my_profile',          as: :update_my_profile
+  put 'contraseña',         to: 'users#change_password',            as: :change_password
 
   devise_scope :user do
     put 'confirmar', to: 'users/confirmations#confirm', as: :confirm

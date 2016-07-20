@@ -8,3 +8,6 @@ mailer:
     password: 'los_pueblos_insurgen'
     authentication: 'plain'
     enable_starttls_auto: true
+  default_url_options:
+    host: localhost
+    port: 5000

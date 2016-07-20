@@ -73,7 +73,7 @@ es:
             password:
               too_short: "Contraseña demasiado corta. Debe tener al menos 8 caracteres."
             reset_password_token:
-              invalid: "Token invalido. Puede ser que aun no haya confirmado su cuenta."
+              invalid: "Link inválido. Puede que ya lo haya usado"
             confirmation_token:
               invalid: "El link de invitación es inválido. Tal vez usted ya había accedido antes."
 

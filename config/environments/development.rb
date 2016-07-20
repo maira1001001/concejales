@@ -21,7 +21,7 @@ Rails.application.configure do
   # General mailer configurations
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries    = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = Settings.mailer.default_url_options.to_hash 
 
 #------------------------------------------
 

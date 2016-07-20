@@ -1,0 +1,51 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th><%= t 'activerecord.attributes.participation.councilor' %></th>
+        <th><%= t 'activerecord.attributes.participation.adherents' %></th>
+        <th><%= t 'activerecord.attributes.project.title' %></th>
+        <th><%= t 'activerecord.attributes.project.description' %></th>
+        <th><%= t 'activerecord.attributes.project.project_type' %></th>
+        <th><%= t 'activerecord.attributes.project.dossier' %></th>
+        <th><%= t 'activerecord.attributes.participation.political_party' %></th>
+        <th><%= t 'activerecord.attributes.participation.district' %></th>
+        <th><%= t 'activerecord.attributes.project.project_files' %></th>
+        <th><%= t 'activerecord.attributes.project.is_visible' %></th>
+        <th><%= t 'global.index.actions'  %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, projects) do |project| %>
+        <td><%= participation.councilor %></td>
+        <td>
+         <%= content_tag_for :ul, participation.adherents do |adherents| %>
+            <li><%= adherent %></li>
+          <% end %>
+        </td>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <td><%= t_enum project, :project_type %></td>
+        <td><%= project.dossier %></td>
+        <td><%= participation.political_party %></td>
+        <td><%= participation.district %></td>
+        <td>
+          <%= content_tag_for :ul, project.project_files do |file| %>
+            <li><%= file.name %></li>
+          <% end %>
+        </td>
+        <td><%= boolean project.is_visible %></td>
+        <td>
+          <%= render 'toggle_visibility', project: project -%>
+          <%= link_to icon('pencil'), edit_project_path(project),
+            title: t('global.actions.edit'),
+            data: { toggle: 'tooltip', placement: 'right' } %>
+          <%= link_to icon('trash'), project_path(project), method: :delete,
+            title: t('global.actions.destroy'),
+            data: { toggle: 'tooltip', placement: 'right', confirm: t('projects.actions.confirm_destroy')} %>
+      </td>
+    <% end %>
+    </tbody>
+  </table>
+</div>

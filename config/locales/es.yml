@@ -20,6 +20,9 @@ es:
       sign_out: "Cerrar Sesión"
   projects:
     index:
+      title: "Últimos proyectos publicados"
+      sub_title: "Aquí encontrará los últimos proyectos que se publicaron."
+    my_projects:
       title: "Mis proyectos"
       sub_title: "Proyectos publicados"
       list_empty: "Aún no ha publicado ningún proyecto."
@@ -68,7 +71,12 @@ es:
     actions:
       new: "Nuevo Usuario"
     profile:
-      title: "Perfil del %{role}"
+      collaborator:
+        title: "Perfil del Asesor"
+      councilor:
+        title: "Perfil del Concejal"
+      admin:
+        title: "Perfil del Administrador"
       sub_title: "Aquí encontrará y podrá editar todos sus datos personales."
       submit: "Actualizar perfil"
   people:

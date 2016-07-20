@@ -1,7 +1,8 @@
 <%= render partial: 'page_header', locals: { title: t('projects.index.title'), sub_title: t('projects.index.sub_title')  }%>
 
-<% if @projects.any? %>
-  <%= render 'projects',  projects: @projects %>
+<% if @all_visible_projects.any? %>
+  <%= render 'all_projects',  projects: @all_visible_projects %>
+
 <% else %>
   <div class="alert alert-info">
     <%= t('projects.index.list_empty') %>
@@ -9,4 +10,4 @@
 <% end %>
 
 
-<%= render partial: 'pager', locals: { model: @projects } %>
+<%= render partial: 'pager', locals: { model: @all_visible_projects } %>

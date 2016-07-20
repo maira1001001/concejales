@@ -15,25 +15,14 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   # GET /resource/edit
-  def edit
-    super
-=begin
-    @user = resource
-    sign_out(@user) if  @user.current_user
-    set_minimum_password_length
-    @user.reset_password_token = params[:reset_password_token]
-    @user = find_user_by_token(params[:reset_password_token])
-    if @user.nil?
-      notice = 'Link inválido. Puede que ya haya modificado su contraseña' ##TODO hacer nueva vista para esto
-      redirect_to new_user_session_path , notice: notice
-    end
-=end
-  end
+  #def edit
+  #  super
+  #end
 
   # PUT /resource
-  def update
-    super
-  end
+  #def update
+  #  super
+  #end
 
   # DELETE /resource
   # def destroy
