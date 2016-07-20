@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :participations, path: 'periodo-actividad'
+  resources :participations, path: 'periodo-actividad', path_names: { new: 'nuevo' }
 
   resources :projects, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
     member do

@@ -8,4 +8,6 @@ class Participation < ActiveRecord::Base
   validates :start_date, :in_function, :district_id, :political_party_id, presence: true
   validates_with RangeDateValidator
 
+  accepts_nested_attributes_for :councilor
+#  validates_associated :councilor
 end
