@@ -17,6 +17,10 @@ class Project < ActiveRecord::Base
   scope :all_from_current_participation, lambda { |participation| Participation.find(participation).projects }
   scope :visible, -> { where(is_visible: true)  }
 
+  include ProjectSearchable
+  index_name    Settings.elasticsearch.default_settings.index
+  document_type Settings.elasticsearch.default_settings.document_type
+
   def to_s
     title
   end

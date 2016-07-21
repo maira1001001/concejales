@@ -15,6 +15,19 @@ registration_mailer:
   from_header: 'red.legislativa@gmail.com'
 
 
+elasticsearch:
+  client:
+    url: localhost:9200
+  default_settings:
+    index_name: project_index
+    document_type: project_index
+    index:
+      analysis:
+        filter:
+          es_stopwords:
+            type: stop
+            stopwords: '_spanish_'
+
 version: development
 debug_mode: true
 
