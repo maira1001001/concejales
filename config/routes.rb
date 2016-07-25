@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'projects#index'
 
-  get 'nuevo-asesor',           to: 'participations#new_collaborator',  as: :new_collaborator
-  get 'asesores',               to: 'participations#my_collaborators',  as: :my_collaborators
   get 'mis-proyectos',          to: 'projects#my_projects',             as: :my_projects
   get 'perfil',                 to: 'users#my_profile',                 as: :my_profile
-  put 'actualizar-perfil-asesor',to: 'users#update_profile_collaborator', as: :update_profile_collaborator
+  put 'actualizar-perfil',      to: 'users#update_profile',             as: :update_profile
   put 'actualizar-perfil-concejal',to: 'users#update_profile_councilor',as: :update_profile_councilor
   get 'password',               to: 'users#change_password',            as: :change_password
   put 'actualizar-password',    to: 'users#update_password',            as: :update_password
@@ -32,7 +30,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :participations, path: 'periodo-actividad', path_names: { new: 'nuevo' }
+  resources :participations, path: 'mi-equipo', path_names: { new: 'nuevo' }
+
+  get 'nuevo-asesor',             to: 'participations#new_collaborator',      as: :new_collaborator
+  get 'asesores',                 to: 'participations#my_collaborators',      as: :my_collaborators
+  post 'deshabilitar-asesor/:id', to: 'participations#disable_collaborator',  as: :disable_collaborator
+  post 'habilitar-asesor/:id',    to: 'participations#enable_collaborator',   as: :enable_collaborator
+  get  'editar-asesor/:id',       to: 'participations#edit_collaborator',     as: :edit_collaborator
+  delete 'borrar-asesor/:id',     to: 'participations#destroy_collaborator',  as: :destroy_collaborator
 
   resources :projects, path: 'proyectos', path_names: { new: 'nuevo', edit: 'editar' } do
     member do

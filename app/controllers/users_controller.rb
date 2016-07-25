@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy, :disable, :enable]
-  before_action :set_current_user, only: [:my_profile, :update_profile_collaborator, 
-                                          :update_profile_councilor, :change_password, :update_password]
+  before_action :set_current_user, only: [:my_profile, :update_profile_councilor, 
+                                          :update_profile, :change_password, :update_password]
 
   respond_to  :html
 
   def index
-    @q = User.admin_user_list(current_user).page(params[:page]).ransack(params[:q])
-    @users = @q.result(distinct: true)
-  end
-
-  def show
+    @users = User.admin_user_list(current_user).page(page_params)
   end
 
   def new
@@ -38,21 +35,22 @@ class UsersController < ApplicationController
 
   def enable
     @user.enable ##TODO si es councilor, dejarle habilitar sus colaboradores (no cualquier usuario)
-    respond_with @user, location: users_path
+    respond_with @user, location: (@user.admin? ? users_path : my_collaborators_path)
   end
 
   def disable
     @user.disable
-    respond_with @user, location: users_path
-  end
-
-  def new_collaborator
-    @user = User.new
+    respond_with @user, location: (@user.admin? ? users_path : my_collaborators_path)
   end
 
   def my_profile
-    render 'profile_collaborator' if @user.collaborator?
-    render 'profile_councilor'    if @user.councilor?
+    if @user.councilor? 
+      render 'profile_councilor'
+    elsif @user.collaborator?
+      render 'profile_collaborator'
+    else
+      render 'profile'
+    end
   end
 
   def update_profile_councilor
@@ -60,9 +58,13 @@ class UsersController < ApplicationController
     respond_with @user, location: my_projects_path, action:  :profile_councilor
   end
 
-  def update_profile_collaborator
-    @user.update(profile_collaborator_params)
-    respond_with @user, location: my_projects_path, action:  :profile_collaborator
+  def update_profile
+    @user.update(profile_params)
+    if @user.collaborator?
+      respond_with @user, location: my_projects_path, action:  :profile
+    else
+      respond_with @user, location: projects_path, action:  :profile
+    end
   end
 
   def change_password
@@ -87,7 +89,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :role, :name, :last_name)
   end
 
-  def profile_collaborator_params
+  def profile_params
     params.require(:user).permit(:email, :name, :last_name)
   end
 

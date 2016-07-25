@@ -1,0 +1,19 @@
+<% if collaborator.enabled? || collaborator.pending_invitation? -%>
+  <%= link_to(icon('ok-circle'), disable_collaborator_path(collaborator),
+              method: :post,
+              title: t('users.index.tooltip.enabled'),
+              data: {
+                confirm: t('users.index.confirm.disable', email: collaborator.email),
+                toggle: 'tooltip',
+                placement: 'left'
+              }) %>
+<%- else -%>
+  <%= link_to(icon('ban-circle'), enable_collaborator_path(collaborator),
+              method: :post,
+              title: t('users.index.tooltip.disabled'),
+              data: {
+                confirm: t('users.index.confirm.enable', email: collaborator.email),
+                toggle: 'tooltip',
+                placement: 'left'
+              }) %>
+<%- end -%>

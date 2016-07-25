@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1><%= t "users.profile.#{current_user.role}.title" %></h1>
+  <h2><%= t 'users.profile..sub_title' %></h2>
+</div>
+
+<%= simple_form_for(current_user, url: update_profile_path, method: :put) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>
+    <%= f.input :name, wrapper_html: { class: 'col-md-4' }  %>
+    <%= f.input :last_name, wrapper_html: { class: 'col-md-4' } %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-success',
+      value: t('users.profile.submit', default: t('global.form.actions.submit')) %>
+    <%= link_to t('global.actions.cancel'), my_projects_path, class: 'btn btn-default' %>
+  </div>
+<% end %>
+

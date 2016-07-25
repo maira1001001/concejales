@@ -8,7 +8,7 @@
   del partido político <b><%= current_user.collaborator.political_party %></b>
 </div>
 
-<%= simple_form_for(current_user, url: update_profile_collaborator_path, method: :put) do |f| %>
+<%= simple_form_for(current_user, url: update_profile_path, method: :put) do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <%= f.input :email, wrapper_html: { class: 'col-md-4' }  %>

@@ -4,19 +4,44 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-    user ||= User.new # guest user (not logged in)
 
-   if user.guest?
-     can :read, Project
-   end
+    alias_action :my_collaborators, :new_collaborator, to: :manage_collaborators
+
+     #common abilities
+    cannot :manage, User
+    cannot :manage, Participation
+
+    can [:change_password, :update_password], User, id: user.id #creo q se puede sacar porq no tiene id
+    can [:my_profile, :update_profile], User, id: user.id       #creo que se puede sacar porque no tiene id
+
+    if user.guest?
+    end
 
     if user.admin?
+      ##User Resources
+      can [:create, :read, :update, :destroy, :enable, :disable], User
+    
+      #Participation resources
+      cannot [:my_collaborators, :new_collaborator], Participation
+      ##Project Resources
       can :read, Project
-      can :manage, User, role: ["admin", "councilor", "guest"]
+    end
+
+    if user.councilor?
+      #User resources
+     can :new_collaborator, User
+     can :my_collaborators, User, participation: user.participation
+     cannot :update_profile, User
+     can :update_profile_councilor, User, id: user.id
+
+     #Participation resources
+     can [:show, :update, :destroy, :enable, :disable], User, role: 'collaborator', participation: { id: user.participation.id  } 
+#participacion del councilor = participation colaboradores
+     can :create, User, participation: user.participation, role: 'collaborator'
     end
 
     if user.collaborator?
-#      can 
+
     end
     #   if user.admin?
     #     can :manage, :all
